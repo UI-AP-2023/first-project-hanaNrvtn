@@ -4,8 +4,8 @@ public class Car extends Vehicle {
     private int motorCapacity;
     private boolean isAutomatic;
 
-    public Car(String category, String name, int price, int numberOfSupply, String manufacturer, int motorCapacity, boolean isAutomatic) {
-        super(category, name, price, numberOfSupply, manufacturer);
+    public Car(int motorCapacity, boolean isAutomatic, String manufacturer, String name, int price, int numberOfNewProduct) {
+        super(manufacturer, name, price, numberOfNewProduct);
         this.motorCapacity = motorCapacity;
         this.isAutomatic = isAutomatic;
     }
@@ -28,6 +28,6 @@ public class Car extends Vehicle {
 
     @Override
     public String toString() {
-        return super.toString() + "\nmotor capacity: " + motorCapacity + "\nautomatic: " + isAutomatic;
+        return "\nmotor capacity: " + motorCapacity + "\nautomatic: " + isAutomatic + super.toString();
     }
 }

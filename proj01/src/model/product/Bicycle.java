@@ -3,8 +3,8 @@ package model.product;
 public class Bicycle extends Vehicle {
     private BikeType type;
 
-    public Bicycle(String category, String name, int price, int numberOfSupply, String manufacturer, String type) {
-        super(category, name, price, numberOfSupply, manufacturer);
+    public Bicycle(String type, String manufacturer, String name, int price, int numberOfNewProduct) {
+        super(manufacturer, name, price, numberOfNewProduct);
         this.type = BikeType.valueOf(type);
     }
 
@@ -18,6 +18,6 @@ public class Bicycle extends Vehicle {
 
     @Override
     public String toString() {
-        return super.toString() + "\ntype: " + type.toString().toLowerCase();
+        return "\ntype: " + type.toString().toLowerCase() + super.toString();
     }
 }

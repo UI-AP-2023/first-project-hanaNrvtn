@@ -1,10 +1,10 @@
 package model.product;
 
-public class Vehicle extends Product {
+abstract public class Vehicle extends Product {
     private String manufacturer;
 
-    public Vehicle(String category, String name, int price, int numberOfSupply, String manufacturer) {
-        super(category, name, price, numberOfSupply);
+    public Vehicle(String manufacturer, String name, int price, int numberOfNewProduct) {
+        super(ProductCategory.VEHICLE, name, price, numberOfNewProduct);
         this.manufacturer = manufacturer;
     }
 
@@ -18,6 +18,6 @@ public class Vehicle extends Product {
 
     @Override
     public String toString() {
-        return super.toString() + "\nmanufacturer: " + manufacturer;
+        return "\nmanufacturer: " + manufacturer + super.toString();
     }
 }

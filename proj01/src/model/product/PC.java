@@ -4,8 +4,8 @@ public class PC extends DigitalEquipment {
     private String CPUModel;
     private int RAMCapacity;
 
-    public PC(String category, String name, int price, int numberOfSupply, double weight, String dimension, String CPUModel, int RAMCapacity) {
-        super(category, name, price, numberOfSupply, weight, dimension);
+    public PC(String CPUModel, int RAMCapacity, double weight, String dimension, String name, int price, int numberOfProduct) {
+        super(weight, dimension, name, price, numberOfProduct);
         this.CPUModel = CPUModel;
         this.RAMCapacity = RAMCapacity;
     }
@@ -28,6 +28,6 @@ public class PC extends DigitalEquipment {
 
     @Override
     public String toString() {
-        return super.toString() + "\nCPU model: " + CPUModel + "\nRAM capacity: " + RAMCapacity;
+        return "\nCPU model: " + CPUModel + "\nRAM capacity: " + RAMCapacity + super.toString();
     }
 }

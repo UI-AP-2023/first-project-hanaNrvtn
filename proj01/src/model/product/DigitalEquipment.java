@@ -4,8 +4,8 @@ abstract public class DigitalEquipment extends Product {
     private double weight;
     private String dimension;
 
-    public DigitalEquipment(String category, String name, int price, int numberOfSupply, double weight, String dimension) {
-        super(category, name, price, numberOfSupply);
+    public DigitalEquipment(double weight, String dimension, String name, int price, int numberOfProduct) {
+        super(ProductCategory.DIGITAL_EQUIPMENT, name, price, numberOfProduct);
         this.weight = weight;
         this.dimension = dimension;
     }
@@ -26,10 +26,9 @@ abstract public class DigitalEquipment extends Product {
         this.dimension = dimension;
     }
 
-
-    @Override
+    @Override //
     public String toString() {
-        return super.toString() + "\nweight: " + weight + "\nlength: " + dimension.split(":")[0] + "\nwidth: " + dimension.split(":")[1] + "\nheight: " + dimension.split(":")[2];
+        return "\nweight: " + weight + "\nlength: " + dimension.split(":")[0] + "\nwidth: " + dimension.split(":")[1] + "\nheight: " + dimension.split(":")[2] + super.toString();
     }
 }
 

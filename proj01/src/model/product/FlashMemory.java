@@ -3,8 +3,8 @@ package model.product;
 public class FlashMemory extends DataStorageEquipment {
     private double USBVersion;  //
 
-    public FlashMemory(String category, String name, int price, int numberOfSupply, double weight, String dimension, int capacity, double USBVersion) {
-        super(category, name, price, numberOfSupply, weight, dimension, capacity);
+    public FlashMemory(double USBVersion, int capacity, double weight, String dimension, String name, int price, int numberOfProduct) {
+        super(capacity, weight, dimension, name, price, numberOfProduct);
         this.USBVersion = USBVersion;
     }
 
@@ -18,6 +18,6 @@ public class FlashMemory extends DataStorageEquipment {
 
     @Override
     public String toString() {
-        return super.toString() + "\nUSB version: " + USBVersion;
+        return "\nUSB version: " + USBVersion + super.toString();
     }
 }

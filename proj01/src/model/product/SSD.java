@@ -4,8 +4,8 @@ public class SSD extends DataStorageEquipment {
     private int writeSpeed;
     private int readSpeed;
 
-    public SSD(String category, String name, int price, int numberOfSupply, double weight, String dimension, int capacity, int readSpeed, int writeSpeed) {
-        super(category, name, price, numberOfSupply, weight, dimension, capacity);
+    public SSD(int readSpeed, int writeSpeed,  int capacity, double weight, String dimension, String name, int price, int numberOfProduct) {
+        super(capacity, weight, dimension, name, price, numberOfProduct);
         this.readSpeed = readSpeed;
         this.writeSpeed = writeSpeed;
     }
@@ -28,6 +28,6 @@ public class SSD extends DataStorageEquipment {
 
     @Override
     public String toString() {
-        return super.toString() + "\nread speed: " + readSpeed + "\nwrite speed: " + writeSpeed;
+        return "\nread speed: " + readSpeed + "\nwrite speed: " + writeSpeed + super.toString();
     }
 }

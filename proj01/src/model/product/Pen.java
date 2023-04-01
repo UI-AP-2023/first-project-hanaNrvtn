@@ -3,8 +3,8 @@ package model.product;
 public class Pen extends Stationary {
     private PenColor color;  //
 
-    public Pen(String category, String name, int price, int numberOfSupply, String manufacturingCountry, String color) {
-        super(category, name, price, numberOfSupply, manufacturingCountry);
+    public Pen(String color, String manufacturingCountry, String name, int price, int numberOfNewProduct) {
+        super(manufacturingCountry, name, price, numberOfNewProduct);
         this.color = PenColor.valueOf(color);
     }
 
@@ -18,6 +18,6 @@ public class Pen extends Stationary {
 
     @Override
     public String toString() {
-        return super.toString() + "\ncolor: " + color.toString().toLowerCase();
+        return "\ncolor: " + color.toString().toLowerCase() + super.toString();
     }
 }

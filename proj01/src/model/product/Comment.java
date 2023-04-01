@@ -1,5 +1,6 @@
 package model.product;
 
+import model.user.Customer;
 import model.user.User;
 
 public class Comment {
@@ -7,14 +8,14 @@ public class Comment {
     private String ID;  // ID or product
     private String text;
     private CommentStatus status;
-    private boolean isBoughtByUser;  //
+    private boolean isBought;  //
 
-    public Comment(User user, String ID, String text, boolean isBoughtByUser) {
-        this.user = user;
+    public Comment(User user, String ID, String text, boolean isBought) {
+        this.user=user;
         this.ID = ID;
         this.text = text;
         this.status = CommentStatus.WAITING;
-        this.isBoughtByUser = isBoughtByUser;   //
+        this.isBought = isBought;   //
     }
 
     public User getUser() {
@@ -45,16 +46,16 @@ public class Comment {
         this.status = status;
     }
 
-    public boolean getBoughtByUser() {
-        return isBoughtByUser;
+    public boolean getBought() {
+        return isBought;
     }
 
-    public void setBoughtByUser(boolean isBoughtByUser) {
-        this.isBoughtByUser = isBoughtByUser;
+    public void setBought(boolean isBought) {
+        this.isBought = isBought;
     }
 
     @Override
     public String toString() {
-        return "\nuser: " + user.getUserName() + "\nID: " + ID + "\nbought by user: " + isBoughtByUser + "\nstatus: " + status.toString().toLowerCase() + "\ncomment: " + text;
+        return "\nuser: " + user.getUserName() + "\nID: " + ID + "\nbought by user: " + isBought + "\nstatus: " + status.toString().toLowerCase() + "\ncomment: " + text;
     }
 }

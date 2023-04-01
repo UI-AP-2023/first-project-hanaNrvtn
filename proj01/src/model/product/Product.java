@@ -3,22 +3,24 @@ package model.product;
 import java.util.ArrayList;
 
 abstract public class Product {
+    static int productCounter;
     private final String ID;  //
     private String name;
     private int price;
     private int numberOfProduct;
-    private boolean isInSupply;
+    private boolean isAvailable;
     private double score;
     private final ProductCategory category;  //
     private final ArrayList<Comment> comments;
 
-    public Product(String category, String name, int price, int numberOfProduct) {
+    public Product(ProductCategory category, String name, int price, int numberOfProduct) {
+        ++productCounter;
         ID = IDMaker();
-        this.category = ProductCategory.valueOf(category);
+        this.category = category;
         this.name = name;
         this.price = price;
-        this.numberOfProduct = numberOfProduct;
-        isInSupply = numberOfProduct > 0;
+        this.numberOfProduct=numberOfProduct;
+        isAvailable = numberOfProduct > 0;
         comments = new ArrayList<>();
     }
 
@@ -50,12 +52,12 @@ abstract public class Product {
         return numberOfProduct;
     }
 
-    public boolean getIsInSupply() {
-        return isInSupply;
+    public boolean getAvailable() {
+        return isAvailable;
     }
 
-    public void setInSupply(boolean inSupply) {
-        isInSupply = inSupply;
+    public void setAvailable(boolean available) {
+        isAvailable = available;
     }
 
     public double getScore() {
@@ -75,11 +77,11 @@ abstract public class Product {
     }
 
     private String IDMaker() {
-        return "";
+        return category.toString().substring(0, 3) + "-" + name + "-" + productCounter;
     }
 
     @Override
     public String toString() {
-        return "\nID: " + ID + "\nname: " + name + "\ncategory: " + category + "\nprice: " + price + "\nsupply status: " + isInSupply + "\nscore: " + score;
+        return "\nID: " + ID + "\nname: " + name + "\ncategory: " + category + "\nprice: " + price + "\nstatus: " + isAvailable + "\nscore: " + score;
     }
 }

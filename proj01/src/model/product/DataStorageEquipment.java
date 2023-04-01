@@ -3,8 +3,8 @@ package model.product;
 abstract public class DataStorageEquipment extends DigitalEquipment {
     private int capacity;
 
-    public DataStorageEquipment(String category, String name, int price, int numberOfSupply, double weight, String dimension, int capacity) {
-        super(category, name, price, numberOfSupply, weight, dimension);
+    public DataStorageEquipment(int capacity, double weight, String dimension, String name, int price, int numberOfProduct) {
+        super(weight, dimension, name, price, numberOfProduct);
         this.capacity = capacity;
     }
 
@@ -18,6 +18,6 @@ abstract public class DataStorageEquipment extends DigitalEquipment {
 
     @Override
     public String toString() {
-        return super.toString() + "\ncapacity: " + capacity;
+        return "\ncapacity: " + capacity + super.toString();
     }
 }

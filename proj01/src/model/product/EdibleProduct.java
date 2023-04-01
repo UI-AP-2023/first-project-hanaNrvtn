@@ -4,8 +4,8 @@ public class EdibleProduct extends Product {
     private String productionDate;  //
     private String expirationDate;  //
 
-    public EdibleProduct(String category, String name, int price, int numberOfSupply, String productionDate, String expirationDate) {
-        super(category, name, price, numberOfSupply);
+    public EdibleProduct(String productionDate, String expirationDate, String name, int price, int numberOfNewProduct) {
+        super(ProductCategory.EDIBLE_PRODUCT, name, price, numberOfNewProduct);
         this.productionDate = productionDate;
         this.expirationDate = expirationDate;
     }
@@ -28,6 +28,6 @@ public class EdibleProduct extends Product {
 
     @Override
     public String toString() {
-        return super.toString() + "\nproduction date: " + productionDate + "\nexpiration date: " + expirationDate;
+        return "\nproduction date: " + productionDate + "\nexpiration date: " + expirationDate + super.toString();
     }
 }

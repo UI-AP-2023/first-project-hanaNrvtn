@@ -4,8 +4,8 @@ public class NoteBook extends Stationary {
     private int numberOfPages;
     private String paperType;
 
-    public NoteBook(String category, String name, int price, int numberOfSupply, String manufacturingCountry, int numberOfPages, String paperType) {
-        super(category, name, price, numberOfSupply, manufacturingCountry);
+    public NoteBook(int numberOfPages, String paperType, String manufacturingCountry, String name, int price, int numberOfNewProduct) {
+        super(manufacturingCountry, name, price, numberOfNewProduct);
         this.numberOfPages = numberOfPages;
         this.paperType = paperType;
     }
@@ -28,6 +28,6 @@ public class NoteBook extends Stationary {
 
     @Override
     public String toString() {
-        return super.toString() + "\nnumber of pages: " + numberOfPages + "\npaper type: " + paperType;
+        return "\nnumber of pages: " + numberOfPages + "\npaper type: " + paperType + super.toString();
     }
 }

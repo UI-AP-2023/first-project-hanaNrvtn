@@ -1,10 +1,10 @@
 package model.product;
 
-public class Stationary extends Product {
+abstract public class Stationary extends Product {
     private String manufacturingCountry;
 
-    public Stationary(String category, String name, int price, int numberOfSupply, String manufacturingCountry) {
-        super(category, name, price, numberOfSupply);
+    public Stationary(String manufacturingCountry, String name, int price, int numberOfNewProduct) {
+        super(ProductCategory.STATIONERY, name, price, numberOfNewProduct);
         this.manufacturingCountry = manufacturingCountry;
     }
 
@@ -18,6 +18,6 @@ public class Stationary extends Product {
 
     @Override
     public String toString() {
-        return super.toString() + "\nmanufacturer: " + manufacturingCountry;
+        return "\nmanufacturer: " + manufacturingCountry + super.toString();
     }
 }
