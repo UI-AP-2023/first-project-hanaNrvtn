@@ -7,7 +7,7 @@ public class Rate {
     private Product product;  // ID or product
     private int score;
 
-    Rate(User user, Product product, int score) {
+    public Rate(User user, Product product, int score) {
         this.user = user;
         this.product = product;
         this.score = score;

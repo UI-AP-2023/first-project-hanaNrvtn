@@ -31,6 +31,10 @@ public class Customer extends User {
         this.credit = credit;
     }
 
+    public double getCredit() {
+        return credit;
+    }
+
     @Override
     public String toString() {
         return super.toString() + "\ncredit: " + credit;

@@ -5,7 +5,7 @@ public class Pen extends Stationary {
 
     public Pen(String color, String manufacturingCountry, String name, int price, int numberOfNewProduct) {
         super(manufacturingCountry, name, price, numberOfNewProduct);
-        this.color = PenColor.valueOf(color);
+        this.color = PenColor.valueOf(color.toUpperCase());
     }
 
     public PenColor getColor() {

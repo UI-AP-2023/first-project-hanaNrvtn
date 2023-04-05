@@ -18,6 +18,10 @@ public class IncreaseCreditRequest extends Request{
         this.additionalCredit = additionalCredit;
     }
 
+    public Customer getCustomer() {
+        return customer;
+    }
+
     @Override
     public String toString() {
         return "user name: " + customer.getUserName() + "additional credit: " + additionalCredit + super.toString();

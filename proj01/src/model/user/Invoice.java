@@ -5,20 +5,22 @@ import model.product.Product;
 import java.util.ArrayList;
 
 public class Invoice {
+    static int counter;
     private final String ID;
     private final String date;
     private final int totalAmount;
     private final ArrayList<Product> boughtProducts;
 
     public Invoice(String date, ArrayList<Product> boughtProducts) {
-        ID = IDMaker();
+        ++counter;
         this.date = date;
-        this.totalAmount = calculateTotalAmount();
         this.boughtProducts = boughtProducts;
+        this.totalAmount = calculateTotalAmount();
+        ID = IDMaker();
     }
 
     private String IDMaker() {
-        return "";
+        return counter + date.split("-")[2] + date.split("-")[2];
     }
 
     private int calculateTotalAmount() {
@@ -36,7 +38,7 @@ public class Invoice {
         return date;
     }
 
-    public double getPayedAmount() {
+    public double getTotalAmount() {
         return totalAmount;
     }
 
