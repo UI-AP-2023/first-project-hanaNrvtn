@@ -1,6 +1,5 @@
 package view;
 
-import controller.AdminController;
 import controller.CustomerController;
 import model.product.Product;
 import model.user.Admin;
@@ -27,7 +26,7 @@ public class CustomerPanel {
             System.out.println("1. view profile \n2. edit profile \n3. go to product panel \n4. go to shopping cart \n5. go to shopping history \n6. charge credit \n7. back to previous \n8. exit");
             switch (scanner.nextInt()){
                 case 1:
-                    System.out.println(customer);
+                    System.out.println(customer.toString() + "\n=-=-=-=-=-=-=-=-=-=-=-=-=");
                     continue;
                 case 2:
                     editProfile();
@@ -157,9 +156,8 @@ public class CustomerPanel {
     }
 
     private void removeProductFromShoppingCart(ArrayList<Product> shoppingCart){
-        scanner.nextLine();
         System.out.println("product ID: ");
-        Product product=customerController.findProduct(shoppingCart, scanner.nextLine());
+        Product product=customerController.findProduct(shoppingCart, scanner.next());
         if(product==null) System.out.println("product not found");
         else {
             customerController.removeProductFromShoppingCart(shoppingCart, product);
@@ -167,7 +165,7 @@ public class CustomerPanel {
         }
     }
 
-    public void finalizeShoppingCart(ArrayList<Product> shoppingCart){  //
+    public void finalizeShoppingCart(ArrayList<Product> shoppingCart){
         if(customer==null){
             System.out.println("need to be logged in \n1. log in \n2. back to previous \n3. exit");
             switch (scanner.nextInt()){
@@ -185,7 +183,7 @@ public class CustomerPanel {
             System.out.println("1. verify \n2. back to previous \n3. exit");
             switch (scanner.nextInt()){
                 case 1:
-                    invoiceShoppingCart();  //
+                    invoiceShoppingCart();
                 case 2:
                     return;
                 case 3:
@@ -201,7 +199,7 @@ public class CustomerPanel {
             return;
         }
         customerController.updateSupplyOfInvoicedProducts(invoice);
-        System.out.println("finalized successfully \nremain credit: " + customer.getCredit());
+        System.out.println("finalized successfully \nremain credit: " + customer.getCredit() + "\n=-=-=-=-=-=-=-=-=-=-=-=-=");
     }
 
     private void paymentPage(){
@@ -227,17 +225,16 @@ public class CustomerPanel {
                     System.out.println("invalid credit card number, try again");
                     continue;
                 }
-                System.out.println("CVV2: "); break;
+                System.out.println("credit increase request sent successfully"); break;
             }
             customerController.creatIncreaseCreditRequest(customer, addingCredit);
-            System.out.println("credit increase request sent successfully ");
     }
 
     private void shoppingHistoryPage(){
         for(Invoice a: customer.getInvoices()){
             System.out.println("ID: " + a.getID() + "\ndate: " + a.getDate() + "\ntotal amount: " + a.getTotalAmount());
             for(int i=0; i<customerController.uniqueProducts(a.getBoughtProducts()).size(); ++i){
-                System.out.println(i +  "." + "\nname: " + customerController.uniqueProducts(a.getBoughtProducts()).get(i).getName() + "\nprice: " + customerController.uniqueProducts(a.getBoughtProducts()).get(i).getPrice() +  "\nID: " + customerController.uniqueProducts(a.getBoughtProducts()).get(i).getID() + "number: " + customerController.productCounter(a.getBoughtProducts(), customerController.uniqueProducts(a.getBoughtProducts()).get(i)) +"\n=-=-=-=-=-=-=-=-=-=-=");
+                System.out.println(i +  "." + "\nname: " + customerController.uniqueProducts(a.getBoughtProducts()).get(i).getName() + "\nprice: " + customerController.uniqueProducts(a.getBoughtProducts()).get(i).getPrice() +  "\nID: " + customerController.uniqueProducts(a.getBoughtProducts()).get(i).getID() + "\nnumber: " + customerController.productCounter(a.getBoughtProducts(), customerController.uniqueProducts(a.getBoughtProducts()).get(i)) +"\n=-=-=-=-=-=-=-=-=-=-=");
             }
         }
         while (true){
@@ -245,7 +242,6 @@ public class CustomerPanel {
             switch (scanner.nextInt()){
                 case 1:
                     rateProduct();
-                    continue;
                 case 2:
                     return;
                 case 3:
@@ -256,7 +252,7 @@ public class CustomerPanel {
 
     private void rateProduct(){
         System.out.println("product ID: ");
-        String ID=scanner.nextLine();
+        String ID=scanner.next();
         System.out.println("rate(0-5): ");
         customerController.rateProduct(customer, customerController.findProduct(Admin.getAdmin().getProducts(), ID), scanner.nextInt());
     }

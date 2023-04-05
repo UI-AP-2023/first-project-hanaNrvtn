@@ -118,18 +118,17 @@ public class ProductPanel {
             System.out.println("name: " + a.getName() + "\nprice: " + a.getPrice() + "\nID: " + a.getID() + "\n=-=-=-=-=-=-=-=-=-=-=-=-=");
     }
 
-    private void ProductSpecialPage(){  //
-        System.out.println("ID: ");
+    private void ProductSpecialPage(){
+        System.out.println("product ID: ");
         String ID=scanner.next();
-        Product product;
-        System.out.println(product=productController.findProduct(ID));
+        Product product=productController.findProduct(ID);
         if(customer==null) nullCustomerProductSpecialPage(product);
         else loggedInCustomerProductSpecialPage(product);
     }
 
     private void nullCustomerProductSpecialPage(Product product){
+        System.out.println(product.toString() + "\n=-=-=-=-=-=-=-=-=-=-=-=-=");
         while (true){
-            System.out.println(product);
             if(tempCart.contains(product)){
                 System.out.println("1. go to shopping cart \n2. back to previous \n3. exit");
                 switch (scanner.nextInt()){
@@ -161,8 +160,8 @@ public class ProductPanel {
     }
 
     private void loggedInCustomerProductSpecialPage(Product product){
+        System.out.println(product + "\n=-=-=-=-=-=-=-=-=-=-=-=-=");
         while (true){
-            System.out.println(product);
             if(customer.getCart().contains(product)){
                 System.out.println("1. go to shopping cart \n2. leave comment \n3. back to previous \n4. exit");
                 switch (scanner.nextInt()){
@@ -170,7 +169,7 @@ public class ProductPanel {
                         customerPanel.shoppingCartPage(customer.getCart());
                         continue;
                     case 2:
-                        leaveComment();
+                        leaveComment(product);
                         continue;
                     case 3:
                         return;
@@ -187,7 +186,7 @@ public class ProductPanel {
                     customerPanel.shoppingCartPage(customer.getCart());
                     continue;
                 case 3:
-                    leaveComment();
+                    leaveComment(product);
                     continue;
                 case 4:
                     return;
@@ -199,11 +198,10 @@ public class ProductPanel {
 
     private void searchInProducts(){
         while(true){
-            scanner.nextLine();
             System.out.println("product name: ");
-            String ID=scanner.nextLine();
-            if(productController.findMatches(ID).size()==0) System.out.println("no match result");
-            else switchBetweenPages(productController.findMatches(ID));
+            String name=scanner.next();
+            if(productController.findMatches(name).size()==0) System.out.println("no match result");
+            else switchBetweenPages(productController.findMatches(name));
             System.out.println("1. search again \n2. back to previous \n3. exit");
             switch (scanner.nextInt()){
                 case 1:
@@ -380,38 +378,12 @@ public class ProductPanel {
 
     private void print(ArrayList<Product> products){
         for(Product a: products)
-            System.out.println(a.getID());
+            System.out.println("name: " + a.getName() + "\nprice: " + a.getPrice() + "\nID: " + a.getID() + "\n=-=-=-=-=-=-=-=-=-=-=-=-=");
     }
 
-    /*
-    private ArrayList<Product> undoFilter(ArrayList<Product> filtered, ArrayList<Integer> numbers, ArrayList<Double> prices, ArrayList<Boolean> statuses){
-        int priceCounter=0, statusCounter=0;
-        for(int i=0; i<numbers.size()-2; ++i){
-            switch (numbers.get(i)) {
-                case 1:
-                    filtered = productController.filterByPrice(filtered, prices.get(priceCounter), prices.get(priceCounter+1));
-                    priceCounter+=2;
-                    break;
-                case 2:
-                    filtered = productController.filterBySupplyStatus(filtered, statuses.get(statusCounter));
-                    ++statusCounter;
-                    break;
-            }
-        }
-        numbers.remove(numbers.size()-2);
-        int finalPriceCounter = priceCounter;
-        prices.removeIf(n->prices.indexOf(n)>= finalPriceCounter);
-        int finalStatusCounter = statusCounter;
-        statuses.removeIf(n->statuses.indexOf(n)>= finalStatusCounter);
-        return filtered;
-    }
-     */
-
-    private void leaveComment(){
-        System.out.println("product ID: ");
-        String ID=scanner.next();
+    private void leaveComment(Product product){
         System.out.println("comment text: ");
-        productController.commentToProduct(customer, ID, scanner.next());
+        productController.commentToProduct(customer, product, scanner.next());
         System.out.println("comment request sent successfully");
     }
 }

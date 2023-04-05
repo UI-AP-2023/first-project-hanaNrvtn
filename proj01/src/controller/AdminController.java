@@ -3,6 +3,7 @@ package controller;
 import model.product.*;
 import model.user.*;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class AdminController {
     private static final AdminController instance=new AdminController();
@@ -25,12 +26,11 @@ public class AdminController {
         return userName.equals(admin.getUserName()) && password.equals(admin.getPassword());
     }
 
-
-
-    private int findProduct(String ID){
+    private Product findProduct(String ID){
         for(Product a: admin.getProducts())
-            if(a.getID().equals(ID)) return admin.getProducts().indexOf(a);
-        return -1;
+            if(a.getID().equals(ID))
+                return a;
+        return null;
     }
 
     public void addFlashMemory(double USBVersion, int capacity, double weight, String dimension, String name, int price, int numberOfNewProduct){
@@ -83,21 +83,21 @@ public class AdminController {
     }
 
     public boolean editProductName(String ID, String name){
-        if(findProduct(ID)==-1) return false;
-        admin.getProducts().get(findProduct(ID)).setName(name);
+        if(findProduct(ID)==null) return false;
+        Objects.requireNonNull(findProduct(ID)).setName(name);
         return true;
     }
 
     public boolean editProductPrice(String ID, int price){
-        if(findProduct(ID)==-1) return false;
-        admin.getProducts().get(findProduct(ID)).setPrice(price);
+        if(findProduct(ID)==null) return false;
+        Objects.requireNonNull(findProduct(ID)).setPrice(price);
         return true;
     }
 
     public boolean editNumberOfProduct(String ID, int numberOfNewProduct){
-        if(findProduct(ID)==-1) return false;
-        int currentNumber=admin.getProducts().get(findProduct(ID)).getNumberOfProduct();
-        admin.getProducts().get(findProduct(ID)).setNumberOfProduct(currentNumber+numberOfNewProduct);
+        if(findProduct(ID)==null) return false;
+        int currentNumber= Objects.requireNonNull(findProduct(ID)).getNumberOfProduct();
+        Objects.requireNonNull(findProduct(ID)).setNumberOfProduct(currentNumber+numberOfNewProduct);
         return true;
     }
 

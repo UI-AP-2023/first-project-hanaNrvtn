@@ -33,7 +33,7 @@ public class MainPanel {
 
     public void loginPage(ArrayList<Product> tempSoppingCart){
         while(true){
-            System.out.println("<login page>\nuser name:");  //
+            System.out.println("<login page>\nuser name:");
             String userName=scanner.next();
             System.out.println("password:");
             String password= scanner.next();

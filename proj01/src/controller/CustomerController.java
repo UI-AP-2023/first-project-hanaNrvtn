@@ -39,7 +39,7 @@ public class CustomerController {
     }
 
     public boolean checkPasswordRegex(String password){
-        Pattern pattern1=Pattern.compile("\\S{8,12}");
+        Pattern pattern1=Pattern.compile("^\\S{8,12}$");
         Matcher matcher1=pattern1.matcher(password);
 
         Pattern pattern2=Pattern.compile("[A-Z]+");
@@ -188,10 +188,10 @@ public class CustomerController {
     public void rateProduct(Customer customer, Product product, int score){
         Rate newRate=new Rate(customer, product, score);
         product.getRates().add(newRate);
-        updateAverageScore(product, score);
+        updateAverageScore(product);
     }
 
-    private void updateAverageScore(Product product, int score){
+    private void updateAverageScore(Product product){
         double totalScore=0;
         for(Rate a: product.getRates())
             totalScore+=a.getScore();

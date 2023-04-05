@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 abstract public class Product {
     static int productCounter;
-    private final String ID;
+    private String ID;
     private String name;
     private int price;
     private int numberOfProduct;
@@ -36,6 +36,7 @@ abstract public class Product {
 
     public void setName(String name) {
         this.name = name;
+        ID=IDMaker();
     }
 
     public int getPrice() {
@@ -88,6 +89,9 @@ abstract public class Product {
 
     @Override
     public String toString() {
-        return "\nID: " + ID + "\nname: " + name + "\ncategory: " + category.toString().toLowerCase() + "\nprice: " + price + "\nstatus: " + isAvailable + "\naverage score: " + score + "\ncomments: " + comments.toString();
+        StringBuilder commentsStr=new StringBuilder();
+        for(Comment a: comments)
+            commentsStr.append(a).append("\n=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+        return "\nID: " + ID + "\nname: " + name + "\ncategory: " + category.toString().toLowerCase() + "\nprice: " + price + "\nstatus: " + isAvailable + "\naverage score: " + score + "\n=-=-=-=-=-=-=-=-=-=-=-=-=\ncomments: " + commentsStr;
     }
 }

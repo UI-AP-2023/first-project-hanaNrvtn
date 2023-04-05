@@ -31,7 +31,7 @@ public class ProductController {
         return null;
     }
 
-    public ArrayList<Product> divideProducts(ArrayList<Product> Products, int numberInEachPage, int start){
+    public ArrayList<Product> divideProducts(ArrayList<Product> products, int numberInEachPage, int start){
         ArrayList<Product> productsInPage=new ArrayList<>();
         for(int i=start; i<start+numberInEachPage && i< products.size(); ++i)
             productsInPage.add(products.get(i));
@@ -41,7 +41,7 @@ public class ProductController {
     public ArrayList<Product> findMatches(String name){
         ArrayList<Product> matchedProducts=new ArrayList<>();
         for(Product a: products)
-            if(a.getName().equals(name)) matchedProducts.add(a);
+            if(a.getName().contains(name)) matchedProducts.add(a);
         return matchedProducts;
     }
 
@@ -51,14 +51,6 @@ public class ProductController {
             if(a.getPrice()>=desiredFloor && a.getPrice()<=desiredCeil) filteredProducts.add(a);
         return filteredProducts;
     }
-
-    public ArrayList<Product> filterByRate(ArrayList<Product> products, double desiredRateFloor, double desiredRateCeil){
-        ArrayList<Product> filteredProducts=new ArrayList<>();
-        for(Product a: products)
-            if(a.getScore()>=desiredRateFloor && a.getScore()<=desiredRateCeil) filteredProducts.add(a);
-        return filteredProducts;
-    }
-
 
     public ArrayList<Product> filterBySupplyStatus(ArrayList<Product> products, boolean desiredStatus){
         ArrayList<Product> filteredProducts=new ArrayList<>();
@@ -79,7 +71,7 @@ public class ProductController {
     public ArrayList<Product> filterDataStorageEquipments(ArrayList<Product> products){
         ArrayList<Product> filteredProducts=new ArrayList<>();
         for(Product a: products)
-            if(a instanceof DataStorageEquipment dataStorageEquipment)
+            if(a instanceof DataStorageEquipment)
                 filteredProducts.add(a);
         return filteredProducts;
     }
@@ -87,7 +79,7 @@ public class ProductController {
     public ArrayList<Product> filterFlashMemories(ArrayList<Product> products){
         ArrayList<Product> filteredProducts=new ArrayList<>();
         for(Product a: products)
-            if(a instanceof FlashMemory flashMemory)
+            if(a instanceof FlashMemory)
                 filteredProducts.add(a);
         return filteredProducts;
     }
@@ -103,7 +95,7 @@ public class ProductController {
     public ArrayList<Product> filterSSDs(ArrayList<Product> products){
         ArrayList<Product> filteredProducts=new ArrayList<>();
         for(Product a: products)
-            if(a instanceof SSD ssd)
+            if(a instanceof SSD)
                 filteredProducts.add(a);
         return filteredProducts;
     }
@@ -119,7 +111,7 @@ public class ProductController {
     public ArrayList<Product> filterPCs(ArrayList<Product> products){
         ArrayList<Product> filteredProducts=new ArrayList<>();
         for(Product a: products)
-            if(a instanceof PC pc)
+            if(a instanceof PC)
                 filteredProducts.add(a);
         return filteredProducts;
     }
@@ -135,7 +127,7 @@ public class ProductController {
     public ArrayList<Product> filterBicycles(ArrayList<Product> products){
         ArrayList<Product> filteredProducts=new ArrayList<>();
         for(Product a: products)
-            if(a instanceof Bicycle bicycle)
+            if(a instanceof Bicycle)
                 filteredProducts.add(a);
         return filteredProducts;
     }
@@ -151,7 +143,7 @@ public class ProductController {
     public ArrayList<Product> filterCars(ArrayList<Product> products){
         ArrayList<Product> filteredProducts=new ArrayList<>();
         for(Product a: products)
-            if(a instanceof Car car)
+            if(a instanceof Car)
                 filteredProducts.add(a);
         return filteredProducts;
     }
@@ -167,7 +159,7 @@ public class ProductController {
     public ArrayList<Product> filterPens(ArrayList<Product> products){
         ArrayList<Product> filteredProducts=new ArrayList<>();
         for(Product a: products)
-            if(a instanceof Pen pen)
+            if(a instanceof Pen)
                 filteredProducts.add(a);
         return filteredProducts;
     }
@@ -183,7 +175,7 @@ public class ProductController {
     public ArrayList<Product> filterPencils(ArrayList<Product> products){
         ArrayList<Product> filteredProducts=new ArrayList<>();
         for(Product a: products)
-            if(a instanceof Pencil pencil)
+            if(a instanceof Pencil)
                 filteredProducts.add(a);
         return filteredProducts;
     }
@@ -199,7 +191,7 @@ public class ProductController {
     public ArrayList<Product> filterNoteBooks(ArrayList<Product> products){
         ArrayList<Product> filteredProducts=new ArrayList<>();
         for(Product a: products)
-            if(a instanceof NoteBook noteBook)
+            if(a instanceof NoteBook)
                 filteredProducts.add(a);
         return filteredProducts;
     }
@@ -212,17 +204,16 @@ public class ProductController {
         return filteredProducts;
     }
 
-    public void commentToProduct(Customer customer, String ID, String text){
-        Comment newComment=new Comment(customer, ID, text, checkBoughtProduct(customer, ID));
+    public void commentToProduct(Customer customer, Product product, String text){
+        Comment newComment=new Comment(customer, product.getID(), text, checkBoughtProduct(customer, product));
         CommentCheckRequest newCommentCheckRequest=new CommentCheckRequest(newComment);
         Admin.getAdmin().getRequests().add(newCommentCheckRequest);
     }
 
-    public boolean checkBoughtProduct(Customer customer, String ID){
+    public boolean checkBoughtProduct(Customer customer, Product product){
         for(Invoice a: customer.getInvoices())
-            for(Product b: a.getBoughtProducts())
-                if(b.getID().equals(ID))
-                    return true;
+            if(a.getBoughtProducts().contains(product))
+                return true;
         return false;
     }
 }

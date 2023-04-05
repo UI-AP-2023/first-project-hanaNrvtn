@@ -18,7 +18,7 @@ public class AdminPanel {
         return adminController;
     }
 
-    public void matchCommand(){  //show all product
+    public void matchCommand(){
         while(true){
             System.out.println("command: ");
             String command=scanner.nextLine();
@@ -101,7 +101,7 @@ public class AdminPanel {
         adminController.showAllIncreaseCreditRequests().forEach(n-> System.out.println("user: " + n.getCustomer().getUserName()));
     }
 
-    private void manageRequest(String remainCommand){  //
+    private void manageRequest(String remainCommand){
         String[] strings=remainCommand.split(" ", 2);
         switch (strings[0]) {
             case "Accept" -> acceptRequests(strings[1]);
