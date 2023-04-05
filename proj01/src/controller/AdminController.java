@@ -1,9 +1,7 @@
 package controller;
 
 import model.product.*;
-
 import model.user.*;
-
 import java.util.ArrayList;
 
 public class AdminController {
@@ -26,6 +24,8 @@ public class AdminController {
     public boolean login(String userName, String password){
         return userName.equals(admin.getUserName()) && password.equals(admin.getPassword());
     }
+
+
 
     private int findProduct(String ID){
         for(Product a: admin.getProducts())
@@ -108,6 +108,10 @@ public class AdminController {
         return users;
     }
 
+    public ArrayList<Product> showAllProducts(){
+        return admin.getProducts();
+    }
+
     public ArrayList<RegistrationRequest> showAllRegistrationRequests(){
         ArrayList<RegistrationRequest> registrationRequests = new ArrayList<>();
         for(Request a: admin.getRequests())
@@ -150,7 +154,7 @@ public class AdminController {
         return null;
     }
 
-    public boolean acceptRegistrationRequest(Request request){
+    public boolean acceptRegistrationRequest(Request request){  // SHOW REQUEST BY INDEX
         if(request instanceof RegistrationRequest registrationRequest){
             customerController.getCustomers().add(registrationRequest.getCustomer());
             admin.getRequests().remove(request);
@@ -165,8 +169,9 @@ public class AdminController {
 
     public boolean acceptCommentCheckRequest(Request request){
         if(request instanceof CommentCheckRequest commentCheckRequest){
-            ProductController productController=ProductController.getProductController();
-            admin.getProducts().add(productController.findProduct(commentCheckRequest.getComment().getID()));
+            ProductController productController=ProductController.getInstance();
+            productController.findProduct(commentCheckRequest.getComment().getID()).getComments().add(commentCheckRequest.getComment());
+            ((CommentCheckRequest) request).getComment().setStatus(CommentStatus.VERIFIED);
             admin.getRequests().remove(request);
             return true; // accepted successfully
         }

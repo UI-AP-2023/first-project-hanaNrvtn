@@ -5,8 +5,6 @@ import model.user.Admin;
 import model.user.CommentCheckRequest;
 import model.user.Customer;
 import model.user.Invoice;
-import view.ProductPanel;
-
 import java.util.ArrayList;
 
 public class ProductController {

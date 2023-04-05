@@ -1,8 +1,9 @@
 package controller;
 
 import model.product.Product;
+import model.product.Rate;
 import model.user.*;
-
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -13,6 +14,8 @@ public class CustomerController {
 
     private CustomerController(){
         customers=new ArrayList<>();
+        Customer customer=new Customer("ali", "ali@gmail.com", "09131109898", "123");  //
+        customers.add(customer);
     }
 
     public static CustomerController getInstance() {
@@ -26,13 +29,13 @@ public class CustomerController {
     public boolean checkEmailRegex(String email){
         Pattern pattern=Pattern.compile("^\\w+@(gmail|yahoo)\\.com$");
         Matcher matcher=pattern.matcher(email);
-        return matcher.find();
+        return !matcher.find();
     }
 
     public boolean checkPhoneNumberRegex(String phoneNumber){
         Pattern pattern=Pattern.compile("^09\\d{9}$");
         Matcher matcher=pattern.matcher(phoneNumber);
-        return matcher.find();
+        return !matcher.find();
     }
 
     public boolean checkPasswordRegex(String password){
@@ -51,26 +54,26 @@ public class CustomerController {
         Pattern pattern5=Pattern.compile("([@#$%&*!])+");
         Matcher matcher5=pattern5.matcher(password);
 
-        return matcher1.find() && matcher2.find() && matcher3.find() && matcher4.find() && matcher5.find();
+        return !matcher1.find() || !matcher2.find() || !matcher3.find() || !matcher4.find() || !matcher5.find();
     }
 
-    public boolean checkUserName(String userName){
+    public boolean checkUserNameAvailability(String userName){
         for(Customer a: customers)
             if(a.getUserName().equals(userName))
                 return true;
         return false;
     }
 
-    public boolean checkEmail(String email){
+    public boolean checkEmailAvailability(String email){
         for(Customer a: customers)
-            if(a.getUserName().equals(email))
+            if(a.getEmail().equals(email))
                 return true;
         return false;
     }
 
-    public boolean checkPhoneNumber(String phoneNumber){
+    public boolean checkPhoneNumberAvailability(String phoneNumber){
         for(Customer a: customers)
-            if(a.getUserName().equals(phoneNumber))
+            if(a.getPhoneNumber().equals(phoneNumber))
                 return true;
         return false;
     }
@@ -82,15 +85,10 @@ public class CustomerController {
         return null;
     }
 
-    public int findCustomer(String userName){
-        for(Customer a: customers)
-            if(a.getUserName().equals(userName)) return customers.indexOf(a);
-        return -1;
-    }
-
-    public String showProfile(String userName){  //
-        if(findCustomer(userName)==-1) return null;
-        return customers.get(findCustomer(userName)).toString();
+    public void signup(String userName, String email, String phoneNumber, String password){
+        Customer newCustomer=new Customer(userName, email, phoneNumber, password);
+        RegistrationRequest newRegistrationRequest=new RegistrationRequest(newCustomer);
+        Admin.getAdmin().getRequests().add(newRegistrationRequest);
     }
 
     public void editEmail(Customer customer, String newEmail){
@@ -98,11 +96,11 @@ public class CustomerController {
     }
 
     public void editPhoneNumber(Customer customer, String newPhoneNumber){
-        customer.setEmail(newPhoneNumber);
+        customer.setPhoneNumber(newPhoneNumber);
     }
 
     public void editPassword(Customer customer, String newPassword){
-        customer.setEmail(newPassword);
+        customer.setPassword(newPassword);
     }
 
     public boolean addToShoppingCart(ArrayList<Product> shoppingCart, Product product, int numberOfProduct){
@@ -127,7 +125,7 @@ public class CustomerController {
     }
 
     public boolean editNumberOfProductInShoppingCart(ArrayList<Product> shoppingCart, Product product, int newNumber){
-        if(!removeProductFromShoppingCart(shoppingCart, product) || product.getNumberOfProduct()<newNumber) return false;
+        if(product.getNumberOfProduct()<newNumber || !removeProductFromShoppingCart(shoppingCart, product)) return false;
         for(int i=0; i<newNumber; ++i)
             shoppingCart.add(product);
         return true;
@@ -145,11 +143,12 @@ public class CustomerController {
     }
 
     public Invoice invoiceShoppingCart(Customer customer){  //
-        Invoice newInvoice=new Invoice("01/12/1390");
+        ArrayList<Product> availableProducts=new ArrayList<>();
+        for(Product a: customer.getCart())
+            if(a.getAvailable())
+                availableProducts.add(a);
+        Invoice newInvoice=new Invoice(LocalDate.now().toString(), availableProducts);
         if(newInvoice.getTotalAmount()<=customer.getCredit()){
-            for(Product a: customer.getCart())
-                if(a.getAvailable())
-                    newInvoice.getBoughtProducts().add(a);
             customer.getCart().clear();
             customer.setCredit(customer.getCredit()-newInvoice.getTotalAmount());
             customer.getInvoices().add(newInvoice);
@@ -186,13 +185,16 @@ public class CustomerController {
         Admin.getAdmin().getRequests().add(newIncreaseCreditRequest);
     }
 
-    /*
-    public boolean rateProduct(ArrayList<Invoice> invoices, Product product, double score){
-        for(Invoice a: invoices)
-            if(a.getBoughtProducts().contains(product))
-
-        product.setScore((product.getScore()+score)/2);
+    public void rateProduct(Customer customer, Product product, int score){
+        Rate newRate=new Rate(customer, product, score);
+        product.getRates().add(newRate);
+        updateAverageScore(product, score);
     }
-     */
 
+    private void updateAverageScore(Product product, int score){
+        double totalScore=0;
+        for(Rate a: product.getRates())
+            totalScore+=a.getScore();
+         product.setScore(totalScore/product.getRates().size());
+    }
 }
