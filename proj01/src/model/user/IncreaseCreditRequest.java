@@ -1,13 +1,13 @@
 package model.user;
 
-public class IncreaseCreditRequest extends Request{
+public class IncreaseCreditRequest extends Request {
     private final Customer customer;
     private double additionalCredit;
 
-    public IncreaseCreditRequest(Customer customer, double additionalCredit){
+    public IncreaseCreditRequest(Customer customer, double additionalCredit) {
         super(RequestType.CREDIT_INCREASE_REQUEST);
-        this.customer=customer;
-        this.additionalCredit=additionalCredit;
+        this.customer = customer;
+        this.additionalCredit = additionalCredit;
     }
 
     public double getAdditionalCredit() {

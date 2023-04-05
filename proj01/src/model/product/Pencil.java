@@ -3,7 +3,7 @@ package model.product;
 public class Pencil extends Stationary {
     private PencilType type;
 
-    public Pencil(String type,  String manufacturingCountry, String name, int price, int numberOfProduct) {
+    public Pencil(String type, String manufacturingCountry, String name, int price, int numberOfProduct) {
         super(manufacturingCountry, name, price, numberOfProduct);
         this.type = PencilType.valueOf(type);
     }
@@ -18,6 +18,6 @@ public class Pencil extends Stationary {
 
     @Override
     public String toString() {
-        return "\npencil type: " + type.toString() + super.toString() ;
+        return "\npencil type: " + type.toString() + super.toString();
     }
 }

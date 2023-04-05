@@ -11,7 +11,7 @@ public class Comment {
     private boolean isBought;  //
 
     public Comment(User user, String ID, String text, boolean isBought) {
-        this.user=user;
+        this.user = user;
         this.ID = ID;
         this.text = text;
         this.status = CommentStatus.WAITING;

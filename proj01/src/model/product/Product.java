@@ -19,11 +19,11 @@ abstract public class Product {
         this.category = category;
         this.name = name;
         this.price = price;
-        this.numberOfProduct=numberOfProduct;
+        this.numberOfProduct = numberOfProduct;
         isAvailable = numberOfProduct > 0;
         ID = IDMaker();
         comments = new ArrayList<>();
-        rates=new ArrayList<>();
+        rates = new ArrayList<>();
     }
 
     public String getID() {
@@ -36,7 +36,7 @@ abstract public class Product {
 
     public void setName(String name) {
         this.name = name;
-        ID=IDMaker();
+        ID = IDMaker();
     }
 
     public int getPrice() {
@@ -89,8 +89,8 @@ abstract public class Product {
 
     @Override
     public String toString() {
-        StringBuilder commentsStr=new StringBuilder();
-        for(Comment a: comments)
+        StringBuilder commentsStr = new StringBuilder();
+        for (Comment a : comments)
             commentsStr.append(a).append("\n=-=-=-=-=-=-=-=-=-=-=-=-=\n");
         return "\nID: " + ID + "\nname: " + name + "\ncategory: " + category.toString().toLowerCase() + "\nprice: " + price + "\nstatus: " + isAvailable + "\naverage score: " + score + "\n=-=-=-=-=-=-=-=-=-=-=-=-=\ncomments: " + commentsStr;
     }

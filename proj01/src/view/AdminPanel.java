@@ -3,44 +3,54 @@ package view;
 import controller.AdminController;
 import model.product.Product;
 import model.user.*;
+
 import java.util.Scanner;
 
 public class AdminPanel {
     private final AdminController adminController;
     private final Scanner scanner;
 
-    public AdminPanel(){
-        adminController=AdminController.getInstance();
-        scanner=new Scanner(System.in);
+    public AdminPanel() {
+        adminController = AdminController.getInstance();
+        scanner = new Scanner(System.in);
     }
 
     public AdminController getAdminController() {
         return adminController;
     }
 
-    public void matchCommand(){
-        while(true){
+    public void matchCommand() {
+        while (true) {
             System.out.println("command: ");
-            String command=scanner.nextLine();
-            String[] splitCommand=command.split(" ", 2);
-            switch (splitCommand[0]){
+            String command = scanner.nextLine();
+            String[] splitCommand = command.split(" ", 2);
+            switch (splitCommand[0]) {
                 case "Add":
-                    addProduct(splitCommand[1]);break;
+                    addProduct(splitCommand[1]);
+                    break;
                 case "Remove":
-                    removeProduct(splitCommand[1]);break;
+                    removeProduct(splitCommand[1]);
+                    break;
                 case "Edit":
-                    editProduct(splitCommand[1]); break;
+                    editProduct(splitCommand[1]);
+                    break;
                 case "ShowAllRequests":
-                    printAllRequest(); break;
+                    printAllRequest();
+                    break;
                 case "ManageRequest":
-                    manageRequest(splitCommand[1]); break;
+                    manageRequest(splitCommand[1]);
+                    break;
                 case "ShowAllUsers":
-                    printAllUsers(); break;
+                    printAllUsers();
+                    break;
                 case "ShowAllProducts":
-                    printAllProducts(); break;
+                    printAllProducts();
+                    break;
                 case "Help":
-                    printCommandS(); break;
-                case "Back": return;
+                    printCommandS();
+                    break;
+                case "Back":
+                    return;
                 case "Exit":
                     System.exit(0);
                 default:
@@ -49,8 +59,8 @@ public class AdminPanel {
         }
     }
 
-    private void addProduct(String remainCommand){
-        String[] strings=remainCommand.split(" ");
+    private void addProduct(String remainCommand) {
+        String[] strings = remainCommand.split(" ");
         switch (strings[0]) {
             case "FlashMemory" -> adminController.addFlashMemory(Double.parseDouble(strings[1]), Integer.parseInt(strings[2]), Double.parseDouble(strings[3]), strings[4], strings[5], Integer.parseInt(strings[6]), Integer.parseInt(strings[7]));
             case "SSD" -> adminController.addSSD(Integer.parseInt(strings[1]), Integer.parseInt(strings[2]), Integer.parseInt(strings[3]), Double.parseDouble(strings[4]), strings[5], strings[6], Integer.parseInt(strings[7]), Integer.parseInt(strings[8]));
@@ -66,11 +76,11 @@ public class AdminPanel {
     }
 
     private void removeProduct(String remainCommand) {
-        System.out.println(adminController.removeProduct(remainCommand)?"removed successfully":"product not found");
+        System.out.println(adminController.removeProduct(remainCommand) ? "removed successfully" : "product not found");
     }
 
-    private void editProduct(String remainCommand){
-        String[] strings=remainCommand.split(" ");
+    private void editProduct(String remainCommand) {
+        String[] strings = remainCommand.split(" ");
         switch (strings[1]) {
             case "Name" -> System.out.println(adminController.editProductName(strings[0], strings[2]) ? "edited successfully" : "product not found");
             case "Price" -> System.out.println(adminController.editProductPrice(strings[0], Integer.parseInt(strings[2])) ? "edited successfully" : "product not found");
@@ -79,66 +89,65 @@ public class AdminPanel {
         }
     }
 
-    private void printAllUsers(){
-        for(User a: adminController.showAllUsers())
+    private void printAllUsers() {
+        for (User a : adminController.showAllUsers())
             System.out.println(a.toString());
     }
 
-    private void printAllProducts(){
-        for(Product a: adminController.showAllProducts())
+    private void printAllProducts() {
+        for (Product a : adminController.showAllProducts())
             System.out.println(a.toString() + "\n=-=-=-=-=-=-=-=-=-=-=-=-=");
     }
 
-    private void printAllRequest(){
+    private void printAllRequest() {
         System.out.println("registration requests: ");
-        if(adminController.showAllRegistrationRequests().size()==0) System.out.println("no request yet");
-        adminController.showAllRegistrationRequests().forEach(n-> System.out.println("user: " + n.getCustomer().getUserName()));
+        if (adminController.showAllRegistrationRequests().size() == 0) System.out.println("no request yet");
+        adminController.showAllRegistrationRequests().forEach(n -> System.out.println("user: " + n.getCustomer().getUserName()));
         System.out.println("\ncomment check requests: ");
-        if(adminController.showAllCommentCheckRequests().size()==0) System.out.println("no request yet");
-        adminController.showAllCommentCheckRequests().forEach(n-> System.out.println("user: " + n.getComment().getUser().getUserName()));
+        if (adminController.showAllCommentCheckRequests().size() == 0) System.out.println("no request yet");
+        adminController.showAllCommentCheckRequests().forEach(n -> System.out.println("user: " + n.getComment().getUser().getUserName()));
         System.out.println("\nincrease credit requests: ");
-        if(adminController.showAllIncreaseCreditRequests().size()==0) System.out.println("no request yet");
-        adminController.showAllIncreaseCreditRequests().forEach(n-> System.out.println("user: " + n.getCustomer().getUserName()));
+        if (adminController.showAllIncreaseCreditRequests().size() == 0) System.out.println("no request yet");
+        adminController.showAllIncreaseCreditRequests().forEach(n -> System.out.println("user: " + n.getCustomer().getUserName()));
     }
 
-    private void manageRequest(String remainCommand){
-        String[] strings=remainCommand.split(" ", 2);
+    private void manageRequest(String remainCommand) {
+        String[] strings = remainCommand.split(" ", 2);
         switch (strings[0]) {
             case "Accept" -> acceptRequests(strings[1]);
             case "Reject" -> rejectRequest(strings[1]);
         }
     }
 
-    private void acceptRequests(String remainString){
-        String[] strings=remainString.split(" ");
+    private void acceptRequests(String remainString) {
+        String[] strings = remainString.split(" ");
         Request request;
         switch (strings[0]) {
             case "Registration" -> {
                 request = adminController.findRequest(RequestType.REGISTRATION_REQUEST, strings[1]);
-                if(request==null || !adminController.acceptRegistrationRequest(request)) System.out.println("not found");
+                if (request == null || !adminController.acceptRegistrationRequest(request))
+                    System.out.println("not found");
                 else System.out.println("accepted successfully");
             }
             case "CommentCheck" -> {
                 request = adminController.findRequest(RequestType.COMMENT_CHECK_REQUEST, strings[1]);
                 if (request != null) {
                     System.out.println(adminController.acceptCommentCheckRequest(request) ? "accepted successfully" : "rejected successfully");
-                }
-                else
+                } else
                     System.out.println("request not found");
             }
             case "CreditIncrease" -> {
                 request = adminController.findRequest(RequestType.CREDIT_INCREASE_REQUEST, strings[1]);
                 if (request != null) {
                     System.out.println(adminController.acceptIncreaseCreditRequest(request) ? "accepted successfully" : "rejected successfully");
-                }
-                else
+                } else
                     System.out.println("request not found");
             }
         }
     }
 
-    private void rejectRequest(String remainRequest){
-        String[] strings=remainRequest.split(" ");
+    private void rejectRequest(String remainRequest) {
+        String[] strings = remainRequest.split(" ");
         switch (strings[0]) {
             case "Registration" -> System.out.println(adminController.rejectRegistrationRequest(adminController.findRequest(RequestType.REGISTRATION_REQUEST, strings[1])) ? "removed successfully" : "request not found");
             case "CommentCheck" -> System.out.println(adminController.rejectCommentCheckRequest(adminController.findRequest(RequestType.CREDIT_INCREASE_REQUEST, strings[1])) ? "rejected successfully" : "request not found");

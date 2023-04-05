@@ -1,11 +1,11 @@
 package model.user;
 
-public class RegistrationRequest extends Request{
+public class RegistrationRequest extends Request {
     private final Customer customer;
 
-    public RegistrationRequest(Customer customer){
+    public RegistrationRequest(Customer customer) {
         super(RequestType.REGISTRATION_REQUEST);
-        this.customer=customer;
+        this.customer = customer;
     }
 
     public Customer getCustomer() {
@@ -13,7 +13,7 @@ public class RegistrationRequest extends Request{
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "user name: " + customer.getUserName() + super.toString();
     }
 }
