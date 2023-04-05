@@ -1,7 +1,9 @@
 package view;
 
+import controller.AdminController;
 import controller.CustomerController;
 import model.product.Product;
+import model.user.Admin;
 import model.user.Customer;
 import model.user.Invoice;
 import java.util.ArrayList;
@@ -22,27 +24,30 @@ public class CustomerPanel {
 
     public void showMenu(){
         while (true){
-            System.out.println("1. edit profile \n2. go to product page \n3. go to shopping cart \n4. go to shopping history \n5. charge credit \n6. back to previous \n7. exit");
+            System.out.println("1. view profile \n2. edit profile \n3. go to product panel \n4. go to shopping cart \n5. go to shopping history \n6. charge credit \n7. back to previous \n8. exit");
             switch (scanner.nextInt()){
                 case 1:
-                    editProfile();
+                    System.out.println(customer);
                     continue;
                 case 2:
+                    editProfile();
+                    continue;
+                case 3:
                     ProductPanel productPanel=new ProductPanel(customer);
                     productPanel.showMenu();
                     continue;
-                case 3:
+                case 4:
                     shoppingCartPage(customer.getCart());
                     continue;
-                case 4:
+                case 5:
                     shoppingHistoryPage();
                     continue;
-                case 5:
+                case 6:
                     paymentPage();
                     continue;
-                case 6:
-                    return;
                 case 7:
+                    return;
+                case 8:
                     System.exit(0);
             }
         }
@@ -69,9 +74,9 @@ public class CustomerPanel {
         String newEmail;
         while (true){
             newEmail=scanner.next();
-            if(!customerController.checkEmailRegex(newEmail)){
+            if(customerController.checkEmailRegex(newEmail)){
                 System.out.println("invalid email, try again");
-            }else if(customerController.checkEmail(newEmail)){
+            }else if(customerController.checkEmailAvailability(newEmail)){
                 System.out.println("unavailable email, try again");
             }else{
                 customerController.editEmail(customer, newEmail);
@@ -86,9 +91,9 @@ public class CustomerPanel {
         String newPhoneNumber;
         while (true){
             newPhoneNumber=scanner.next();
-            if(!customerController.checkEmailRegex(newPhoneNumber)){
+            if(customerController.checkPhoneNumberRegex(newPhoneNumber)){
                 System.out.println("invalid phone number, try again");
-            }else if(customerController.checkEmail(newPhoneNumber)){
+            }else if(customerController.checkPhoneNumberAvailability(newPhoneNumber)){
                 System.out.println("unavailable phone number, try again");
             }else{
                 customerController.editPhoneNumber(customer, newPhoneNumber);
@@ -103,10 +108,8 @@ public class CustomerPanel {
         String newPassword;
         while (true){
             newPassword=scanner.next();
-            if(!customerController.checkEmailRegex(newPassword)){
+            if(customerController.checkPasswordRegex(newPassword)){
                 System.out.println("invalid password, try again");
-            }else if(customerController.checkEmail(newPassword)){
-                System.out.println("unavailable password, try again");
             }else{
                 customerController.editPassword(customer, newPassword);
                 System.out.println("edited successfully");
@@ -144,14 +147,12 @@ public class CustomerPanel {
     }
 
     private void editNumberOfProducts(ArrayList<Product> shoppingCart){
-        scanner.nextLine();
         System.out.println("product ID: ");
-        Product product= customerController.findProduct(shoppingCart, scanner.nextLine());
+        Product product= customerController.findProduct(shoppingCart, scanner.next());
         if(product==null) System.out.println("product not found");
         else{
             System.out.println("new number: ");
-            if(customerController.editNumberOfProductInShoppingCart(shoppingCart, product, scanner.nextInt()))
-                System.out.println("edited successfully");
+            System.out.println(customerController.editNumberOfProductInShoppingCart(shoppingCart, product, scanner.nextInt())?"edited successfully":"no enough supplly");
         }
     }
 
@@ -166,7 +167,7 @@ public class CustomerPanel {
         }
     }
 
-    public void finalizeShoppingCart(ArrayList<Product> shoppingCart){
+    public void finalizeShoppingCart(ArrayList<Product> shoppingCart){  //
         if(customer==null){
             System.out.println("need to be logged in \n1. log in \n2. back to previous \n3. exit");
             switch (scanner.nextInt()){
@@ -184,7 +185,7 @@ public class CustomerPanel {
             System.out.println("1. verify \n2. back to previous \n3. exit");
             switch (scanner.nextInt()){
                 case 1:
-                    finalizeShoppingCart();
+                    invoiceShoppingCart();  //
                 case 2:
                     return;
                 case 3:
@@ -193,8 +194,12 @@ public class CustomerPanel {
         }
     }
 
-    private void finalizeShoppingCart(){
+    private void invoiceShoppingCart(){
         Invoice invoice=customerController.invoiceShoppingCart(customer);
+        if(invoice==null) {
+            System.out.println("no enough credit");
+            return;
+        }
         customerController.updateSupplyOfInvoicedProducts(invoice);
         System.out.println("finalized successfully \nremain credit: " + customer.getCredit());
     }
@@ -229,8 +234,12 @@ public class CustomerPanel {
     }
 
     private void shoppingHistoryPage(){
-        for(Invoice a: customer.getInvoices())
-            System.out.println(a);
+        for(Invoice a: customer.getInvoices()){
+            System.out.println("ID: " + a.getID() + "\ndate: " + a.getDate() + "\ntotal amount: " + a.getTotalAmount());
+            for(int i=0; i<customerController.uniqueProducts(a.getBoughtProducts()).size(); ++i){
+                System.out.println(i +  "." + "\nname: " + customerController.uniqueProducts(a.getBoughtProducts()).get(i).getName() + "\nprice: " + customerController.uniqueProducts(a.getBoughtProducts()).get(i).getPrice() +  "\nID: " + customerController.uniqueProducts(a.getBoughtProducts()).get(i).getID() + "number: " + customerController.productCounter(a.getBoughtProducts(), customerController.uniqueProducts(a.getBoughtProducts()).get(i)) +"\n=-=-=-=-=-=-=-=-=-=-=");
+            }
+        }
         while (true){
             System.out.println("1. rate product \n2. back to previous \n3. exit");
             switch (scanner.nextInt()){
@@ -247,6 +256,8 @@ public class CustomerPanel {
 
     private void rateProduct(){
         System.out.println("product ID: ");
-        System.out.println("rate: ");
+        String ID=scanner.nextLine();
+        System.out.println("rate(0-5): ");
+        customerController.rateProduct(customer, customerController.findProduct(Admin.getAdmin().getProducts(), ID), scanner.nextInt());
     }
 }
