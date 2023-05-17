@@ -3,7 +3,6 @@ package view;
 import controller.AdminController;
 import controller.CustomerController;
 import model.product.Product;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 

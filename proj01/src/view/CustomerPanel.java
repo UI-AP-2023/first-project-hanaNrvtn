@@ -5,7 +5,6 @@ import model.product.Product;
 import model.user.Admin;
 import model.user.Customer;
 import model.user.Invoice;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -156,7 +155,7 @@ public class CustomerPanel {
         if (product == null) System.out.println("product not found");
         else {
             System.out.println("new number: ");
-            System.out.println(customerController.editNumberOfProductInShoppingCart(shoppingCart, product, scanner.nextInt()) ? "edited successfully" : "no enough supplly");
+            System.out.println(customerController.editNumberOfProductInShoppingCart(shoppingCart, product, scanner.nextInt()) ? "edited successfully" : "no enough supply");
         }
     }
 

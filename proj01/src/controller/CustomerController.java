@@ -3,7 +3,6 @@ package controller;
 import model.product.Product;
 import model.product.Rate;
 import model.user.*;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
