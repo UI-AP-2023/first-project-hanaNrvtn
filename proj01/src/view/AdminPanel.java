@@ -175,6 +175,7 @@ public class AdminPanel {
                         Edit ID editingAttribute newValue
                         ShowAllRequest
                         ManageRequest Accept/Reject RequestType(Registration/CommentCheck/CreditIncrease) userName
+                        ShowAllUsers
                         Help
                         Back
                         Exit""");

@@ -26,7 +26,7 @@ abstract public class DigitalEquipment extends Product {
         this.dimension = dimension;
     }
 
-    @Override
+        @Override
     public String toString() {
         return "\nweight: " + weight + "\nlength: " + dimension.split(":")[0] + "\nwidth: " + dimension.split(":")[1] + "\nheight: " + dimension.split(":")[2] + super.toString();
     }

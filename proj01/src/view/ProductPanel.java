@@ -3,7 +3,6 @@ package view;
 import controller.ProductController;
 import model.product.*;
 import model.user.Customer;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -363,7 +362,7 @@ public class ProductPanel {
     private void filterByGeneralAttributes(ArrayList<Product> products) {
         ArrayList<Product> temp = new ArrayList<>(products);
         while (true) {
-            print(temp);
+            print(products);
             System.out.println("1. price \n2. availability \n3. back to previous \n4. exit");
             switch (scanner.nextInt()) {
                 case 1:

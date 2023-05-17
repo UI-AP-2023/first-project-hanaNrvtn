@@ -1,6 +1,6 @@
 package model.product;
 
-public class Bicycle extends Vehicle {
+public class Bicycle extends Vehicle{
     private BikeType type;
 
     public Bicycle(String type, String manufacturer, String name, int price, int numberOfNewProduct) {
