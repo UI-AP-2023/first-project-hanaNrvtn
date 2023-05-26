@@ -1,0 +1,25 @@
+.dark-scene{
+    -fx-background-color: #000000;
+}
+
+.text-field-box{
+    -fx-text-fill: #ffc0cb;
+    -fx-background-color: transparent;
+    -fx-pref-height: 20;
+    -fx-font-size: 25;
+}
+
+.user-tf{
+    -fx-background-color: transparent;
+    -fx-prompt-text-fill: #ffc0cb;
+    -fx-text-fill: #ffc0cb;
+    -fx-border-width: 0px 0px 1px 0px;
+    -fx-border-color: #ffc0cb;
+}
+
+.login-signup-btn{
+    -fx-prompt-text-fill: #ffc0cb;
+    -fx-background-color: #ffc0cb;
+    -fx-background-radius: 5px;
+    -fx-text-fill: #000000;
+}
