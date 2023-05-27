@@ -49,8 +49,10 @@ public class CustomerPanelController implements Initializable {
     }
 
     @FXML
-    void invoicesButton(ActionEvent event) {
-
+    void invoicesButton(ActionEvent event) throws IOException {
+        fxml= FXMLLoader.load(Objects.requireNonNull(getClass().getResource("invoices-view.fxml")));
+        baseAnchorPane.getChildren().clear();
+        baseAnchorPane.getChildren().add(fxml);
     }
 
     @FXML
@@ -59,13 +61,17 @@ public class CustomerPanelController implements Initializable {
     }
 
     @FXML
-    void couponsButton(ActionEvent event) {
-
+    void couponsButton(ActionEvent event) throws IOException {
+        fxml= FXMLLoader.load(Objects.requireNonNull(getClass().getResource("coupons-view.fxml")));
+        baseAnchorPane.getChildren().clear();
+        baseAnchorPane.getChildren().add(fxml);
     }
 
     @FXML
-    void paymentButton(ActionEvent event) {
-
+    void paymentButton(ActionEvent event) throws IOException {
+        fxml= FXMLLoader.load(Objects.requireNonNull(getClass().getResource("payment-view.fxml")));
+        baseAnchorPane.getChildren().clear();
+        baseAnchorPane.getChildren().add(fxml);
     }
 
     @FXML
@@ -76,8 +82,8 @@ public class CustomerPanelController implements Initializable {
     }
 
     @FXML
-    void showInvoicesButton(ActionEvent event) throws IOException {  // customer setter
-        fxml= FXMLLoader.load(Objects.requireNonNull(getClass().getResource("invoices-view.fxml")));
+    void profileButton(ActionEvent event) throws IOException {  // customer setter
+        fxml= FXMLLoader.load(Objects.requireNonNull(getClass().getResource("profile-view.fxml")));
         baseAnchorPane.getChildren().clear();
         baseAnchorPane.getChildren().add(fxml);
     }

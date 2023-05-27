@@ -28,14 +28,13 @@
                         <Insets left="20.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Button fx:id="editInfoButton" mnemonicParsing="false" onAction="#editInfoButton" prefHeight="30.0" prefWidth="200.0" styleClass="customer-panel-btn" stylesheets="@styles.css" text="profile">
-                     <font>
-                        <Font name="Gabriola" size="15.0" />
-                     </font>
+                  <Button fx:id="profileButton" mnemonicParsing="false" onAction="#profileButton" prefHeight="30.0" prefWidth="200.0" styleClass="customer-panel-btn" stylesheets="@styles.css" text="Profile">
                      <HBox.margin>
                         <Insets left="15.0" />
                      </HBox.margin>
-                  </Button>
+                     <font>
+                        <Font name="Gabriola" size="15.0" />
+                     </font></Button>
                </children>
             </HBox>
             <HBox prefHeight="50.0" prefWidth="300.0">
@@ -48,13 +47,14 @@
                         <Image url="@images/icons8-edit-24.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="showInvoicesButton" mnemonicParsing="false" onAction="#showInvoicesButton" prefHeight="30.0" prefWidth="200.0" styleClass="customer-panel-btn" stylesheets="@styles.css" text="Edit">
+                  <Button fx:id="editInfoButton" mnemonicParsing="false" onAction="#editInfoButton" prefHeight="30.0" prefWidth="200.0" styleClass="customer-panel-btn" stylesheets="@styles.css" text="Edit">
+                     <font>
+                        <Font name="Gabriola" size="15.0" />
+                     </font>
                      <HBox.margin>
                         <Insets left="15.0" />
                      </HBox.margin>
-                     <font>
-                        <Font name="Gabriola" size="15.0" />
-                     </font></Button>
+                  </Button>
                </children>
             </HBox>
             <HBox prefHeight="50.0" prefWidth="300.0">
