@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.firstproj02.EditInfoController">
+   <children>
+      <Label fx:id="firstNameStatusLabel" alignment="CENTER" prefHeight="150.0" prefWidth="317.0" text="Edit Information" textFill="PINK" underline="true">
+         <font>
+            <Font name="Gabriola" size="40.0" />
+         </font>
+         <padding>
+            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+         </padding>
+         <VBox.margin>
+            <Insets top="50.0" />
+         </VBox.margin>
+      </Label>
+      <HBox prefHeight="200.0" prefWidth="600.0" style="-fx-background-color: #000000;">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="300.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="255.0" styleClass="validation-lbl" stylesheets="@styles.css" />
+                  <HBox prefHeight="50.0" prefWidth="300.0">
+                     <children>
+                        <Label prefHeight="23.0" prefWidth="72.0" styleClass="edit-lbl" stylesheets="@styles.css" text="Firsr Name :">
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="firstNameTextField" onKeyPressed="#firstNameTextField" prefHeight="30.0" prefWidth="150.0" styleClass="user-tf" stylesheets="@styles.css" />
+                     </children>
+                  </HBox>
+                  <Label fx:id="emailStatusLabel" prefHeight="18.0" prefWidth="143.0" styleClass="validation-lbl" stylesheets="@styles.css" />
+                  <HBox prefHeight="50.0" prefWidth="300.0">
+                     <children>
+                        <Label styleClass="edit-lbl" stylesheets="@styles.css" text="Email :">
+                           <HBox.margin>
+                              <Insets left="30.0" right="30.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="emailTextField" onKeyPressed="#emailTextField" prefHeight="30.0" prefWidth="150.0" styleClass="user-tf" stylesheets="@styles.css" />
+                     </children>
+                  </HBox>
+                  <Label fx:id="userNameStatusLabel" prefHeight="18.0" prefWidth="150.0" styleClass="validation-lbl" stylesheets="@styles.css" />
+                  <HBox prefHeight="50.0" prefWidth="300.0">
+                     <children>
+                        <Label styleClass="edit-lbl" stylesheets="@styles.css" text="User Name :">
+                           <HBox.margin>
+                              <Insets left="30.0" right="2.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="userNameTextField" editable="false" onKeyPressed="#userNameTextField" prefHeight="30.0" prefWidth="150.0" styleClass="user-tf" stylesheets="@styles.css" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="500.0" prefWidth="300.0">
+               <children>
+                  <Label fx:id="lastNameStatusLabel" prefHeight="23.0" prefWidth="244.0" styleClass="validation-lbl" stylesheets="@styles.css" />
+                  <HBox prefHeight="50.0" prefWidth="300.0">
+                     <children>
+                        <Label styleClass="edit-lbl" stylesheets="@styles.css" text="Last Name : ">
+                           <HBox.margin>
+                              <Insets left="15.0" right="20.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="lastNameTextField" onKeyPressed="#lastNameTextField" prefHeight="30.0" prefWidth="150.0" styleClass="user-tf" stylesheets="@styles.css" />
+                     </children>
+                  </HBox>
+                  <Label fx:id="phoneNumberStatusLabel" prefHeight="18.0" prefWidth="150.0" styleClass="validation-lbl" stylesheets="@styles.css" />
+                  <HBox prefHeight="50.0" prefWidth="300.0">
+                     <children>
+                        <Label styleClass="edit-lbl" stylesheets="@styles.css" text="Phone Number :">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="phoneNumberTextField" onKeyPressed="#phoneNumberTextField" prefHeight="30.0" prefWidth="150.0" styleClass="user-tf" stylesheets="@styles.css">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <Label fx:id="passwordStatusLabel" prefHeight="18.0" prefWidth="150.0" styleClass="validation-lbl" stylesheets="@styles.css" />
+                  <HBox prefHeight="50.0" prefWidth="300.0">
+                     <children>
+                        <Label styleClass="edit-lbl" stylesheets="@styles.css" text="Password :">
+                           <HBox.margin>
+                              <Insets left="15.0" right="30.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="passwordTextField" onKeyPressed="#passwordTextField" prefHeight="30.0" prefWidth="150.0" styleClass="user-tf" stylesheets="@styles.css" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+         <VBox.margin>
+            <Insets top="50.0" />
+         </VBox.margin>
+      </HBox>
+      <Button fx:id="submitButton" mnemonicParsing="false" onAction="#submitButton" prefHeight="34.0" prefWidth="252.0" styleClass="login-signup-btn" stylesheets="@styles.css" text="submit">
+         <font>
+            <Font name="Gabriola" size="17.0" />
+         </font>
+         <VBox.margin>
+            <Insets left="35.0" top="30.0" />
+         </VBox.margin>
+      </Button>
+   </children>
+</VBox>
