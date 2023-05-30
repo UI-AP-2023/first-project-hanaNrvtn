@@ -6,6 +6,7 @@ import com.example.firstproj02.model.exceptions.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -64,7 +65,7 @@ public class EditInfoController implements Initializable {  // set current info 
     boolean  emailIsValid, phoneNumberIsValid, passwordIsValid;
 
     @FXML
-    void firstNameTextField(KeyEvent event) {
+    void firstNameTextField(KeyEvent event) {   // remove key events
     }
 
     @FXML
@@ -96,17 +97,18 @@ public class EditInfoController implements Initializable {  // set current info 
 
         if((emailIsValid || emailTextField.getText().equals("")) && (phoneNumberIsValid || phoneNumberTextField.getText().equals("")) && (passwordIsValid || passwordTextField.getText().equals(""))){
             System.out.println("ready to edit");
-            /*
-            firstNameStatusLabel.setText("ready to edit");
             if(!firstNameTextField.getText().equals("")) customerController.editFirstName(customer, firstNameTextField.getText());
             if(!firstNameTextField.getText().equals("")) customerController.editLastName(customer, lastNameTextField.getText());
             if(!emailTextField.getText().equals("")) customerController.editEmail(customer, emailTextField.getText());
             if(!phoneNumberTextField.getText().equals("")) customerController.editPhoneNumber(customer, phoneNumberTextField.getText());
             if(!passwordTextField.getText().equals("")) customerController.editPassword(customer, passwordTextField.getText());
-             */
+        }else{
+            Alert alert=new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning!");
+            alert.setHeaderText("Invalid Information");
+            alert.setContentText("Try again! \nEnter valid information");
+            alert.showAndWait();
         }
-
-
     }
 
     private void setPromptTests(){     // maybe setText()

@@ -1,17 +1,16 @@
 package com.example.firstproj02;
 
 import com.example.firstproj02.controller.CustomerController;
+import com.example.firstproj02.model.accounts.Admin;
 import com.example.firstproj02.model.accounts.Customer;
 import com.example.firstproj02.model.exceptions.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 
+import java.lang.annotation.AnnotationTypeMismatchException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -56,6 +55,24 @@ public class PaymentController implements Initializable {             // check a
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    @FXML
+    void finishButton(ActionEvent event) {
+        if((!additionalTextField.getText().equals("")) && (!cardNumberTextField.getText().equals("")) && (!CVV2TxtField.getText().equals("")) && (!cardPasswordTextField.getText().equals(""))){
+            customerController.creatIncreaseCreditRequest(customer, additionalTextField.getPrefColumnCount(), cardNumberTextField.getText(), CVV2TxtField.getText(), cardPasswordTextField.getText());
+            Alert alert=new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information!");
+            alert.setHeaderText("Credit Increase Request");
+            alert.setContentText("Your Credit increase request sent successfully.");
+            alert.showAndWait();
+        }else {
+            Alert alert=new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning!");
+            alert.setHeaderText("Blank Field");
+            alert.setContentText("Please fill all fields first.");
+            alert.showAndWait();
+        }
     }
 
     @Override

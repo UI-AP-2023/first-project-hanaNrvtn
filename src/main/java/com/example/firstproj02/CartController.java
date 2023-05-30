@@ -58,18 +58,17 @@ public class CartController implements Initializable {
     @FXML
     void finalizeCartButton(ActionEvent event) throws IOException {
         try {
-            Invoice invoice=customerController.invoiceShoppingCart0(customer);
-            new FinalizeCartApplication(customer, parent, pane).start((Stage) ((Node)event.getSource()).getScene().getWindow());
+            new FinalizeCartApplication(customer, customerController.invoiceShoppingCart0(customer), parent, pane).start((Stage) ((Node)event.getSource()).getScene().getWindow());
         } catch (NoEnoughSupplyException e) {
             Alert alert=new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error!");
             alert.setHeaderText("No enough supply of this product");
             alert.setContentText("Only " + currentProduct.getNumberOfProduct() + " number of this product remains.");
             alert.showAndWait();
-        } catch (NullPointerException e){
+        } catch (NumberFormatException e){  //
             Alert alert=new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning!");
-            alert.setHeaderText("Anonmous user"); //
+            alert.setHeaderText("Anonymous user");
             alert.setContentText("Need to be logged in to leave comment.");
             alert.showAndWait();
         }

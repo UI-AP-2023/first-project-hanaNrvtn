@@ -138,6 +138,6 @@
             </HBox>
          </children>
       </VBox>
-      <AnchorPane fx:id="baseAnchorPane" layoutX="289.0" layoutY="6.0" prefHeight="600.0" prefWidth="599.0" />
+      <AnchorPane fx:id="customerPanelAnchorPane" layoutX="289.0" layoutY="6.0" prefHeight="600.0" prefWidth="599.0" />
    </children>
 </AnchorPane>

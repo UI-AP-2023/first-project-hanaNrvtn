@@ -1,6 +1,8 @@
 package com.example.firstproj02;
 
 import com.example.firstproj02.model.accounts.Customer;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -30,9 +32,9 @@ public class ProfileController implements Initializable {
     @FXML
     private Label passwordLabel;
 
-    Customer customer=new Customer("ali", "ali@gmail.com", "09128888888", "123");
+    Customer customer;
 
-    private void showInfo(){
+    void show(){
         if(customer.getFirstName()==null) firstNameLabel.setText("First Name : ");
         else firstNameLabel.setText("First Name : " + customer.getFirstName());
         if(customer.getLastName()==null) lastNameLabel.setText("Last Name : ");
@@ -45,6 +47,6 @@ public class ProfileController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        showInfo();
+        //showInfo();
     }
 }

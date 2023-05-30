@@ -15,7 +15,7 @@
    <children>
       <VBox prefHeight="600.0" prefWidth="222.0">
          <children>
-            <Label prefHeight="31.0" prefWidth="161.0" styleClass="profile-lbl" stylesheets="@styles.css" text="Product List  :)">
+            <Label prefHeight="31.0" prefWidth="161.0" styleClass="profile-lbl" stylesheets="@styles.css" text="Product List   " underline="true">
                <VBox.margin>
                   <Insets left="50.0" top="50.0" />
                </VBox.margin>
@@ -40,13 +40,13 @@
       </VBox>
       <VBox prefHeight="600.0" prefWidth="309.0" styleClass="slider" stylesheets="@styles.css">
          <children>
-            <Label fx:id="invoiceInfoLabel" alignment="TOP_LEFT" prefHeight="350.0" prefWidth="270.0" styleClass="info-lab" stylesheets="@styles.css" text="Product Information Here">
-               <padding>
-                  <Insets left="20.0" top="10.0" />
-               </padding>
+            <Label fx:id="invoiceInfoLabel" alignment="TOP_LEFT" prefHeight="350.0" prefWidth="270.0" styleClass="info-lab" stylesheets="@styles.css" text="Invoice Information Here ...">
                <VBox.margin>
                   <Insets bottom="50.0" top="50.0" />
                </VBox.margin>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
             </Label>
             <TextField fx:id="productIDTextField" prefHeight="32.0" prefWidth="279.0" promptText="Product ID" styleClass="ID-text-fiels" stylesheets="@styles.css">
                <VBox.margin>

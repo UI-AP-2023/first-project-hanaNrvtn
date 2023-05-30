@@ -6,75 +6,81 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER_LEFT" prefHeight="450.0" prefWidth="400.0" styleClass="dark-scene" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.firstproj02.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.firstproj02.LoginController">
    <children>
-      <Label fx:id="loginLabel" prefHeight="98.0" prefWidth="188.0" text="Login" textFill="PINK">
-         <font>
-            <Font name="Gabriola" size="55.0" />
-         </font>
-         <padding>
-            <Insets bottom="30.0" left="10.0" top="60.0" />
-         </padding>
-         <VBox.margin>
-            <Insets left="20.0" />
-         </VBox.margin>
-      </Label>
-      <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="400.0" styleClass="text-field-box">
+      <VBox alignment="CENTER_LEFT" layoutX="50.0" layoutY="112.0" prefHeight="450.0" prefWidth="360.0" styleClass="dark-scene" stylesheets="@styles.css">
          <children>
-            <TextField fx:id="userNameTextField" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="300.0" promptText="User Name" styleClass="user-tf" stylesheets="@styles.css">
+            <Label fx:id="loginLabel" prefHeight="98.0" prefWidth="188.0" text="Login" textFill="PINK">
                <font>
-                  <Font name="Gabriola" size="18.0" />
+                  <Font name="Gabriola" size="55.0" />
                </font>
-               <HBox.margin>
-                  <Insets left="25.0" right="70.0" />
-               </HBox.margin>
-            </TextField>
-         </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <padding>
-            <Insets right="30.0" />
-         </padding>
-      </HBox>
-      <HBox prefHeight="40.0" prefWidth="400.0" styleClass="text-field-box" stylesheets="@styles.css">
-         <children>
-            <TextField fx:id="passwordTextField" prefHeight="30.0" prefWidth="276.0" promptText="Password" styleClass="user-tf">
+               <padding>
+                  <Insets bottom="30.0" left="10.0" top="60.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+            <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="400.0" styleClass="text-field-box">
+               <children>
+                  <TextField fx:id="userNameTextField" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="300.0" promptText="User Name" styleClass="user-tf" stylesheets="@styles.css">
+                     <font>
+                        <Font name="Gabriola" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="25.0" right="70.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets right="30.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="40.0" prefWidth="400.0" styleClass="text-field-box" stylesheets="@styles.css">
+               <children>
+                  <TextField fx:id="passwordTextField" prefHeight="30.0" prefWidth="234.0" promptText="Password" styleClass="user-tf">
+                     <font>
+                        <Font name="Gabriola" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="25.0" right="70.0" top="10.0" />
+                     </HBox.margin>
+                     <stylesheets>
+                        <URL value="@styles.css" />
+                        <URL value="@styles.css" />
+                     </stylesheets>
+                  </TextField>
+               </children>
+            </HBox>
+            <Button fx:id="loginButton" defaultButton="true" mnemonicParsing="false" onAction="#loginButton" prefHeight="30.0" prefWidth="200.0" styleClass="login-signup-btn" stylesheets="@styles.css" text="login">
                <font>
-                  <Font name="Gabriola" size="18.0" />
+                  <Font name="Gabriola" size="15.0" />
                </font>
-               <HBox.margin>
-                  <Insets left="25.0" right="70.0" top="10.0" />
-               </HBox.margin>
-               <stylesheets>
-                  <URL value="@styles.css" />
-                  <URL value="@styles.css" />
-               </stylesheets>
-            </TextField>
+               <VBox.margin>
+                  <Insets left="25.0" top="20.0" />
+               </VBox.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <Button fx:id="signUpButton" mnemonicParsing="false" onAction="#signUpButton" prefHeight="30.0" prefWidth="200.0" styleClass="login-signup-btn" text="sign up">
+               <VBox.margin>
+                  <Insets left="25.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Gabriola" size="15.0" />
+               </font>
+            </Button>
          </children>
-      </HBox>
-      <Button fx:id="loginButton" defaultButton="true" mnemonicParsing="false" onAction="#loginButton" prefHeight="30.0" prefWidth="200.0" styleClass="login-signup-btn" stylesheets="@styles.css" text="login">
-         <font>
-            <Font name="Gabriola" size="15.0" />
-         </font>
-         <VBox.margin>
-            <Insets left="25.0" top="20.0" />
-         </VBox.margin>
-         <effect>
-            <DropShadow />
-         </effect>
-      </Button>
-      <Button fx:id="signUpButton" mnemonicParsing="false" onAction="#signUpButton" prefHeight="30.0" prefWidth="200.0" styleClass="login-signup-btn" text="sign up">
-         <VBox.margin>
-            <Insets left="25.0" top="10.0" />
-         </VBox.margin>
-         <font>
-            <Font name="Gabriola" size="15.0" />
-         </font>
-      </Button>
+      </VBox>
+      <Label layoutX="482.0" layoutY="7.0" prefHeight="420.0" prefWidth="300.0" styleClass="welcome-label" stylesheets="@styles.css" text="Welcome to Hana Shop" />
    </children>
-</VBox>
+</AnchorPane>

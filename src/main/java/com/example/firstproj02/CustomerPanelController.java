@@ -1,23 +1,33 @@
 package com.example.firstproj02;
 
+import com.example.firstproj02.model.accounts.Admin;
 import com.example.firstproj02.model.accounts.Customer;
+import com.example.firstproj02.model.processes.DiscountCode;
+import com.example.firstproj02.model.processes.DiscountType;
+import com.example.firstproj02.model.processes.Invoice;
+import com.example.firstproj02.model.products.Product;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
 
 public class CustomerPanelController implements Initializable {
     @FXML
-    private AnchorPane baseAnchorPane;
+    private AnchorPane customerPanelAnchorPane;
 
     @FXML
     private Button editInfoButton;
@@ -37,55 +47,38 @@ public class CustomerPanelController implements Initializable {
     @FXML
     private Button couponsButton;
 
-    private Parent fxml;
-    private Customer customer;
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
+    Parent parent;
+    Customer customer;
 
     @FXML
     void invoicesButton(ActionEvent event) throws IOException {
-        fxml= FXMLLoader.load(Objects.requireNonNull(getClass().getResource("invoices-view.fxml")));
-        baseAnchorPane.getChildren().clear();
-        baseAnchorPane.getChildren().add(fxml);
+        new InvoicesApplication(customer, parent, customerPanelAnchorPane).start((Stage) ((Node)event.getSource()).getScene().getWindow());
     }
 
     @FXML
-    void cartButton(ActionEvent event) {
-
+    void cartButton(ActionEvent event) throws IOException {
+        customer.getCart().addAll(Admin.getAdmin().getProducts());
+        new CartApplication(customer, parent, customerPanelAnchorPane).start((Stage) ((Node)event.getSource()).getScene().getWindow());
     }
 
     @FXML
     void couponsButton(ActionEvent event) throws IOException {
-        fxml= FXMLLoader.load(Objects.requireNonNull(getClass().getResource("coupons-view.fxml")));
-        baseAnchorPane.getChildren().clear();
-        baseAnchorPane.getChildren().add(fxml);
+        new CouponsApplication(customer, parent, customerPanelAnchorPane).start((Stage) ((Node)event.getSource()).getScene().getWindow());  //
     }
 
     @FXML
     void paymentButton(ActionEvent event) throws IOException {
-        fxml= FXMLLoader.load(Objects.requireNonNull(getClass().getResource("payment-view.fxml")));
-        baseAnchorPane.getChildren().clear();
-        baseAnchorPane.getChildren().add(fxml);
+        new PaymentApplication(customer, parent, customerPanelAnchorPane).start((Stage) ((Node)event.getSource()).getScene().getWindow());
     }
 
     @FXML
     void editInfoButton(ActionEvent event) throws IOException {
-        fxml= FXMLLoader.load(Objects.requireNonNull(getClass().getResource("edit-info-view.fxml")));
-        baseAnchorPane.getChildren().clear();
-        baseAnchorPane.getChildren().add(fxml);
+        new EditInfoApplication(customer, parent, customerPanelAnchorPane).start((Stage) ((Node)event.getSource()).getScene().getWindow());
     }
 
     @FXML
-    void profileButton(ActionEvent event) throws IOException {  // customer setter
-        fxml= FXMLLoader.load(Objects.requireNonNull(getClass().getResource("profile-view.fxml")));
-        baseAnchorPane.getChildren().clear();
-        baseAnchorPane.getChildren().add(fxml);
+    void profileButton(ActionEvent event) throws IOException {
+        new ProfileApplication(customer, parent, customerPanelAnchorPane).start((Stage) ((Node)event.getSource()).getScene().getWindow());
     }
 
     @Override

@@ -8,7 +8,7 @@
 
 <VBox prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.firstproj02.ProfileController">
     <children>
-        <Label fx:id="titleLabel" alignment="CENTER" prefHeight="150.0" prefWidth="356.0" text="Profile Detailes      " textFill="PINK" underline="true">
+        <Label fx:id="titleLabel" alignment="CENTER" prefHeight="150.0" prefWidth="356.0" text="Profile Details      " textFill="PINK" underline="true">
             <font>
                 <Font name="Gabriola" size="40.0" />
             </font>
