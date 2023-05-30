@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.firstproj02.ProductPanelController">
+   <children>
+      <VBox prefHeight="600.0" prefWidth="222.0">
+         <children>
+            <Label prefHeight="31.0" prefWidth="161.0" styleClass="profile-lbl" stylesheets="@styles.css" text="Product List   " underline="true">
+               <VBox.margin>
+                  <Insets left="50.0" top="50.0" />
+               </VBox.margin>
+               <font>
+                  <Font />
+               </font>
+            </Label>
+            <ListView fx:id="productListView" editable="true" prefHeight="449.0" prefWidth="189.0" stylesheets="@styles.css">
+               <VBox.margin>
+                  <Insets bottom="40.0" left="40.0" top="30.0" />
+               </VBox.margin>
+               <styleClass>
+                  <String fx:value="invoice-list-view" />
+                  <String fx:value="list-cell" />
+                  <String fx:value="list-cell" />
+               </styleClass>
+            </ListView>
+         </children>
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+      </VBox>
+      <VBox prefHeight="600.0" prefWidth="309.0" styleClass="slider" stylesheets="@styles.css">
+         <children>
+            <Label fx:id="productInfoLabel" alignment="TOP_LEFT" prefHeight="350.0" prefWidth="272.0" styleClass="info-lab" stylesheets="@styles.css" text="Invoice Information Here ...">
+               <VBox.margin>
+                  <Insets bottom="20.0" top="50.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+            <HBox prefHeight="60.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="numberTextField" prefHeight="32.0" prefWidth="113.0" styleClass="ID-text-fiels" stylesheets="@styles.css">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </TextField>
+                  <Button fx:id="addToCartButton" mnemonicParsing="false" onAction="#addToCartButton" prefHeight="30.0" prefWidth="168.0" styleClass="login-signup-btn" stylesheets="@styles.css" text="Add To Shopping Cart">
+                     <font>
+                        <Font name="Gabriola" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets right="40.0" />
+               </VBox.margin>
+            </HBox>
+            <TextField fx:id="commentTextField" prefHeight="65.0" prefWidth="297.0" promptText="Leave Commnt Here ..." styleClass="ID-text-fiels" stylesheets="@styles.css">
+               <VBox.margin>
+                  <Insets bottom="20.0" right="40.0" />
+               </VBox.margin>
+            </TextField>
+            <Button fx:id="leaveCommentButton" mnemonicParsing="false" onAction="#leaveCommentButton" prefHeight="29.0" prefWidth="274.0" styleClass="login-signup-btn" stylesheets="@styles.css" text="Send">
+               <font>
+                  <Font name="Gabriola" size="15.0" />
+               </font>
+            </Button>
+            <HBox prefHeight="14.0" prefWidth="292.0">
+               <VBox.margin>
+                  <Insets bottom="40.0" right="50.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <HBox.margin>
+            <Insets left="40.0" />
+         </HBox.margin>
+      </VBox>
+   </children>
+</HBox>
