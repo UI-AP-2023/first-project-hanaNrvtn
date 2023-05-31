@@ -55,6 +55,6 @@ public class Comment {
 
     @Override
     public String toString() {
-        return "\nuser: " + user.getUserName() + "\nID: " + ID + "\nbought by user: " + isBought + "\nstatus: " + status.toString().toLowerCase() + "\ncomment: " + text;
+        return "\nuser: " + user.getUserName() + "\ncomment: " + text;
     }
 }

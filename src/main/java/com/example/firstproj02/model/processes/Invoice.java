@@ -53,7 +53,7 @@ public class Invoice {
 
     public double updateFinalAmount(){
         finalAmount=totalAmount;
-        appliedDiscountCodes.forEach(n->finalAmount*=(n.getPercentage()*0.01));
+        appliedDiscountCodes.forEach(n->finalAmount-=(finalAmount*n.getPercentage()*0.01));
         return finalAmount;
     }
 

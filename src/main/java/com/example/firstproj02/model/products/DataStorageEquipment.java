@@ -1,6 +1,6 @@
 package com.example.firstproj02.model.products;
 
-abstract public class DataStorageEquipment extends DigitalEquipment implements Comparable<Product>{
+abstract public class DataStorageEquipment extends DigitalEquipment {
     private int capacity;
 
     public DataStorageEquipment(int capacity, double weight, String dimension, String name, int price, int numberOfProduct) {
@@ -25,9 +25,12 @@ abstract public class DataStorageEquipment extends DigitalEquipment implements C
         else return this.compareTo(dataStorageEquipment);
     }
 
+    public String toString1() {
+        return "capacity: " + capacity + super.toString1();
+    }
 
     @Override
     public String toString() {
-        return "\ncapacity: " + capacity + super.toString();
+        return "Name: " + this.getName();
     }
 }

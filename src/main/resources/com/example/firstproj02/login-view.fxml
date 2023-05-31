@@ -81,6 +81,17 @@
             </Button>
          </children>
       </VBox>
-      <Label layoutX="482.0" layoutY="7.0" prefHeight="420.0" prefWidth="300.0" styleClass="welcome-label" stylesheets="@styles.css" text="Welcome to Hana Shop" />
+      <Label layoutX="479.0" prefHeight="420.0" prefWidth="324.0" style="-fx-background-color: #ffc0cb;" text="Welcom" underline="true">
+         <padding>
+            <Insets left="50.0" top="50.0" />
+         </padding>
+         <font>
+            <Font name="Gabriola" size="70.0" />
+         </font></Label>
+      <Button fx:id="homeBackButton" layoutX="529.0" layoutY="260.0" mnemonicParsing="false" onAction="#homeBackButton" prefHeight="30.0" prefWidth="200.0" styleClass="customer-panel-btn" stylesheets="@styles.css" text="Back To Home">
+         <font>
+            <Font name="Gabriola" size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

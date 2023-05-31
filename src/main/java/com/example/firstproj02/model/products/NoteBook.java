@@ -26,8 +26,11 @@ public class NoteBook extends Stationary {
         this.paperType = paperType;
     }
 
+    public String toString1() {
+        return "number of pages: " + numberOfPages + "\npaper type: " + paperType + super.toString1();
+    }
     @Override
     public String toString() {
-        return "\nnumber of pages: " + numberOfPages + "\npaper type: " + paperType + super.toString();
+        return "Name: " + this.getName();
     }
 }

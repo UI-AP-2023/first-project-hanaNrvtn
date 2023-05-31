@@ -16,8 +16,11 @@ abstract public class Vehicle extends Product {
         this.manufacturer = manufacturer;
     }
 
+    public String toString1() {
+        return "manufacturer: " + manufacturer + super.toString1();
+    }
     @Override
     public String toString() {
-        return "\nmanufacturer: " + manufacturer + super.toString();
+        return "Name: " + this.getName();
     }
 }

@@ -26,24 +26,11 @@ public class SSD extends DataStorageEquipment {
         this.writeSpeed = writeSpeed;
     }
 
-    /*
-    @Override
-    public int compareTo(SSD ssd){
-        if(ssd.readSpeed>this.readSpeed) return 1;
-        else if(ssd.readSpeed<this.readSpeed) return -1;
-        else {
-            if(ssd.writeSpeed>this.writeSpeed) return 1;
-            else if(ssd.writeSpeed<this.writeSpeed) return -1;
-            else{
-                if(ssd.getWeight()>this.getWeight()) return 1;
-                else if(ssd.getWeight()<this.getWeight()) return -1;
-                else return 0;
-            }
-        }
+    public String toString1() {
+        return "read speed: " + readSpeed + "\nwrite speed: " + writeSpeed + super.toString1();
     }
-     */
     @Override
     public String toString() {
-        return "\nread speed: " + readSpeed + "\nwrite speed: " + writeSpeed + super.toString();
+        return "Name: " + this.getName();
     }
 }

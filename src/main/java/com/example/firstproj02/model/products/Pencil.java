@@ -29,16 +29,6 @@ public class Pencil extends Stationary implements Discountable {
         this.discountPercentage = discountPercentage;
     }
 
-    /*
-    public int getDiscountCapacity() {
-        return discountCapacity;
-    }
-
-    public void setDiscountCapacity(int discountCapacity) {
-        this.discountCapacity = discountCapacity;
-    }
-     */
-
     @Override
     public void applyDiscount(double percentage, int capacity){
         this.discountPercentage=percentage;
@@ -53,8 +43,11 @@ public class Pencil extends Stationary implements Discountable {
         //this.discountCapacity=0;
     }
 
+    public String toString1() {
+        return "pencil type: " + type.toString() + super.toString1();
+    }
     @Override
     public String toString() {
-        return "\npencil type: " + type.toString() + super.toString();
+        return "Name: " + this.getName();
     }
 }

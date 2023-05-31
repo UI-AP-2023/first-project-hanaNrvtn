@@ -2,7 +2,7 @@ package com.example.firstproj02.model.products;
 
 import com.example.firstproj02.model.processes.Discountable;
 
-abstract public class DigitalEquipment extends Product implements Comparable<Product>, Discountable {
+abstract public class DigitalEquipment extends Product implements Discountable {
     private double weight;
     private String dimension;
     private double discountPercentage;
@@ -38,16 +38,6 @@ abstract public class DigitalEquipment extends Product implements Comparable<Pro
         this.discountPercentage = discountPercentage;
     }
 
-    /*
-    public int getDiscountCapacity() {
-        return discountCapacity;
-    }
-
-    public void setDiscountCapacity(int discountCapacity) {
-        this.discountCapacity = discountCapacity;
-    }
-     */
-
     @Override
     public int compareTo(Product product){
         DigitalEquipment digitalEquipment=(DigitalEquipment) product;
@@ -74,9 +64,13 @@ abstract public class DigitalEquipment extends Product implements Comparable<Pro
         //this.discountCapacity=0;
     }
 
-        @Override
+    public String toString1() {
+        return "weight: " + weight + "\nlength: " + dimension.split(":")[0] + "\nwidth: " + dimension.split(":")[1] + "\nheight: " + dimension.split(":")[2] + super.toString1();
+    }
+
+    @Override
     public String toString() {
-        return "\nweight: " + weight + "\nlength: " + dimension.split(":")[0] + "\nwidth: " + dimension.split(":")[1] + "\nheight: " + dimension.split(":")[2] + super.toString();
+        return "Name: " + this.getName();
     }
 }
 

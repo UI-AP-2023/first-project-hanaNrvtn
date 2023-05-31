@@ -60,7 +60,7 @@ public class PaymentController implements Initializable {             // check a
     @FXML
     void finishButton(ActionEvent event) {
         if((!additionalTextField.getText().equals("")) && (!cardNumberTextField.getText().equals("")) && (!CVV2TxtField.getText().equals("")) && (!cardPasswordTextField.getText().equals(""))){
-            customerController.creatIncreaseCreditRequest(customer, additionalTextField.getPrefColumnCount(), cardNumberTextField.getText(), CVV2TxtField.getText(), cardPasswordTextField.getText());
+            customerController.creatIncreaseCreditRequest(customer, Double.parseDouble(additionalTextField.getText()), cardNumberTextField.getText(), CVV2TxtField.getText(), cardPasswordTextField.getText());
             Alert alert=new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information!");
             alert.setHeaderText("Credit Increase Request");

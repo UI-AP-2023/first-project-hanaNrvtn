@@ -17,7 +17,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <ListView prefHeight="400.0" prefWidth="300.0" styleClass="invoice-list-view" stylesheets="@styles.css">
+      <ListView fx:id="discountsListView" prefHeight="400.0" prefWidth="300.0" styleClass="invoice-list-view" stylesheets="@styles.css">
          <padding>
             <Insets bottom="100.0" />
          </padding>

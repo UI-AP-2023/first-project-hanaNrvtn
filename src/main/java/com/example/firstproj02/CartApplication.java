@@ -15,10 +15,10 @@ import java.util.Objects;
 
 public class CartApplication extends Application {
 
-    ArrayList<Product> tempCart;
     Parent parent;
     Pane pane;
     Customer customer;
+    ArrayList<Product> tempCart;
 
     public static void main(String[] args) {
         launch(args);
@@ -27,27 +27,27 @@ public class CartApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(CartApplication.class.getResource("cart-view.fxml"));
-        parent=fxmlLoader.load();
+        parent = fxmlLoader.load();
         pane.getChildren().clear();
         pane.getChildren().add(parent);
-        CartController cartController=fxmlLoader.getController();
-        cartController.tempCart=tempCart;
-        cartController.customer=customer;
-        cartController.parent=parent;
-        cartController.pane=pane;
+        CartController cartController = fxmlLoader.getController();
+        cartController.tempCart = tempCart;
+        cartController.customer = customer;
+        cartController.parent = parent;
+        cartController.pane = pane;
         cartController.show();
         primaryStage.setTitle("Shopping Cart");
     }
 
-    CartApplication(Customer customer, Parent parent, Pane pane){
-        this.customer=customer;
-        this.parent=parent;
-        this.pane=pane;
+    CartApplication(Customer customer, Parent parent, Pane pane) {
+        this.customer = customer;
+        this.parent = parent;
+        this.pane = pane;
     }
 
     CartApplication(ArrayList<Product> tempCart, Parent parent, Pane pane) throws IOException {
-        this.tempCart=tempCart;
-        this.parent=parent;
-        this.pane=pane;
+        this.tempCart = tempCart;
+        this.parent = parent;
+        this.pane = pane;
     }
 }

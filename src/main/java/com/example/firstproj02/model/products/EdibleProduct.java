@@ -26,8 +26,12 @@ public class EdibleProduct extends Product {
         this.expirationDate = expirationDate;
     }
 
+    public String toString1() {
+        return "production date: " + productionDate + "\nexpiration date: " + expirationDate + super.toString1();
+    }
+
     @Override
     public String toString() {
-        return "\nproduction date: " + productionDate + "\nexpiration date: " + expirationDate + super.toString();
+        return "Name: " + this.getName();
     }
 }

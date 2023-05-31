@@ -26,8 +26,12 @@ public class Car extends Vehicle {
         isAutomatic = automatic;
     }
 
+    public String toString1() {
+        return "motor capacity: " + motorCapacity + "\nautomatic: " + isAutomatic + super.toString1();
+    }
+
     @Override
     public String toString() {
-        return "\nmotor capacity: " + motorCapacity + "\nautomatic: " + isAutomatic + super.toString();
+        return "Name: " + this.getName();
     }
 }

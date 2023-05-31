@@ -67,7 +67,7 @@
                         <Insets left="20.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Button fx:id="cartButton" mnemonicParsing="false" onAction="#cartButton" prefHeight="30.0" prefWidth="200.0" styleClass="customer-panel-btn" stylesheets="@styles.css" text="shopping cart">
+                  <Button fx:id="cartButton" mnemonicParsing="false" onAction="#cartButton" prefHeight="30.0" prefWidth="200.0" styleClass="customer-panel-btn" stylesheets="@styles.css" text="Shopping cart">
                      <font>
                         <Font name="Gabriola" size="15.0" />
                      </font>
@@ -87,7 +87,7 @@
                         <Image url="@images/icons8-card-payment-48.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="paymentButton" mnemonicParsing="false" onAction="#paymentButton" prefHeight="30.0" prefWidth="200.0" styleClass="customer-panel-btn" stylesheets="@styles.css" text="payment">
+                  <Button fx:id="paymentButton" mnemonicParsing="false" onAction="#paymentButton" prefHeight="30.0" prefWidth="200.0" styleClass="customer-panel-btn" stylesheets="@styles.css" text="Payment">
                      <HBox.margin>
                         <Insets left="15.0" />
                      </HBox.margin>
@@ -106,7 +106,7 @@
                         <Image url="@images/icons8-payment-24.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="invoicesButton" mnemonicParsing="false" onAction="#invoicesButton" prefHeight="30.0" prefWidth="200.0" styleClass="customer-panel-btn" stylesheets="@styles.css" text="invoices">
+                  <Button fx:id="invoicesButton" mnemonicParsing="false" onAction="#invoicesButton" prefHeight="30.0" prefWidth="200.0" styleClass="customer-panel-btn" stylesheets="@styles.css" text="Invoices">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
@@ -126,12 +126,52 @@
                         <Image url="@images/icons8-discount-30.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="couponsButton" mnemonicParsing="false" onAction="#couponsButton" prefHeight="30.0" prefWidth="200.0" styleClass="customer-panel-btn" stylesheets="@styles.css" text="coupons">
+                  <Button fx:id="couponsButton" mnemonicParsing="false" onAction="#couponsButton" prefHeight="30.0" prefWidth="200.0" styleClass="customer-panel-btn" stylesheets="@styles.css" text="Coupons">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
                      <font>
                         <Font name="Gabriola" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="50.0" prefWidth="300.0">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@images/icons8-discount-30.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButton" prefHeight="30.0" prefWidth="200.0" styleClass="customer-panel-btn" stylesheets="@styles.css" text="Back To Home">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Gabriola" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="50.0" prefWidth="300.0">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@images/icons8-payment-24.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="logOutButton" mnemonicParsing="false" onAction="#logOutButton" prefHeight="30.0" prefWidth="200.0" styleClass="customer-panel-btn" stylesheets="@styles.css" text="Log Out">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Gabriola" size="16.0" />
                      </font>
                   </Button>
                </children>

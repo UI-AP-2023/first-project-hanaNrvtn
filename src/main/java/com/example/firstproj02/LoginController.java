@@ -20,6 +20,7 @@ public class LoginController implements Initializable {
     CustomerController customerController;
     String userName;
     String password;
+    Customer customer;
 
     @FXML
     private Label loginLabel;
@@ -31,6 +32,8 @@ public class LoginController implements Initializable {
     private Button loginButton;
     @FXML
     private Button signUpButton;
+    @FXML
+    private Button homeBackButton;
 
     @FXML
     void loginButton(ActionEvent event) throws IOException {
@@ -59,6 +62,14 @@ public class LoginController implements Initializable {
     @FXML
     void signUpButton(ActionEvent event) throws IOException {
         new SignUpApplication().start((Stage) ((Node)event.getSource()).getScene().getWindow());
+    }
+
+    @FXML
+    void homeBackButton(ActionEvent event) throws IOException {
+        HomeApplication homeApplication=new HomeApplication();
+        homeApplication.start((Stage) ((Node)event.getSource()).getScene().getWindow());
+        HomeController homeController=homeApplication.fxmlLoader.getController();
+        homeController.customer=customer;
     }
 
     @Override

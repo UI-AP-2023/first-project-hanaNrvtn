@@ -2,7 +2,6 @@ package com.example.firstproj02.model.accounts;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.BooleanPropertyBase;
-import javafx.beans.property.StringProperty;
 
 abstract public class User {
     private final String userName;
@@ -11,24 +10,12 @@ abstract public class User {
     private String password;
     private String firstName;
     private String lastName;
-    private BooleanProperty isLoggedIn;
 
     public User(String userName, String email, String phoneNumber, String password) {
         this.userName = userName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.password = password;
-        isLoggedIn=new BooleanPropertyBase() {
-            @Override
-            public Object getBean() {
-                return false;
-            }
-
-            @Override
-            public String getName() {
-                return "false";
-            }
-        };
     }
 
     public String getUserName() {
@@ -73,14 +60,6 @@ abstract public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public BooleanProperty getIsLoggedIn(){
-        return isLoggedIn;
-    }
-
-    public void setIsLoggedIn(boolean isLoggedIn){
-        this.isLoggedIn.set(isLoggedIn);
     }
 
     @Override

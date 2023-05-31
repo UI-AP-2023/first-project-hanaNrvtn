@@ -6,6 +6,8 @@ import com.example.firstproj02.model.exceptions.*;
 import com.example.firstproj02.model.processes.DiscountCode;
 import com.example.firstproj02.model.processes.Invoice;
 import com.example.firstproj02.model.products.Product;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,32 +19,46 @@ import java.util.ResourceBundle;
 public class FinalizeCartController implements Initializable {
 
     @FXML
-    private ChoiceBox<DiscountCode> discountChoiceBox;
-    @FXML
     private Label invoiceLabel;
     @FXML
     private Button applyDiscountCode;
     @FXML
-    private ComboBox<DiscountCode> discountCodeComoBox;
+    private TextField discountCodeTextField;
     @FXML
     private Button confirmButton;
+    @FXML
+    private ListView<DiscountCode> couponsListView;
     Customer customer;
     CustomerController customerController;
     Invoice invoice;
+    DiscountCode currentDiscountCode;
 
     void show(){
         invoiceLabel.setText(invoice.toString1());
-        discountCodeComoBox.getItems().addAll(customer.getDiscountCodes());
+        couponsListView.getItems().addAll(customer.getDiscountCodes());
+        couponsListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<DiscountCode>() {
+            @Override
+            public void changed(ObservableValue<? extends DiscountCode> observableValue, DiscountCode discountCode, DiscountCode t1) {
+                currentDiscountCode=couponsListView.getSelectionModel().getSelectedItem();
+            }
+        });
     }
     @FXML
     void applyDiscountCode(ActionEvent event) {   //
         try {
-            customerController.applyDiscountCode(customer, invoice, discountCodeComoBox.getSelectionModel().getSelectedItem());
-        } catch (NotFoundDiscountCodeException | ExpiredDiscountCodeException | UnavailableDiscountCodeException e) {
+            System.out.println(invoice.toString1());
+            customerController.applyDiscountCode(customer, invoice, currentDiscountCode);
+            System.out.println(invoice.toString1());
+            Alert alert=new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information!");
+            alert.setHeaderText("Apply Discount Code!");
+            alert.setContentText("Applied successfully.");
+            alert.showAndWait();
+        } catch (NotFoundDiscountCodeException | ExpiredDiscountCodeException | UnavailableDiscountCodeException | NullPointerException e) {
             Alert alert=new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning!");
             alert.setContentText("Please try another coupon.");
-            if(e instanceof NotFoundDiscountCodeException)
+            if(e instanceof NotFoundDiscountCodeException || e instanceof  NullPointerException)
                 alert.setHeaderText("Coupon Code Not Found");
             else if(e instanceof ExpiredDiscountCodeException)
                 alert.setHeaderText("Expired Coupon Coupon");
@@ -53,16 +69,20 @@ public class FinalizeCartController implements Initializable {
     @FXML
     void confirmButton(ActionEvent event) {
         try {
+            System.out.println(customer.getCredit());
             customerController.verifyShopping(customer, invoice);
+            System.out.println(customer.getCredit());
             Alert alert=new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information!");
             alert.setHeaderText("Thanks For Your Shop!");
             alert.setContentText("Shopping processes finished successfully.\nYour remain credit: " + customer.getCredit());
+            alert.showAndWait();
         } catch (NoEnoughCreditException e) {
             Alert alert=new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning!");
             alert.setHeaderText("No Enough credit");
             alert.setContentText("Please upgrade your credit first.");
+            alert.showAndWait();
         }
     }
     @Override

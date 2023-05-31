@@ -117,11 +117,15 @@ abstract public class Product implements Comparable<Product> {
         return Integer.compare(name.compareTo(product.name), 0);
     }
 
-    @Override
-    public String toString() {
+    public String toString1() {
         StringBuilder commentsStr = new StringBuilder();
         for (Comment a : comments)
             commentsStr.append(a).append("\n=-=-=-=-=-=-=-=-=-=-=-=-=\n");
-        return "\nID: " + ID + "\nname: " + name + "\ncategory: " + category.toString().toLowerCase() + "\nprice: " + price + "\nstatus: " + isAvailable + "\naverage score: " + score + "\n=-=-=-=-=-=-=-=-=-=-=-=-=\ncomments: " + commentsStr;
+        return "ID: " + ID + "\nname: " + name + "\ncategory: " + category.toString().toLowerCase() + "\nprice: " + price + "\nstatus: " + isAvailable + "\naverage score: " + score + "\n=-=-=-=-=-=-=-=-=-=-=-=-=\ncomments: " + commentsStr;
+    }
+
+    @Override
+    public String toString() {
+        return "Name: " + this.getName();
     }
 }

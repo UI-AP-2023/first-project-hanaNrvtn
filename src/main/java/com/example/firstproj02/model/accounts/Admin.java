@@ -14,19 +14,19 @@ public class Admin extends User {
         super(userName, email, phoneNumber, password);
         products = new ArrayList<>();
 
-        FlashMemory flashMemory1=new FlashMemory(2.0, 12,12,"12:12:12", "name0", 10, 90);
-        FlashMemory flashMemory2=new FlashMemory(2.0, 12,12,"12:12:12", "nasdfme1", 10, 90);        FlashMemory flashMemory=new FlashMemory(2.0, 12,12,"12:12:12", "name", 10, 90);
-        FlashMemory flashMemory3=new FlashMemory(2.0, 12,12,"12:12:12", "name2jkfd", 10, 90);
+        FlashMemory flashMemoryB=new FlashMemory(2.0, 12,12,"12:12:12", "flash memory b", 10, 90);
+        FlashMemory flashMemoryA=new FlashMemory(2.0, 12,12,"12:12:12", "flash memory a", 10, 90);        FlashMemory flashMemory=new FlashMemory(2.0, 12,12,"12:12:12", "name", 10, 90);
+        FlashMemory flashMemoryC=new FlashMemory(2.0, 12,12,"12:12:12", "flash memory c", 10, 90);
 
-        Car car=new Car(90, true, "djfk", "jdkfj", 90, 90);
+        Car car=new Car(90, true, "Iran", "car", 90, 90);
 
-        NoteBook noteBook=new NoteBook(90, "jdkfj", "kdlf", "kdlf", 90, 90);
+        NoteBook noteBook=new NoteBook(90, "Iran", "Iran", "note book", 90, 90);
 
-        EdibleProduct edibleProduct=new EdibleProduct("12", "2", "ddf", 90, 90);
+        EdibleProduct edibleProduct=new EdibleProduct("12", "2", "edibel product", 90, 90);
 
-        products.add(flashMemory3);
-        products.add(flashMemory2);
-        products.add(flashMemory1);
+        products.add(flashMemoryB);
+        products.add(flashMemoryC);
+        products.add(flashMemoryA);
         products.add(car);
         products.add(noteBook);
         products.add(edibleProduct);

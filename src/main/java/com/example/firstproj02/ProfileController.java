@@ -35,10 +35,9 @@ public class ProfileController implements Initializable {
     Customer customer;
 
     void show(){
-        if(customer.getFirstName()==null) firstNameLabel.setText("First Name : ");
-        else firstNameLabel.setText("First Name : " + customer.getFirstName());
-        if(customer.getLastName()==null) lastNameLabel.setText("Last Name : ");
-        else lastNameLabel.setText("Last Name : " + customer.getLastName());
+        if(customer.getFirstName()==null || customer.getLastName()==null) firstNameLabel.setText("Full Name: ");
+        else firstNameLabel.setText("Full Name : " + customer.getFirstName() + customer.getLastName());
+        lastNameLabel.setText("Credit : " + customer.getCredit());
         emailLabel.setText("Email : " + customer.getEmail());
         phoneNumberLabel.setText("Phone Number : " + customer.getPhoneNumber());
         userNameLabel.setText("User Name : " + customer.getUserName());

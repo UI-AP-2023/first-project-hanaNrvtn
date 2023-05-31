@@ -29,7 +29,8 @@ public class SignUpController implements Initializable {
     private Label signUpPageLabel;
     @FXML
     private Button submitButton;
-
+    @FXML
+    private Button backButton;
     @FXML
     void emailTextField(ActionEvent event) {
 
@@ -41,26 +42,46 @@ public class SignUpController implements Initializable {
             customerController.checkEmailRegex(emailTextField.getText());
             customerController.checkEmailAvailability(emailTextField.getText());
             customerController.checkPhoneNumberRegex(phoneNumberTextField.getText());
-            customerController.checkPhoneNumberAvailability(phoneNumberTextField.getText());
+            customerController.checkPhoneNumberAvailability(phoneNumberTextField.getText());  //
             customerController.checkUserNameAvailability(userNameTextField.getText());
             customerController.checkPasswordRegex(passwordTextField.getText());
 
             customerController.signup(emailTextField.getText(), phoneNumberTextField.getText(), userNameTextField.getText(), passwordTextField.getText());
 
             Alert alert=new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Confirmation!");
-            alert.setHeaderText("1");
+            alert.setTitle("Information!");
+            alert.setHeaderText("Sign Up Request");
             alert.setContentText("request sent successfully");
             Optional<ButtonType> result=alert.showAndWait();
             if(result.isPresent() && result.get()==ButtonType.OK)
                 new LoginApplication().start((Stage) ((Node)event.getSource()).getScene().getWindow());
-        } catch (InvalidInputException | UnavailableInputException e) {
+        } catch (InvalidEmailException | UnavailableEmailException | InvalidPhoneNumberException | UnavailableUserNameException | InvalidPasswordException e) {
             Alert alert=new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning!");
-            alert.setHeaderText("1");
-            alert.setContentText(e.getMessage());
+            if(e instanceof InvalidInputException){
+                alert.setHeaderText("Invalid Input!");
+                if(e instanceof InvalidEmailException)
+                    alert.setContentText("Invalid email format");
+                if(e instanceof InvalidPhoneNumberException)
+                    alert.setContentText("Invalid phone number format");
+                if(e instanceof InvalidPasswordException)
+                    alert.setContentText("Invalid password format");
+            } else{
+                alert.setHeaderText("Unavailable Input!");
+                if(e instanceof UnavailableEmailException)
+                    alert.setContentText("This user name has already used.\nTry another one.");
+                if(e instanceof UnavailablePhoneNumberException)
+                    alert.setContentText("This user name has already used.\nTry another one.");
+                if(e instanceof UnavailableUserNameException)
+                    alert.setContentText("This user name has already used.\nTry another one.");
+            }
             alert.showAndWait();
         }
+    }
+
+    @FXML
+    void backButton(ActionEvent event) throws IOException {
+        new HomeApplication().start((Stage) ((Node)event.getSource()).getScene().getWindow());
     }
 
     @Override

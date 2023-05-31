@@ -91,10 +91,6 @@ public class EditInfoController implements Initializable {  // set current info 
 
     @FXML
     void submitButton(ActionEvent event) {
-        System.out.println(emailIsValid);
-        System.out.println(phoneNumberIsValid);
-        System.out.println(passwordIsValid);
-
         if((emailIsValid || emailTextField.getText().equals("")) && (phoneNumberIsValid || phoneNumberTextField.getText().equals("")) && (passwordIsValid || passwordTextField.getText().equals(""))){
             System.out.println("ready to edit");
             if(!firstNameTextField.getText().equals("")) customerController.editFirstName(customer, firstNameTextField.getText());

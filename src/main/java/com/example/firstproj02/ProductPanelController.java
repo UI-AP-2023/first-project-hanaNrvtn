@@ -1,18 +1,22 @@
 package com.example.firstproj02;
 
 import com.example.firstproj02.controller.ProductController;
+import com.example.firstproj02.model.accounts.Admin;
 import com.example.firstproj02.model.accounts.Customer;
 import com.example.firstproj02.model.exceptions.NoEnoughSupplyException;
 import com.example.firstproj02.model.products.Product;
+import com.example.firstproj02.model.products.ProductCategory;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class ProductPanelController implements Initializable {
@@ -35,12 +39,13 @@ public class ProductPanelController implements Initializable {
     Customer customer;
 
     void show(){
+        //Arrays.sort(products.toArray());
         productListView.getItems().addAll(products);
         productListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Product>() {
             @Override
             public void changed(ObservableValue<? extends Product> observableValue, Product product, Product t1) {
                 currentProduct=productListView.getSelectionModel().getSelectedItem();
-                productInfoLabel.setText(currentProduct.getID());
+                productInfoLabel.setText(currentProduct.toString1());
             }
         });
     }
@@ -102,6 +107,7 @@ public class ProductPanelController implements Initializable {
             }
         }
     }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

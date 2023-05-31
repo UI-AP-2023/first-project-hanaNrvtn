@@ -9,6 +9,8 @@ import com.example.firstproj02.model.processes.RequestType;
 import com.example.firstproj02.model.products.Product;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class AdminPanel {
@@ -19,6 +21,9 @@ public class AdminPanel {
         adminController = AdminController.getInstance();
         scanner = new Scanner(System.in);
     }
+
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    LocalDate date = LocalDate.parse("13/02/2022", formatter);
 
     public AdminController getAdminController() {
         return adminController;
@@ -70,8 +75,7 @@ public class AdminPanel {
                     printCommandS();
                     break;
                 case "Back":
-                    //return;
-                    break;
+                    return;
                 case "Exit":
                     System.exit(0);
                 default:
@@ -84,6 +88,7 @@ public class AdminPanel {
         String[] strings = remainCommand.split(" ");
         try {
             adminController.applyDiscountOnProduct(Double.parseDouble(strings[0]), Integer.parseInt(strings[1]), strings[2]);
+            System.out.println("applied successfully");
         }catch (NullPointerException nullPointerException){
             System.out.println("product not found");
         }

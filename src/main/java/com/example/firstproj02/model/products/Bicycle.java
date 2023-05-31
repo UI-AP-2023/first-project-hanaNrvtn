@@ -16,8 +16,12 @@ public class Bicycle extends Vehicle {
         this.type = type;
     }
 
+    public String toString1() {
+        return "type: " + type.toString().toLowerCase() + super.toString1();
+    }
+
     @Override
     public String toString() {
-        return "\ntype: " + type.toString().toLowerCase() + super.toString();
+        return "Name: " + this.getName();
     }
 }

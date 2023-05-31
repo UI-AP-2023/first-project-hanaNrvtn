@@ -16,21 +16,12 @@ public class FlashMemory extends DataStorageEquipment {
         this.USBVersion = USBVersion;
     }
 
-    /*
-    @Override
-    public int compareTo(FlashMemory flashMemory){
-        if(flashMemory.getUSBVersion()>this.getUSBVersion()) return 1;
-        else if(flashMemory.getUSBVersion()<this.getUSBVersion()) return -1;
-        else {
-            if(flashMemory.getWeight()>this.getWeight()) return 1;
-            else if(flashMemory.getWeight()<this.getWeight()) return -1;
-            else return
-        }
+    public String toString1() {
+        return "USB version: " + USBVersion + super.toString1();
     }
-     */
 
     @Override
     public String toString() {
-        return "\nUSB version: " + USBVersion + super.toString();
+        return "Name: " + this.getName();
     }
 }

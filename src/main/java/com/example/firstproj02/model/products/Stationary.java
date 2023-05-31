@@ -16,8 +16,11 @@ abstract public class Stationary extends Product {
         this.manufacturingCountry = manufacturingCountry;
     }
 
+    public String toString1() {
+        return "manufacturer: " + manufacturingCountry + super.toString1();
+    }
     @Override
     public String toString() {
-        return "\nmanufacturer: " + manufacturingCountry + super.toString();
+        return "Name: " + this.getName();
     }
 }

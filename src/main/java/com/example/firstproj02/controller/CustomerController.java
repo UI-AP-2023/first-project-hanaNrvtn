@@ -40,6 +40,13 @@ public class CustomerController {
         customer.getInvoices().add(invoice4);
     }
 
+    public DiscountCode findDiscountCode(Customer customer, String ID){
+        for(DiscountCode a: customer.getDiscountCodes())
+            if(a.getCode().equals(ID))
+                return a;
+        return null;
+    }
+
     public static CustomerController getInstance() {
         return instance;
     }

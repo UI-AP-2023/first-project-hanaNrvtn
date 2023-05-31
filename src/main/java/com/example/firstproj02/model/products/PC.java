@@ -26,26 +26,12 @@ public class PC extends DigitalEquipment {
         this.RAMCapacity = RAMCapacity;
     }
 
-    /*
-    @Override
-    public int compareTo(PC pc){
-        if(this.getCPUModel().compareTo(pc.getCPUModel())>0)
-            return 1;
-        if(this.getCPUModel().compareTo(pc.getCPUModel())<0)
-            return -1;
-        else{
-            if(pc.getRAMCapacity()>this.getRAMCapacity())
-                return 1;
-            else if(pc.getRAMCapacity()<this.getRAMCapacity())
-                return -1;
-            else return ;
-        }
-
+    public String toString1() {
+        return "CPU model: " + CPUModel + "\nRAM capacity: " + RAMCapacity + super.toString1();
     }
-     */
 
     @Override
     public String toString() {
-        return "\nCPU model: " + CPUModel + "\nRAM capacity: " + RAMCapacity + super.toString();
+        return "Name: " + this.getName();
     }
 }

@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.firstproj02.HomeController">
    <children>
@@ -15,37 +20,237 @@
          <children>
             <VBox prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #ffc0cb;">
                <children>
-                  <Button fx:id="userAccountButton" mnemonicParsing="false" onAction="#userAccountButton" text="login" />
-                  <TextField fx:id="searchTextField" prefHeight="36.0" prefWidth="214.0" promptText="Search Product" styleClass="search-tf" stylesheets="@styles.css" />
-                  <ImageView fx:id="searchImageView" fitHeight="60.0" fitWidth="59.0" onMouseClicked="#searchImageView" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/icons8-search-50.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="digitalCategoryImageView" fitHeight="52.0" fitWidth="200.0" onMouseClicked="#digitalCategoryImageView" pickOnBounds="true" preserveRatio="true">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ImageView>
-                  <ImageView fx:id="vehicleCategoryImageView" fitHeight="45.0" fitWidth="200.0" onMouseClicked="#vehicleCategoryImageView" pickOnBounds="true" preserveRatio="true">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ImageView>
-                  <ImageView fx:id="stationaryCategoryImageView" fitHeight="40.0" fitWidth="200.0" onMouseClicked="#stationaryCategoryImageView" pickOnBounds="true" preserveRatio="true">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ImageView>
-                  <ImageView fx:id="edibleCategoryImageView" fitHeight="61.0" fitWidth="200.0" onMouseClicked="#edibleCategoryImageView" pickOnBounds="true" preserveRatio="true">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ImageView>
-                  <ImageView fx:id="cartImageView" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#cartImageView" pickOnBounds="true" preserveRatio="true" />
+                  <HBox prefHeight="35.0" prefWidth="300.0">
+                     <children>
+                        <ImageView fx:id="searchImageView" fitHeight="27.0" fitWidth="34.0" onMouseClicked="#searchImageView" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/icons8-search-50.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <TextField fx:id="searchTextField" prefHeight="36.0" prefWidth="209.0" promptText="Search Product" styleClass="search-tf" stylesheets="@styles.css" />
+                     </children>
+                  </HBox>
+                  <MenuBar styleClass="customer-panel-btn" stylesheets="@styles.css">
+                    <menus>
+                        <Menu mnemonicParsing="false" text="Flilter">
+                          <items>
+                            <Menu fx:id="digitalMenu" mnemonicParsing="false" onAction="#digitalMenu" text="Digital Product">
+                              <items>
+                                    <Menu fx:id="DataStorageMenu" mnemonicParsing="false" onAction="#DataStorageMenu" text="DataStorage">
+                                       <items>
+                                          <Menu fx:id="FlashMemoryMenu" mnemonicParsing="false" onAction="#FlashMemoryMenu" text="Flash Memory">
+                                             <items>
+                                                <Menu mnemonicParsing="false" text="USB Version">
+                                                   <items>
+                                                      <Menu fx:id="version1Menu" mnemonicParsing="false" onAction="#version1Menu" text="1.0">
+                                                         <items>
+                                                            <Menu mnemonicParsing="false" text="Price">
+                                                              <items>
+                                                                <MenuItem fx:id="version1price100200Menu" mnemonicParsing="false" onAction="#version1price100200Menu" text="100-200" />
+                                                                  <MenuItem fx:id="version1price200300MenuItem" mnemonicParsing="false" onAction="#version1price200300MenuItem" text="200-300" />
+                                                              </items>
+                                                            </Menu>
+                                                         </items>
+                                                      </Menu>
+                                                      <Menu fx:id="version2Menu" mnemonicParsing="false" onAction="#version2Menu" text="2.0">
+                                                         <items>
+                                                            <Menu mnemonicParsing="false" text="Price">
+                                                               <items>
+                                                                  <MenuItem mnemonicParsing="false" text="100-200" />
+                                                               </items>
+                                                            </Menu>
+                                                         </items>
+                                                      </Menu>
+                                                      <Menu fx:id="version3Menu" mnemonicParsing="false" onAction="#version3Menu" text="3.0">
+                                                         <items>
+                                                            <Menu mnemonicParsing="false" text="Price">
+                                                               <items>
+                                                                  <MenuItem mnemonicParsing="false" text="100-200" />
+                                                                  <MenuItem mnemonicParsing="false" text="200-300" />
+                                                                  <MenuItem mnemonicParsing="false" text="200-300" />
+                                                               </items>
+                                                            </Menu>
+                                                         </items>
+                                                      </Menu>
+                                                   </items>
+                                                </Menu>
+                                             </items>
+                                          </Menu>
+                                          <Menu fx:id="SSDMenu" mnemonicParsing="false" onAction="#SSDMenu" text="SSD">
+                                             <items>
+                                                <Menu mnemonicParsing="false" text="Read Speed">
+                                                   <items>
+                                                      <MenuItem mnemonicParsing="false" text="1000" />
+                                                      <MenuItem mnemonicParsing="false" text="2000" />
+                                                   </items>
+                                                </Menu>
+                                             </items>
+                                          </Menu>
+                                       </items>
+                                    </Menu>
+                                    <Menu fx:id="PCMenu" mnemonicParsing="false" onAction="#PCMenu" text="PC">
+                                       <items>
+                                          <Menu mnemonicParsing="false" text="RAM Capacity" />
+                                       </items>
+                                    </Menu>
+                              </items>
+                            </Menu>
+                              <Menu fx:id="StationaryMenu" mnemonicParsing="false" onAction="#StationaryMenu" text="Staitionary product">
+                                <items>
+                                    <Menu fx:id="penMenu" mnemonicParsing="false" onAction="#penMenu" text="Pen">
+                                       <items>
+                                          <Menu mnemonicParsing="false" text="Pen Color">
+                                             <items>
+                                                <MenuItem mnemonicParsing="false" text="Blue" />
+                                                <MenuItem mnemonicParsing="false" text="Red" />
+                                                <MenuItem mnemonicParsing="false" text="Black" />
+                                             </items>
+                                          </Menu>
+                                       </items>
+                                    </Menu>
+                                    <Menu fx:id="pencilMenu" mnemonicParsing="false" onAction="#pencilMenu" text="Pencil">
+                                       <items>
+                                          <Menu mnemonicParsing="false" text="Pencil Type">
+                                             <items>
+                                                <MenuItem mnemonicParsing="false" text="B" />
+                                                <MenuItem mnemonicParsing="false" text="F" />
+                                                <MenuItem mnemonicParsing="false" text="H2" />
+                                                <MenuItem mnemonicParsing="false" text="HB" />
+                                             </items>
+                                          </Menu>
+                                       </items>
+                                    </Menu>
+                                    <Menu fx:id="noteBookMenu" mnemonicParsing="false" onAction="#noteBookMenu" text="Note Book">
+                                       <items>
+                                          <Menu mnemonicParsing="false" text="Sheets">
+                                             <items>
+                                                <MenuItem mnemonicParsing="false" text="40" />
+                                                <MenuItem mnemonicParsing="false" text="60" />
+                                                <MenuItem mnemonicParsing="false" text="80" />
+                                                <MenuItem mnemonicParsing="false" text="100" />
+                                             </items>
+                                          </Menu>
+                                       </items>
+                                    </Menu>
+                                </items>
+                              </Menu>
+                              <Menu fx:id="VehicleMenu" mnemonicParsing="false" onAction="#VehicleMenu" text="Vehicle Product">
+                                 <items>
+                                    <Menu fx:id="carMenu" mnemonicParsing="false" onAction="#carMenu" text="Car">
+                                       <items>
+                                          <Menu mnemonicParsing="false" text="Atomation">
+                                             <items>
+                                                <MenuItem mnemonicParsing="false" text="Automatic" />
+                                                <MenuItem mnemonicParsing="false" text="Not Automatic" />
+                                             </items>
+                                          </Menu>
+                                       </items>
+                                    </Menu>
+                                    <Menu fx:id="bicycleMenu" mnemonicParsing="false" onAction="#bicycleMenu" text="Bycicle">
+                                       <items>
+                                          <Menu mnemonicParsing="false" text="Bike Type">
+                                             <items>
+                                                <MenuItem mnemonicParsing="false" text="Road Bik" />
+                                                <MenuItem mnemonicParsing="false" text="Mount Bike" />
+                                                <MenuItem mnemonicParsing="false" text="City Bike" />
+                                                <MenuItem mnemonicParsing="false" text="Hybrid Bik" />
+                                             </items>
+                                          </Menu>
+                                       </items>
+                                    </Menu>
+                                 </items>
+                              </Menu>
+                              <Menu fx:id="edibelMenu" mnemonicParsing="false" onAction="#edibelMenu" text="Edibel Product" />
+                          </items>
+                        </Menu>
+                    </menus>
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </MenuBar>
+                  <Button fx:id="apply" mnemonicParsing="false" onAction="#apply" prefHeight="30.0" prefWidth="206.0" styleClass="customer-panel-btn" stylesheets="@styles.css" text="Apply Filter">
+                     <font>
+                        <Font name="Gabriola" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin></Button>
+                  <HBox prefHeight="39.0" prefWidth="300.0">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/icons8-person-64.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </HBox.margin></ImageView>
+                        <Button fx:id="userAccountButton" mnemonicParsing="false" onAction="#userAccountButton" prefHeight="29.0" prefWidth="212.0" styleClass="customer-panel-btn" stylesheets="@styles.css" text="LoEnter To User Account in">
+                           <font>
+                              <Font name="Gabriola" size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="50.0" prefWidth="300.0">
+                     <children>
+                        <ImageView fx:id="cartImageView" fitHeight="34.0" fitWidth="34.0" onMouseClicked="#cartImageView" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/icons8-cart-30.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Button fx:id="userAccountButton1" mnemonicParsing="false" onAction="#userAccountButton" prefHeight="29.0" prefWidth="212.0" styleClass="customer-panel-btn" stylesheets="@styles.css" text="LoEnter To User Account in">
+                           <font>
+                              <Font name="Gabriola" size="15.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
-            <AnchorPane fx:id="homeAnchorPane" prefHeight="600.0" prefWidth="600.0" />
+            <AnchorPane fx:id="homeAnchorPane" prefHeight="600.0" prefWidth="600.0">
+               <children>
+                  <ImageView fx:id="vehicleCategoryImageView" fitHeight="172.0" fitWidth="210.0" layoutX="51.0" layoutY="90.0" onMouseClicked="#vehicleCategoryImageView" pickOnBounds="true" preserveRatio="true">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <image>
+                        <Image url="@images/liberty-walk-lamborghini-aventador-sv-tuning-1.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="edibleCategoryImageView" fitHeight="200.0" fitWidth="200.0" layoutX="323.0" layoutY="84.0" onMouseClicked="#edibleCategoryImageView" pickOnBounds="true" preserveRatio="true">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <image>
+                        <Image url="@images/stationary.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="digitalCategoryImageView" fitHeight="200.0" fitWidth="200.0" layoutX="71.0" layoutY="294.0" onMouseClicked="#digitalCategoryImageView" pickOnBounds="true" preserveRatio="true">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <image>
+                        <Image url="@images/Asus_E203NA_Pink_2_1010332007.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="stationaryCategoryImageView" fitHeight="188.0" fitWidth="210.0" layoutX="324.0" layoutY="304.0" onMouseClicked="#stationaryCategoryImageView" pickOnBounds="true" preserveRatio="true">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <image>
+                        <Image url="@images/stationary.jpg" />
+                     </image>
+                  </ImageView>
+               </children></AnchorPane>
          </children>
       </HBox>
    </children>
