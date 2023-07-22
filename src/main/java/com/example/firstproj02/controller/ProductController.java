@@ -44,7 +44,8 @@ public class ProductController {
     public ArrayList<Product> findMatches(String name) {
         ArrayList<Product> matchedProducts = new ArrayList<>();
         for (Product a : products)
-            if (a.getName().contains(name)) matchedProducts.add(a);
+            if (a.getName().equalsIgnoreCase(name) || a.getName().contains(name.toLowerCase()) || a.getName().contains(name.toUpperCase()))
+                matchedProducts.add(a);
         return matchedProducts;
     }
 
@@ -210,6 +211,7 @@ public class ProductController {
     public void commentToProduct(Customer customer, Product product, String text) {
         Comment newComment = new Comment(customer, product.getID(), text, checkBoughtProduct(customer, product));
         CommentCheckRequest newCommentCheckRequest = new CommentCheckRequest(newComment);
+        System.out.println(newCommentCheckRequest.getComment().getID() + "\n" + newCommentCheckRequest.getComment().getUser().getUserName() + "\n" + newCommentCheckRequest.getComment().getText());
         Admin.getAdmin().getRequests().add(newCommentCheckRequest);
     }
 

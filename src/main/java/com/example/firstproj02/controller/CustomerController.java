@@ -20,29 +20,22 @@ public class CustomerController {
         customers = new ArrayList<>();
         Customer customer = new Customer("ali", "ali@gmail.com", "09131109898", "123");  //
         customers.add(customer);
-        ArrayList<Product> products=new ArrayList<>();
-        FlashMemory flashMemory=new FlashMemory(2, 90, 90, "12:12:12", "jsd", 90, 90);
+        ArrayList<Product> products = new ArrayList<>();
+        FlashMemory flashMemory = new FlashMemory(2, 90, 90, "12:12:12", "jsd", 90, 90);
         products.add(flashMemory);
-        Invoice invoice1=new Invoice(LocalDate.now(), products);
-        Invoice invoice2=new Invoice(LocalDate.now(), products);
-        Invoice invoice3=new Invoice(LocalDate.now(), products);
-        Invoice invoice4=new Invoice(LocalDate.now(), products);
-        ArrayList<Invoice> invoices=new ArrayList<>();
-        DiscountCode discountCode1=new DiscountCode(90, LocalDate.now(), 90, DiscountType.ENCOURAGING);
-        DiscountCode discountCode2=new DiscountCode(90, LocalDate.now(), 90, DiscountType.ENCOURAGING);
-        DiscountCode discountCode3=new DiscountCode(90, LocalDate.now(), 90, DiscountType.ENCOURAGING);
-        customer.getDiscountCodes().add(discountCode1);
-        customer.getDiscountCodes().add(discountCode2);
-        customer.getDiscountCodes().add(discountCode3);
+        Invoice invoice1 = new Invoice(LocalDate.now(), products);
+        Invoice invoice2 = new Invoice(LocalDate.now(), products);
+        Invoice invoice3 = new Invoice(LocalDate.now(), products);
+        Invoice invoice4 = new Invoice(LocalDate.now(), products);
         customer.getInvoices().add(invoice1);
         customer.getInvoices().add(invoice2);
         customer.getInvoices().add(invoice3);
         customer.getInvoices().add(invoice4);
     }
 
-    public DiscountCode findDiscountCode(Customer customer, String ID){
-        for(DiscountCode a: customer.getDiscountCodes())
-            if(a.getCode().equals(ID))
+    public DiscountCode findDiscountCode(Customer customer, String ID) {
+        for (DiscountCode a : customer.getDiscountCodes())
+            if (a.getCode().equals(ID))
                 return a;
         return null;
     }
@@ -58,13 +51,13 @@ public class CustomerController {
     public void checkEmailRegex(String email) throws InvalidEmailException {
         Pattern pattern = Pattern.compile("^\\w+@(gmail|yahoo)\\.com$");
         Matcher matcher = pattern.matcher(email);
-        if(!matcher.find()) throw new InvalidEmailException();
+        if (!matcher.find()) throw new InvalidEmailException();
     }
 
     public void checkPhoneNumberRegex(String phoneNumber) throws InvalidPhoneNumberException {
         Pattern pattern = Pattern.compile("^09\\d{9}$");
         Matcher matcher = pattern.matcher(phoneNumber);
-        if(!matcher.find()) throw new InvalidPhoneNumberException();
+        if (!matcher.find()) throw new InvalidPhoneNumberException();
     }
 
     public void checkPasswordRegex(String password) throws InvalidPasswordException {
@@ -83,38 +76,38 @@ public class CustomerController {
         Pattern pattern5 = Pattern.compile("([@#$%&*!])+");
         Matcher matcher5 = pattern5.matcher(password);
 
-        if(!matcher1.find() || !matcher2.find() || !matcher3.find() || !matcher4.find() || !matcher5.find())
+        if (!matcher1.find() || !matcher2.find() || !matcher3.find() || !matcher4.find() || !matcher5.find())
             throw new InvalidPasswordException();
     }
 
     public void checkUserNameAvailability(String userName) throws UnavailableUserNameException {
-        boolean isFound=false;
+        boolean isFound = false;
         for (Customer a : customers)
             if (a.getUserName().equals(userName)) {
                 isFound = true;
                 break;
             }
-        if(isFound) throw new UnavailableUserNameException();
+        if (isFound) throw new UnavailableUserNameException();
     }
 
     public void checkEmailAvailability(String email) throws UnavailableEmailException {
-        boolean isFound=false;
+        boolean isFound = false;
         for (Customer a : customers)
-            if (a.getEmail().equals(email)){
-                isFound=true;
+            if (a.getEmail().equals(email)) {
+                isFound = true;
                 break;
             }
-        if(isFound) throw new UnavailableEmailException();
+        if (isFound) throw new UnavailableEmailException();
     }
 
     public void checkPhoneNumberAvailability(String phoneNumber) throws UnavailablePhoneNumberException {
-        boolean isFound=false;
+        boolean isFound = false;
         for (Customer a : customers)
-            if (a.getPhoneNumber().equals(phoneNumber)){
-                isFound=true;
+            if (a.getPhoneNumber().equals(phoneNumber)) {
+                isFound = true;
                 break;
             }
-        if(isFound) throw new UnavailablePhoneNumberException();
+        if (isFound) throw new UnavailablePhoneNumberException();
     }
 
     public Customer login(String userName, String password) {
@@ -142,11 +135,11 @@ public class CustomerController {
         customer.setPassword(newPassword);
     }
 
-    public void editFirstName(Customer customer, String newFirstName){
+    public void editFirstName(Customer customer, String newFirstName) {
         customer.setFirstName(newFirstName);
     }
 
-    public void editLastName(Customer customer, String newLastName){
+    public void editLastName(Customer customer, String newLastName) {
         customer.setLastName(newLastName);
     }
 
@@ -245,21 +238,21 @@ public class CustomerController {
     }
 
     private void checkDiscountCodeExpiration(DiscountCode discountCode) throws ExpiredDiscountCodeException {
-        if(discountCode.getExpiration().isBefore(LocalDate.now())) throw new ExpiredDiscountCodeException();
+        if (discountCode.getExpiration().isBefore(LocalDate.now())) throw new ExpiredDiscountCodeException();
     }
 
     private void checkDiscountCodeAvailability(DiscountCode discountCode) throws UnavailableDiscountCodeException {
-        if(discountCode.getCapacity()==0) throw new UnavailableDiscountCodeException();
+        if (discountCode.getCapacity() == 0) throw new UnavailableDiscountCodeException();
     }
 
     private void checkDiscountCodeExistence(Customer customer, DiscountCode discountCode) throws NotFoundDiscountCodeException {
-        boolean isFound=false;
-        for(DiscountCode a: customer.getDiscountCodes())
+        boolean isFound = false;
+        for (DiscountCode a : customer.getDiscountCodes())
             if (a.getCode().equals(discountCode.getCode())) {
                 isFound = true;
                 break;
             }
-        if(!isFound) throw new NotFoundDiscountCodeException();
+        if (!isFound) throw new NotFoundDiscountCodeException();
     }
 
     public void applyDiscountCode(Customer customer, Invoice invoice, DiscountCode discountCode) throws NotFoundDiscountCodeException, ExpiredDiscountCodeException, UnavailableDiscountCodeException {
@@ -273,19 +266,19 @@ public class CustomerController {
     public void checkCreditCardRegex(String creditCardNumber) throws InvalidCreditCardNumberException {
         Pattern pattern = Pattern.compile("^\\d{16}$");
         Matcher matcher = pattern.matcher(creditCardNumber);
-        if(!matcher.find()) throw new InvalidCreditCardNumberException();
+        if (!matcher.find()) throw new InvalidCreditCardNumberException();
     }
 
     public void checkCVV2Regex(String CVV2) throws InvalidCVV2Exception {
         Pattern pattern = Pattern.compile("^\\d{3,4}$");
         Matcher matcher = pattern.matcher(CVV2);
-        if(!matcher.find()) throw new InvalidCVV2Exception();
+        if (!matcher.find()) throw new InvalidCVV2Exception();
     }
 
     public void checkCardPasswordRegex(String password) throws InvalidCardPasswordException {
         Pattern pattern = Pattern.compile("^\\d{8}$");
         Matcher matcher = pattern.matcher(password);
-        if(!matcher.find()) throw new InvalidCardPasswordException();
+        if (!matcher.find()) throw new InvalidCardPasswordException();
     }
 
     public void creatIncreaseCreditRequest(Customer customer, double additionalCredit, String creditCardNumber, String CVV2, String password) {
@@ -293,10 +286,10 @@ public class CustomerController {
         Admin.getAdmin().getRequests().add(newIncreaseCreditRequest);
     }
 
-    public Product findProductInCustomerInvoices(Customer customer, String ID){
-        for(Invoice a: customer.getInvoices())
-            for(Product b: a.getBoughtProducts())
-                if(b.getID().equals(ID))
+    public Product findProductInCustomerInvoices(Customer customer, String ID) {
+        for (Invoice a : customer.getInvoices())
+            for (Product b : a.getBoughtProducts())
+                if (b.getID().equals(ID))
                     return b;
         return null;
     }
@@ -317,7 +310,4 @@ public class CustomerController {
     public ArrayList<DiscountCode> showAllDiscountCodes(Customer customer) throws NullPointerException {  //
         return customer.getDiscountCodes();
     }
-
-    //public void checkg
-
 }

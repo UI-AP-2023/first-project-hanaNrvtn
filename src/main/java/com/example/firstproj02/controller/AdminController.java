@@ -7,6 +7,7 @@ import com.example.firstproj02.model.processes.*;
 import com.example.firstproj02.model.products.*;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -14,10 +15,32 @@ public class AdminController {
     private static final AdminController instance = new AdminController();
     private final CustomerController customerController = CustomerController.getInstance();
     private final Admin admin;
-    private DiscountCode sampleDiscountCode;
+    private final ArrayList<DiscountCode> sampleDiscountCodes;
+
+    public ArrayList<DiscountCode> getSampleDiscountCodes() {
+        return sampleDiscountCodes;
+    }
+
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+    public DateTimeFormatter getFormatter() {
+        return formatter;
+    }
 
     private AdminController() {
-        admin = Admin.getInstance("admin", "admin@gmail.com", "09137899023", "admin");
+        admin = Admin.getInstance("hana", "nrvtnhana@gmail.com", "09130144714", "123");
+        sampleDiscountCodes = new ArrayList<>();
+
+        sampleDiscountCodes.add(new DiscountCode(90, LocalDate.now(), 90, DiscountType.LOYALTY));
+        sampleDiscountCodes.add(new DiscountCode(80, LocalDate.now(), 90, DiscountType.ENCOURAGING));
+        //sampleDiscountCodes.add(new DiscountCode(70, LocalDate.now(), 90, DiscountType.WELCOMING));
+
+        admin.setFirstName("Hana");
+        admin.setLastName("Nurvatan");
+
+        Customer customer = new Customer("Ali", "kqlwkqlw", "qkwlkqw", "qkwlqkw");
+        RegistrationRequest registrationRequest = new RegistrationRequest(customer);
+        Admin.getAdmin().getRequests().add(registrationRequest);
     }
 
     public static AdminController getInstance() {
@@ -26,14 +49,6 @@ public class AdminController {
 
     public Admin getAdmin() {
         return admin;
-    }
-
-    public DiscountCode getSampleDiscountCode() {
-        return sampleDiscountCode;
-    }
-
-    public void setSampleDiscountCode(DiscountCode sampleDiscountCode) {
-        this.sampleDiscountCode = sampleDiscountCode;
     }
 
     public CustomerController getCustomerController() {
@@ -170,12 +185,20 @@ public class AdminController {
         return null;
     }
 
+    private DiscountCode getWelcomingSampleDiscountCode() {
+        for (DiscountCode a : sampleDiscountCodes)
+            if (a.getDiscountType().equals(DiscountType.WELCOMING))
+                return a;
+        return null;
+    }
+
     public boolean acceptRegistrationRequest(Request request) {  // SHOW REQUEST BY INDEX
         if (request instanceof RegistrationRequest registrationRequest) {
             customerController.getCustomers().add(registrationRequest.getCustomer());
+            DiscountCode sampleWelcomingDiscountCode = getWelcomingSampleDiscountCode();
+            if (sampleWelcomingDiscountCode != null)
+                registrationRequest.getCustomer().getDiscountCodes().add(new DiscountCode(sampleWelcomingDiscountCode.getPercentage(), sampleWelcomingDiscountCode.getExpiration(), sampleWelcomingDiscountCode.getCapacity(), DiscountType.WELCOMING));
             admin.getRequests().remove(request);
-            if (sampleDiscountCode != null)
-                offerWelcomingDiscount(sampleDiscountCode.getPercentage(), sampleDiscountCode.getExpiration(), sampleDiscountCode.getCapacity(), ((RegistrationRequest) request).getCustomer());
             return true; // accepted successfully
         }
         return false;  // request not found
@@ -189,8 +212,10 @@ public class AdminController {
         if (request instanceof CommentCheckRequest commentCheckRequest) {
             ProductController productController = ProductController.getInstance();
             productController.findProduct(commentCheckRequest.getComment().getID()).getComments().add(commentCheckRequest.getComment());
+            System.out.println("product name found: " + Objects.requireNonNull(findProduct(commentCheckRequest.getComment().getID())).getName());
             ((CommentCheckRequest) request).getComment().setStatus(CommentStatus.VERIFIED);
             admin.getRequests().remove(request);
+            System.out.println(((CommentCheckRequest) request).getComment().getID());
             return true; // accepted successfully
         }
         return false;  // request not found
@@ -235,39 +260,47 @@ public class AdminController {
     }
 
     public void offerLoyaltyDiscount(double percentage, LocalDate expiration, int capacity) {
+        DiscountCode sampleLoyaltyDiscountCode = new DiscountCode(percentage, expiration, capacity, DiscountType.LOYALTY);
+        sampleDiscountCodes.add(sampleLoyaltyDiscountCode);
         for (Customer a : customerController.getCustomers()) {
             if (calculateTotalAmountInTwoLastMonths(a) < 50) {
-                DiscountCode newDiscountCode = new DiscountCode(percentage, expiration, capacity, DiscountType.LOYALTY);
+                DiscountCode newDiscountCode = new DiscountCode(sampleLoyaltyDiscountCode.getPercentage(), sampleLoyaltyDiscountCode.getExpiration(), sampleLoyaltyDiscountCode.getCapacity(), DiscountType.LOYALTY);
                 while (checkDiscountCode(a, newDiscountCode))
-                    newDiscountCode = new DiscountCode(percentage, expiration, capacity, DiscountType.LOYALTY);
+                    newDiscountCode = new DiscountCode(sampleLoyaltyDiscountCode.getPercentage(), sampleLoyaltyDiscountCode.getExpiration(), sampleLoyaltyDiscountCode.getCapacity(), DiscountType.LOYALTY);
                 a.getDiscountCodes().add(newDiscountCode);
             }
         }
     }
 
     public void offerEncouragingDiscount(double percentage, LocalDate expiration, int capacity) {
+        DiscountCode sampleEncouragingDiscountCode = new DiscountCode(percentage, expiration, capacity, DiscountType.ENCOURAGING);
+        sampleDiscountCodes.add(sampleEncouragingDiscountCode);
         for (Customer a : customerController.getCustomers()) {
             if (calculateTotalAmountInTwoLastMonths(a) > 500) {
-                DiscountCode newDiscountCode = new DiscountCode(percentage, expiration, capacity, DiscountType.ENCOURAGING);
+                DiscountCode newDiscountCode = new DiscountCode(sampleEncouragingDiscountCode.getPercentage(), sampleEncouragingDiscountCode.getExpiration(), sampleEncouragingDiscountCode.getCapacity(), DiscountType.ENCOURAGING);
                 while (checkDiscountCode(a, newDiscountCode))
-                    newDiscountCode = new DiscountCode(percentage, expiration, capacity, DiscountType.ENCOURAGING);
+                    newDiscountCode = new DiscountCode(sampleEncouragingDiscountCode.getPercentage(), sampleEncouragingDiscountCode.getExpiration(), sampleEncouragingDiscountCode.getCapacity(), DiscountType.ENCOURAGING);
                 a.getDiscountCodes().add(newDiscountCode);
             }
         }
     }
 
-    public void offerWelcomingDiscount(double percentage, LocalDate expiration, int capacity, Customer customer) {
-        customer.getDiscountCodes().add(new DiscountCode(percentage, expiration, capacity, DiscountType.WELCOMING));
+    public void offerWelcomingDiscount(double percentage, LocalDate expiration, int capacity) {
+        sampleDiscountCodes.add(new DiscountCode(percentage, expiration, capacity, DiscountType.WELCOMING));
     }
 
-    public void removeWelcomingDiscount() {
-        sampleDiscountCode = null;
+    public void removeSampleDiscountCode(DiscountCode discountCode) {
+        System.out.println("1: " + sampleDiscountCodes);
+        sampleDiscountCodes.remove(discountCode);
+        System.out.println("2: " + sampleDiscountCodes);
     }
 
-    public void editWelcomingDiscount(double percentage, LocalDate expiration, int capacity) {
-        sampleDiscountCode.setPercentage(percentage);
-        sampleDiscountCode.setExpiration(expiration);
-        sampleDiscountCode.setCapacity(capacity);
+    public void editSampleDiscountCodes(DiscountCode discountCode, double percentage, LocalDate expiration, int capacity) {
+        System.out.println("1: " + sampleDiscountCodes);
+        discountCode.setPercentage(percentage);
+        discountCode.setExpiration(expiration);
+        discountCode.setCapacity(capacity);
+        System.out.println("2: " + sampleDiscountCodes);
     }
 
     private Product findProduct2(String ID) {
