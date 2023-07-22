@@ -39,16 +39,16 @@ abstract public class DigitalEquipment extends Product implements Discountable {
     }
 
     @Override
-    public void applyDiscount(double percentage, int capacity){
-        this.discountPercentage=percentage;
-        this.setPrice(this.getPrice()-(this.getPrice()*this.discountPercentage*0.01));
+    public void applyDiscount(double percentage, int capacity) {
+        this.discountPercentage = percentage;
+        this.setPrice(this.getPrice() - (this.getPrice() * this.discountPercentage * 0.01));
         //this.discountCapacity=capacity;
     }
 
     @Override
-    public void rescindDiscount(){
-        this.setPrice((this.getPrice()*100)/(100-this.getDiscountPercentage()));
-        this.discountPercentage=0;
+    public void rescindDiscount() {
+        this.setPrice((this.getPrice() * 100) / (100 - this.getDiscountPercentage()));
+        this.discountPercentage = 0;
         //this.discountCapacity=0;
     }
 

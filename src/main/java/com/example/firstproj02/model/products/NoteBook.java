@@ -1,5 +1,7 @@
 package com.example.firstproj02.model.products;
 
+import com.example.firstproj02.model.processes.Comment;
+
 public class NoteBook extends Stationary {
     private int numberOfPages;
     private String paperType;
@@ -27,10 +29,9 @@ public class NoteBook extends Stationary {
     }
 
     public String toString1() {
-        return "number of pages: " + numberOfPages + "\npaper type: " + paperType + super.toString1();
-    }
-    @Override
-    public String toString() {
-        return "Name: " + this.getName();
+        StringBuilder comments = new StringBuilder();
+        for (Comment a : getComments())
+            comments.append("\n").append(a.getUser().getUserName()).append("\n").append(a.getText()).append("\n=-=-=-=-=-=-=-=-=-=-=-=");
+        return super.getName() + "\nsheets:  " + this.numberOfPages + "\npaper type:  " + this.paperType + "\nmade in:  " + super.getManufacturingCountry() + "\nprice:  " + super.getPrice() + "$\nstatus:  " + super.getAvailable() + "\nscore:  " + String.format("%.2f", super.getScore()) + "\n=-=-=-=-=-=-=-=-=-=-=-=\n comments: " + comments;
     }
 }

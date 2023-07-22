@@ -1,5 +1,7 @@
 package com.example.firstproj02.model.products;
 
+import com.example.firstproj02.model.processes.Comment;
+
 public class SSD extends DataStorageEquipment {
     private int writeSpeed;
     private int readSpeed;
@@ -27,10 +29,9 @@ public class SSD extends DataStorageEquipment {
     }
 
     public String toString1() {
-        return "read speed: " + readSpeed + "\nwrite speed: " + writeSpeed + super.toString1();
-    }
-    @Override
-    public String toString() {
-        return "Name: " + this.getName();
+        StringBuilder comments = new StringBuilder();
+        for (Comment a : getComments())
+            comments.append("\n").append(a.getUser().getUserName()).append("\n").append(a.getText()).append("\n=-=-=-=-=-=-=-=-=-=-=-=");
+        return super.getName() + "\nread speed:  " + "\ncapacity:  " + super.getCapacity() + this.readSpeed + "\nwrite speed:  " + this.writeSpeed + "\nweight:  " + super.getWeight() + "\ndimension:  " + super.getDimension() + "\nprice:  " + super.getPrice() + "$\nstatus:  " + super.getAvailable() + "\nscore:  " + String.format("%.2f", super.getScore()) + "\n=-=-=-=-=-=-=-=-=-=-=-=\n comments: " + comments;
     }
 }

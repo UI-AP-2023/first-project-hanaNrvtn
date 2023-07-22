@@ -126,6 +126,6 @@ abstract public class Product implements Comparable<Product> {
 
     @Override
     public String toString() {
-        return "Name: " + this.getName();
+        return this.getName() + "\n" + this.getPrice() + " $";
     }
 }

@@ -19,8 +19,8 @@ public class Bicycle extends Vehicle {
     }
 
     public String toString1() {
-        StringBuilder comments=new StringBuilder();
-        for(Comment a: getComments())
+        StringBuilder comments = new StringBuilder();
+        for (Comment a : getComments())
             comments.append("\n").append(a.getUser().getUserName()).append("\n").append(a.getText()).append("\n=-=-=-=-=-=-=-=-=-=-=-=");
         return super.getName() + "\ntype:  " + type.toString().toLowerCase() + "\nproduced by:  " + super.getManufacturer() + "\nprice:  " + super.getPrice() + "$\nstatus:  " + super.getAvailable() + "\nscore:  " + String.format("%.2f", super.getScore()) + "\n=-=-=-=-=-=-=-=-=-=-=-=\n" + "comments: " + comments;
     }
