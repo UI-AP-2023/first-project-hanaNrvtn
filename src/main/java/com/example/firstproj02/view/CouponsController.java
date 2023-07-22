@@ -1,4 +1,4 @@
-package com.example.firstproj02;
+package com.example.firstproj02.view;
 
 import com.example.firstproj02.model.accounts.Customer;
 import com.example.firstproj02.model.processes.DiscountCode;

@@ -1,4 +1,4 @@
-package com.example.firstproj02;
+package com.example.firstproj02.view;
 
 import com.example.firstproj02.controller.CustomerController;
 import com.example.firstproj02.model.accounts.Customer;
@@ -12,8 +12,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class FinalizeCartController implements Initializable {
@@ -50,13 +53,15 @@ public class FinalizeCartController implements Initializable {
             customerController.applyDiscountCode(customer, invoice, currentDiscountCode);
             System.out.println(invoice.toString1());
             Alert alert=new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information!");
+            alert.getDialogPane().getStylesheets().add(Objects.requireNonNull(getClass().getResource("/com/example/firstproj02/styles/dialog-pane-style.css")).toExternalForm());
+            ((Stage) alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/example/firstproj02/images/app-icons/app-light.PNG"))));alert.setTitle("Information!");
             alert.setHeaderText("Apply Discount Code!");
             alert.setContentText("Applied successfully.");
             alert.showAndWait();
         } catch (NotFoundDiscountCodeException | ExpiredDiscountCodeException | UnavailableDiscountCodeException | NullPointerException e) {
             Alert alert=new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Warning!");
+            alert.getDialogPane().getStylesheets().add(Objects.requireNonNull(getClass().getResource("/com/example/firstproj02/styles/dialog-pane-style.css")).toExternalForm());
+            ((Stage) alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/example/firstproj02/images/app-icons/app-light.PNG"))));alert.setTitle("Warning!");
             alert.setContentText("Please try another coupon.");
             if(e instanceof NotFoundDiscountCodeException || e instanceof  NullPointerException)
                 alert.setHeaderText("Coupon Code Not Found");
@@ -73,13 +78,15 @@ public class FinalizeCartController implements Initializable {
             customerController.verifyShopping(customer, invoice);
             System.out.println(customer.getCredit());
             Alert alert=new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information!");
+            alert.getDialogPane().getStylesheets().add(Objects.requireNonNull(getClass().getResource("/com/example/firstproj02/styles/dialog-pane-style.css")).toExternalForm());
+            ((Stage) alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/example/firstproj02/images/app-icons/app-light.PNG"))));alert.setTitle("Information!");
             alert.setHeaderText("Thanks For Your Shop!");
             alert.setContentText("Shopping processes finished successfully.\nYour remain credit: " + customer.getCredit());
             alert.showAndWait();
         } catch (NoEnoughCreditException e) {
             Alert alert=new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Warning!");
+            alert.getDialogPane().getStylesheets().add(Objects.requireNonNull(getClass().getResource("/com/example/firstproj02/styles/dialog-pane-style.css")).toExternalForm());
+            ((Stage) alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/example/firstproj02/images/app-icons/app-light.PNG"))));alert.setTitle("Warning!");
             alert.setHeaderText("No Enough credit");
             alert.setContentText("Please upgrade your credit first.");
             alert.showAndWait();

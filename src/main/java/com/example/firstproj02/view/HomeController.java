@@ -1,4 +1,4 @@
-package com.example.firstproj02;
+package com.example.firstproj02.view;
 
 import com.example.firstproj02.controller.ProductController;
 import com.example.firstproj02.model.accounts.Admin;
@@ -114,9 +114,43 @@ public class HomeController implements Initializable {
     @FXML
     private ImageView edibleCategoryImageView;
 
+    @FXML
+    private Button digitalButton;
 
     @FXML
-    void digitalMenu(ActionEvent event) {
+    private Button foodButton;
+
+    @FXML
+    private Button vehicleButton1;
+
+    @FXML
+    private Button stationaryButton;
+
+    @FXML
+    void stationaryButton(ActionEvent event) throws IOException {
+        if(customer!=null) new ProductPanelApplication(productController.filterByGeneralCategory(Admin.getAdmin().getProducts(), ProductCategory.STATIONERY), customer, parent, homeAnchorPane).start((Stage) ((Node)event.getSource()).getScene().getWindow());
+        else new ProductPanelApplication(productController.filterByGeneralCategory(Admin.getAdmin().getProducts(), ProductCategory.STATIONERY),tempCart, parent, homeAnchorPane).start((Stage) ((Node)event.getSource()).getScene().getWindow());
+    }
+
+    @FXML
+    void foodButton(ActionEvent event) throws IOException {
+        if(customer!=null) new ProductPanelApplication(productController.filterByGeneralCategory(Admin.getAdmin().getProducts(), ProductCategory.EDIBLE_PRODUCT), customer, parent, homeAnchorPane).start((Stage) ((Node)event.getSource()).getScene().getWindow());
+        else new ProductPanelApplication(productController.filterByGeneralCategory(Admin.getAdmin().getProducts(), ProductCategory.EDIBLE_PRODUCT), tempCart, parent, homeAnchorPane).start((Stage) ((Node)event.getSource()).getScene().getWindow());
+    }
+
+    @FXML
+    void digitalButton(ActionEvent event) throws IOException {
+        if(customer!=null) new ProductPanelApplication(productController.filterByGeneralCategory(Admin.getAdmin().getProducts(), ProductCategory.DIGITAL_EQUIPMENT), customer, parent, homeAnchorPane).start((Stage) ((Node)event.getSource()).getScene().getWindow());
+        else new ProductPanelApplication(productController.filterByGeneralCategory(Admin.getAdmin().getProducts(), ProductCategory.DIGITAL_EQUIPMENT), tempCart, parent, homeAnchorPane).start((Stage) ((Node)event.getSource()).getScene().getWindow());
+    }
+
+    @FXML
+    void vehicleButton1(ActionEvent event) throws IOException {
+        if(customer!=null) new ProductPanelApplication(productController.filterByGeneralCategory(Admin.getAdmin().getProducts(), ProductCategory.VEHICLE), customer, parent, homeAnchorPane).start((Stage) ((Node)event.getSource()).getScene().getWindow());
+        else new ProductPanelApplication(productController.filterByGeneralCategory(Admin.getAdmin().getProducts(), ProductCategory.VEHICLE), tempCart, parent, homeAnchorPane).start((Stage) ((Node)event.getSource()).getScene().getWindow());
+    }
+    @FXML
+    void digitalMenu(ActionEvent event) throws IOException {
         products=productController.filterByGeneralCategory(Admin.getAdmin().getProducts(), ProductCategory.DIGITAL_EQUIPMENT);
     }
     @FXML
@@ -217,26 +251,23 @@ public class HomeController implements Initializable {
 
     @FXML
     void digitalCategoryImageView(MouseEvent event) throws IOException {
-        if(customer!=null) new ProductPanelApplication(productController.filterByGeneralCategory(Admin.getAdmin().getProducts(), ProductCategory.DIGITAL_EQUIPMENT), customer, parent, homeAnchorPane).start((Stage) ((Node)event.getSource()).getScene().getWindow());
-        else new ProductPanelApplication(productController.filterByGeneralCategory(Admin.getAdmin().getProducts(), ProductCategory.DIGITAL_EQUIPMENT), tempCart, parent, homeAnchorPane).start((Stage) ((Node)event.getSource()).getScene().getWindow());
+
     }
 
     @FXML
     void vehicleCategoryImageView(MouseEvent event) throws IOException {
-       if(customer!=null) new ProductPanelApplication(productController.filterByGeneralCategory(Admin.getAdmin().getProducts(), ProductCategory.VEHICLE), customer, parent, homeAnchorPane).start((Stage) ((Node)event.getSource()).getScene().getWindow());
-        else new ProductPanelApplication(productController.filterByGeneralCategory(Admin.getAdmin().getProducts(), ProductCategory.VEHICLE), tempCart, parent, homeAnchorPane).start((Stage) ((Node)event.getSource()).getScene().getWindow());
+
+
     }
 
     @FXML
     void stationaryCategoryImageView(MouseEvent event) throws IOException {
-        if(customer!=null) new ProductPanelApplication(productController.filterByGeneralCategory(Admin.getAdmin().getProducts(), ProductCategory.STATIONERY), customer, parent, homeAnchorPane).start((Stage) ((Node)event.getSource()).getScene().getWindow());
-        else new ProductPanelApplication(productController.filterByGeneralCategory(Admin.getAdmin().getProducts(), ProductCategory.STATIONERY),tempCart, parent, homeAnchorPane).start((Stage) ((Node)event.getSource()).getScene().getWindow());
+
     }
 
     @FXML
     void edibleCategoryImageView(MouseEvent event) throws IOException {
-       if(customer!=null) new ProductPanelApplication(productController.filterByGeneralCategory(Admin.getAdmin().getProducts(), ProductCategory.EDIBLE_PRODUCT), customer, parent, homeAnchorPane).start((Stage) ((Node)event.getSource()).getScene().getWindow());
-       else new ProductPanelApplication(productController.filterByGeneralCategory(Admin.getAdmin().getProducts(), ProductCategory.EDIBLE_PRODUCT), tempCart, parent, homeAnchorPane).start((Stage) ((Node)event.getSource()).getScene().getWindow());
+
     }
 
     @FXML

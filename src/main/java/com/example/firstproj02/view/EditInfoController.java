@@ -1,4 +1,4 @@
-package com.example.firstproj02;
+package com.example.firstproj02.view;
 
 import com.example.firstproj02.controller.CustomerController;
 import com.example.firstproj02.model.accounts.Customer;
@@ -10,18 +10,17 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class EditInfoController implements Initializable {  // set current info as promot text
-    private Customer customer;
+    Customer customer;
     CustomerController customerController;
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
 
     @FXML
     private TextField firstNameTextField;
@@ -100,7 +99,8 @@ public class EditInfoController implements Initializable {  // set current info 
             if(!passwordTextField.getText().equals("")) customerController.editPassword(customer, passwordTextField.getText());
         }else{
             Alert alert=new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Warning!");
+            alert.getDialogPane().getStylesheets().add(Objects.requireNonNull(getClass().getResource("/com/example/firstproj02/styles/dialog-pane-style.css")).toExternalForm());
+            ((Stage) alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/example/firstproj02/images/app-icons/app-light.PNG"))));alert.setTitle("Warning!");
             alert.setHeaderText("Invalid Information");
             alert.setContentText("Try again! \nEnter valid information");
             alert.showAndWait();

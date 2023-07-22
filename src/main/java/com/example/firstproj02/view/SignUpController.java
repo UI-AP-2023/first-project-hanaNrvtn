@@ -1,4 +1,4 @@
-package com.example.firstproj02;
+package com.example.firstproj02.view;
 
 import com.example.firstproj02.controller.CustomerController;
 import com.example.firstproj02.model.exceptions.*;
@@ -7,15 +7,18 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class SignUpController implements Initializable {
     CustomerController customerController;
+    boolean emailIsValid, usernameIsValid, phoneNumberIsValid, passwordIsValid;
 
     @FXML
     private TextField emailTextField;
@@ -31,6 +34,15 @@ public class SignUpController implements Initializable {
     private Button submitButton;
     @FXML
     private Button backButton;
+    @FXML
+    private Label emailStatusLable;
+    @FXML
+    private Label passwordValidationLabel;
+    @FXML
+    private Label phoneNumberStatusLabel;
+    @FXML
+    private Label userNameValidationLabel;
+
     @FXML
     void emailTextField(ActionEvent event) {
 
@@ -49,6 +61,8 @@ public class SignUpController implements Initializable {
             customerController.signup(emailTextField.getText(), phoneNumberTextField.getText(), userNameTextField.getText(), passwordTextField.getText());
 
             Alert alert=new Alert(Alert.AlertType.INFORMATION);
+            alert.getDialogPane().getStylesheets().add(Objects.requireNonNull(getClass().getResource("/com/example/firstproj02/styles/dialog-pane-style.css")).toExternalForm());
+            ((Stage) alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/example/firstproj02/images/app-icons/app-light.PNG"))));
             alert.setTitle("Information!");
             alert.setHeaderText("Sign Up Request");
             alert.setContentText("request sent successfully");
@@ -57,6 +71,8 @@ public class SignUpController implements Initializable {
                 new LoginApplication().start((Stage) ((Node)event.getSource()).getScene().getWindow());
         } catch (InvalidEmailException | UnavailableEmailException | InvalidPhoneNumberException | UnavailableUserNameException | InvalidPasswordException e) {
             Alert alert=new Alert(Alert.AlertType.WARNING);
+            alert.getDialogPane().getStylesheets().add(Objects.requireNonNull(getClass().getResource("/com/example/firstproj02/styles/dialog-pane-style.css")).toExternalForm());
+            ((Stage) alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/example/firstproj02/images/app-icons/app-light.PNG"))));
             alert.setTitle("Warning!");
             if(e instanceof InvalidInputException){
                 alert.setHeaderText("Invalid Input!");
@@ -87,5 +103,41 @@ public class SignUpController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         customerController=new CustomerController();
+
+        emailTextField.textProperty().addListener((p, o, n)-> {   // send them to methods
+            try {
+                customerController.checkEmailRegex(emailTextField.getText());
+                customerController.checkEmailAvailability(emailTextField.getText());
+                emailIsValid=true;
+                emailStatusLable.setText("valid email address");
+            } catch (InvalidEmailException | UnavailableEmailException e) {
+                emailIsValid=false;
+                emailStatusLable.setText("invalid email address");
+            }
+        });
+
+        phoneNumberTextField.textProperty().addListener((p, o, n)-> {   // send them to methods
+            try {
+                customerController.checkPhoneNumberRegex(phoneNumberTextField.getText());
+                customerController.checkPhoneNumberAvailability(phoneNumberTextField.getText());
+                phoneNumberIsValid=true;
+                phoneNumberStatusLabel.setText("valid phone number");
+            } catch (InvalidPhoneNumberException | UnavailablePhoneNumberException e) {
+                phoneNumberIsValid=false;
+                phoneNumberStatusLabel.setText("invalid phone number");
+            }
+        });
+
+        passwordTextField.textProperty().addListener((p, o, n)-> {   // send them to methods
+            try {
+                customerController.checkPasswordRegex(passwordTextField.getText());
+                passwordIsValid=true;
+                passwordValidationLabel.setText("valid password");
+            } catch (InvalidPasswordException e) {
+                passwordIsValid=false;
+                passwordValidationLabel.setText("invalid password");
+            }
+        });
+
     }
 }

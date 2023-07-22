@@ -1,4 +1,4 @@
-package com.example.firstproj02;
+package com.example.firstproj02.view;
 
 import com.example.firstproj02.controller.CustomerController;
 import com.example.firstproj02.model.accounts.Admin;
@@ -8,10 +8,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 
 import java.lang.annotation.AnnotationTypeMismatchException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class PaymentController implements Initializable {             // check all graphical elements in a scene to have ID and be in controller
@@ -62,12 +65,16 @@ public class PaymentController implements Initializable {             // check a
         if((!additionalTextField.getText().equals("")) && (!cardNumberTextField.getText().equals("")) && (!CVV2TxtField.getText().equals("")) && (!cardPasswordTextField.getText().equals(""))){
             customerController.creatIncreaseCreditRequest(customer, Double.parseDouble(additionalTextField.getText()), cardNumberTextField.getText(), CVV2TxtField.getText(), cardPasswordTextField.getText());
             Alert alert=new Alert(Alert.AlertType.INFORMATION);
+            alert.getDialogPane().getStylesheets().add(Objects.requireNonNull(getClass().getResource("/com/example/firstproj02/styles/dialog-pane-style.css")).toExternalForm());
+            ((Stage) alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/example/firstproj02/images/app-icons/app-light.PNG"))));
             alert.setTitle("Information!");
             alert.setHeaderText("Credit Increase Request");
             alert.setContentText("Your Credit increase request sent successfully.");
             alert.showAndWait();
         }else {
             Alert alert=new Alert(Alert.AlertType.WARNING);
+            alert.getDialogPane().getStylesheets().add(Objects.requireNonNull(getClass().getResource("/com/example/firstproj02/styles/dialog-pane-style.css")).toExternalForm());
+            ((Stage) alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/example/firstproj02/images/app-icons/app-light.PNG"))));
             alert.setTitle("Warning!");
             alert.setHeaderText("Blank Field");
             alert.setContentText("Please fill all fields first.");
