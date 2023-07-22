@@ -2,11 +2,11 @@ package model.product;
 
 import java.util.ArrayList;
 
-abstract public class Product {
+abstract public class Product implements Comparable<Product> {
     static int productCounter;
     private String ID;
     private String name;
-    private int price;
+    private double price;
     private int numberOfProduct;
     private boolean isAvailable;
     private double score;
@@ -39,11 +39,11 @@ abstract public class Product {
         ID = IDMaker();
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -85,6 +85,33 @@ abstract public class Product {
 
     public ArrayList<Rate> getRates() {
         return rates;
+    }
+
+    @Override
+    public int compareTo(Product product) {
+        if (name.compareTo(product.name) > 0)
+            return 1;
+        else if (name.compareTo(product.name) < 0)
+            return -1;
+        else {
+            if (product.score > score)
+                return 1;
+            else if (product.score < score)
+                return -1;
+            else {
+                if (product.price > price)
+                    return 1;
+                else if (product.price < price)
+                    return -1;
+                else {
+                    return Integer.compare(product.numberOfProduct, numberOfProduct);
+                }
+            }
+        }
+    }
+
+    private int compareName(Product product) {
+        return Integer.compare(name.compareTo(product.name), 0);
     }
 
     @Override

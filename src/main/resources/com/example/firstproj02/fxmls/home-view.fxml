@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.firstproj02.view.HomeController">
+   <children>
+      <HBox prefHeight="600.0" prefWidth="900.0">
+         <children>
+            <VBox prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #ffc0cb;">
+               <children>
+                  <ImageView fitHeight="247.0" fitWidth="214.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/app-icons/app-dark.PNG" />
+                     </image>
+                     <VBox.margin>
+                        <Insets left="40.0" top="50.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <HBox prefHeight="40.0" prefWidth="300.0">
+                     <children>
+                        <ImageView fx:id="searchImageView" fitHeight="30.0" fitWidth="27.0" onMouseClicked="#searchImageView" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/home-page-icons/search.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="10.0" right="18.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <TextField fx:id="searchTextField" prefHeight="30.0" prefWidth="200.0" promptText="Search Product" style="-fx-border-radius: 5; -fx-border-width: 2; -fx-border-color: #000000; -fx-background-color: transparent; -fx-prompt-text-fill: #000000; -fx-text-fill: #000000; -fx-font-family: Gabriola; -fx-font-size: 15;" stylesheets="@../styles/styles.css">
+                           <font>
+                              <Font name="Gabriola" size="15.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="40.0" prefWidth="300.0">
+                     <children>
+                        <Button fx:id="userAccountButton" mnemonicParsing="false" onAction="#userAccountButton" prefHeight="30.0" prefWidth="200.0" styleClass="dark-btn" stylesheets="@../styles/styles.css" text="User Account">
+                           <font>
+                              <Font name="Gabriola" size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="15.0" left="55.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="30.0" prefWidth="300.0">
+                     <children>
+                        <Button fx:id="userAccountButton1" mnemonicParsing="false" onAction="#userAccountButton" prefHeight="30.0" prefWidth="200.0" styleClass="dark-btn" stylesheets="@../styles/styles.css" text="Shopping Cart">
+                           <font>
+                              <Font name="Gabriola" size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="55.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="15.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="26.0" prefWidth="300.0">
+                     <children>
+                        <Button fx:id="apply" mnemonicParsing="false" onAction="#apply" prefHeight="30.0" prefWidth="200.0" styleClass="dark-btn" stylesheets="@../styles/styles.css" text="Apply Filter">
+                           <font>
+                              <Font name="Gabriola" size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="55.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="15.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="26.0" prefWidth="300.0">
+                     <children>
+                        <MenuBar prefHeight="30.0" prefWidth="161.0" stylesheets="@../styles/styles.css">
+                          <menus>
+                              <Menu mnemonicParsing="false" style="-fx-text-fill: #ffc0cb;" text="Filter Products">
+                                <items>
+                                  <Menu fx:id="digitalMenu" mnemonicParsing="false" onAction="#digitalMenu" text="Digital Product">
+                                    <items>
+                                          <Menu fx:id="DataStorageMenu" mnemonicParsing="false" onAction="#DataStorageMenu" text="DataStorage">
+                                             <items>
+                                                <Menu fx:id="FlashMemoryMenu" mnemonicParsing="false" onAction="#FlashMemoryMenu" text="Flash Memory">
+                                                   <items>
+                                                      <Menu mnemonicParsing="false" text="USB Version">
+                                                         <items>
+                                                            <Menu fx:id="version1Menu" mnemonicParsing="false" onAction="#version1Menu" text="1.0">
+                                                               <items>
+                                                                  <Menu mnemonicParsing="false" text="Price">
+                                                                    <items>
+                                                                      <MenuItem fx:id="version1price100200Menu" mnemonicParsing="false" onAction="#version1price100200Menu" text="100-200" />
+                                                                        <MenuItem fx:id="version1price200300MenuItem" mnemonicParsing="false" onAction="#version1price200300MenuItem" text="200-300" />
+                                                                    </items>
+                                                                  </Menu>
+                                                               </items>
+                                                            </Menu>
+                                                            <Menu fx:id="version2Menu" mnemonicParsing="false" onAction="#version2Menu" text="2.0">
+                                                               <items>
+                                                                  <Menu mnemonicParsing="false" text="Price">
+                                                                     <items>
+                                                                        <MenuItem mnemonicParsing="false" text="100-200" />
+                                                                     </items>
+                                                                  </Menu>
+                                                               </items>
+                                                            </Menu>
+                                                            <Menu fx:id="version3Menu" mnemonicParsing="false" onAction="#version3Menu" text="3.0">
+                                                               <items>
+                                                                  <Menu mnemonicParsing="false" text="Price">
+                                                                     <items>
+                                                                        <MenuItem mnemonicParsing="false" text="100-200" />
+                                                                        <MenuItem mnemonicParsing="false" text="200-300" />
+                                                                        <MenuItem mnemonicParsing="false" text="200-300" />
+                                                                     </items>
+                                                                  </Menu>
+                                                               </items>
+                                                            </Menu>
+                                                         </items>
+                                                      </Menu>
+                                                   </items>
+                                                </Menu>
+                                                <Menu fx:id="SSDMenu" mnemonicParsing="false" onAction="#SSDMenu" text="SSD">
+                                                   <items>
+                                                      <Menu mnemonicParsing="false" text="Read Speed">
+                                                         <items>
+                                                            <MenuItem mnemonicParsing="false" text="1000" />
+                                                            <MenuItem mnemonicParsing="false" text="2000" />
+                                                         </items>
+                                                      </Menu>
+                                                   </items>
+                                                </Menu>
+                                             </items>
+                                          </Menu>
+                                          <Menu fx:id="PCMenu" mnemonicParsing="false" onAction="#PCMenu" text="PC">
+                                             <items>
+                                                <Menu mnemonicParsing="false" text="RAM Capacity" />
+                                             </items>
+                                          </Menu>
+                                    </items>
+                                  </Menu>
+                                    <Menu fx:id="StationaryMenu" mnemonicParsing="false" onAction="#StationaryMenu" text="Staitionary product">
+                                      <items>
+                                          <Menu fx:id="penMenu" mnemonicParsing="false" onAction="#penMenu" text="Pen">
+                                             <items>
+                                                <Menu mnemonicParsing="false" text="Pen Color">
+                                                   <items>
+                                                      <MenuItem mnemonicParsing="false" text="Blue" />
+                                                      <MenuItem mnemonicParsing="false" text="Red" />
+                                                      <MenuItem mnemonicParsing="false" text="Black" />
+                                                   </items>
+                                                </Menu>
+                                             </items>
+                                          </Menu>
+                                          <Menu fx:id="pencilMenu" mnemonicParsing="false" onAction="#pencilMenu" text="Pencil">
+                                             <items>
+                                                <Menu mnemonicParsing="false" text="Pencil Type">
+                                                   <items>
+                                                      <MenuItem mnemonicParsing="false" text="B" />
+                                                      <MenuItem mnemonicParsing="false" text="F" />
+                                                      <MenuItem mnemonicParsing="false" text="H2" />
+                                                      <MenuItem mnemonicParsing="false" text="HB" />
+                                                   </items>
+                                                </Menu>
+                                             </items>
+                                          </Menu>
+                                          <Menu fx:id="noteBookMenu" mnemonicParsing="false" onAction="#noteBookMenu" text="Note Book">
+                                             <items>
+                                                <Menu mnemonicParsing="false" text="Sheets">
+                                                   <items>
+                                                      <MenuItem mnemonicParsing="false" text="40" />
+                                                      <MenuItem mnemonicParsing="false" text="60" />
+                                                      <MenuItem mnemonicParsing="false" text="80" />
+                                                      <MenuItem mnemonicParsing="false" text="100" />
+                                                   </items>
+                                                </Menu>
+                                             </items>
+                                          </Menu>
+                                      </items>
+                                    </Menu>
+                                    <Menu fx:id="VehicleMenu" mnemonicParsing="false" onAction="#VehicleMenu" text="Vehicle Product">
+                                       <items>
+                                          <Menu fx:id="carMenu" mnemonicParsing="false" onAction="#carMenu" text="Car">
+                                             <items>
+                                                <Menu mnemonicParsing="false" text="Atomation">
+                                                   <items>
+                                                      <MenuItem mnemonicParsing="false" text="Automatic" />
+                                                      <MenuItem mnemonicParsing="false" text="Not Automatic" />
+                                                   </items>
+                                                </Menu>
+                                             </items>
+                                          </Menu>
+                                          <Menu fx:id="bicycleMenu" mnemonicParsing="false" onAction="#bicycleMenu" text="Bycicle">
+                                             <items>
+                                                <Menu mnemonicParsing="false" text="Bike Type">
+                                                   <items>
+                                                      <MenuItem mnemonicParsing="false" text="Road Bik" />
+                                                      <MenuItem mnemonicParsing="false" text="Mount Bike" />
+                                                      <MenuItem mnemonicParsing="false" text="City Bike" />
+                                                      <MenuItem mnemonicParsing="false" text="Hybrid Bik" />
+                                                   </items>
+                                                </Menu>
+                                             </items>
+                                          </Menu>
+                                       </items>
+                                    </Menu>
+                                    <Menu fx:id="edibelMenu" mnemonicParsing="false" onAction="#edibelMenu" text="Edibel Product" />
+                                </items>
+                              </Menu>
+                          </menus>
+                           <HBox.margin>
+                              <Insets left="55.0" />
+                           </HBox.margin>
+                        </MenuBar>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <AnchorPane fx:id="homeAnchorPane" prefHeight="600.0" prefWidth="600.0">
+               <children>
+                  <GridPane hgap="30.0" layoutX="100.0" layoutY="100.0" prefHeight="400.0" prefWidth="400.0" vgap="30.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="298.0" prefWidth="245.0" styleClass="category-btn" stylesheets="@../styles/styles.css" text="Button" />
+                        <Button fx:id="vehicleButton1" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#vehicleButton1" prefHeight="298.0" prefWidth="245.0" styleClass="light-btn" stylesheets="@../styles/styles.css" text="Vehicle" underline="true">
+                           <font>
+                              <Font name="Gabriola" size="40.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="digitalButton" alignment="CENTER" mnemonicParsing="false" onAction="#digitalButton" prefHeight="298.0" prefWidth="245.0" styleClass="light-btn" stylesheets="@../styles/styles.css" text="Digittal" underline="true" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="Gabriola" size="40.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="stationaryButton" alignment="CENTER" mnemonicParsing="false" onAction="#stationaryButton" prefHeight="298.0" prefWidth="245.0" styleClass="light-btn" stylesheets="@../styles/styles.css" text="Stationary" underline="true" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Gabriola" size="40.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="foodButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#foodButton" prefHeight="298.0" prefWidth="245.0" styleClass="light-btn" stylesheets="@../styles/styles.css" text="Food" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Gabriola" size="40.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </GridPane>
+               </children></AnchorPane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

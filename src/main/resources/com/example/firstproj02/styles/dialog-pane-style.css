@@ -1,0 +1,45 @@
+.dialog-pane{
+    -fx-border-color:#000000;
+    -fx-border-width:0px;
+}
+
+.dialog-pane > .button-bar > .container {
+    -fx-background-color:#000000;
+}
+
+.dialog-pane > .content.label {
+    -fx-background-color: #000000;
+    -fx-text-fill:#ffc0cb;
+    -fx-font-size:20px;
+    -fx-font-family: Gabriola;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: #ffc0cb;
+}
+
+.dialog-pane .header-panel .label{
+    -fx-background-color: transparent;
+    -fx-text-fill:#000000;
+    -fx-font-size:20px;
+    -fx-font-family: Gabriola;
+}
+
+.dialog-pane .button{
+    -fx-background-color:#ffc0cb;
+    -fx-text-fill: #000000;
+    -fx-cursor:hand;
+    -fx-font-family: Gabriola;
+}
+
+.dialog-pane .button:hover{
+    -fx-background-color: #ffccd5;
+    -fx-text-fill:#000000;
+    -fx-font-family: Gabriola;
+}
+
+.dialog-pane .button:pressed{
+    -fx-background-color: #ff99aa;
+    -fx-text-fill:#000000;
+    -fx-font-family: Gabriola;
+}

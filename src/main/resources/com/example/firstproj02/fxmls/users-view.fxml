@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.firstproj02.view.UsersController">
+   <children>
+      <TableView fx:id="usersTableView" editable="true" layoutX="46.0" layoutY="136.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="314.0" prefWidth="548.0" stylesheets="@../styles/styles.css">
+         <columns>
+            <TableColumn fx:id="userNameColumn" prefWidth="75.0" style="-fx-background-color: #000000; -fx-border-color: #ffc0cb; -fx-text-fill: #ffc0cb;" text="User Name" />
+            <TableColumn fx:id="emailColumn" prefWidth="132.79998779296875" style="-fx-background-color: #000000; -fx-border-color: #ffc0cb; -fx-text-fill: #ffc0cb;" text="Email" />
+            <TableColumn fx:id="phoneNumberColumn" prefWidth="128.00006103515625" style="-fx-background-color: #000000; -fx-border-color: #ffccd5; -fx-text-fill: #ffccd5;" text="Phone Number" />
+            <TableColumn fx:id="passwordColumn" prefWidth="109.5999755859375" style="-fx-background-color: #000000; -fx-border-color: #ffccd5; -fx-text-fill: #ffccd5;" text="Password" />
+            <TableColumn fx:id="creditColumn" prefWidth="94.39996337890625" style="-fx-background-color: #000000; -fx-border-color: #ffccd5; -fx-text-fill: #ffccd5;" text="Credit" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

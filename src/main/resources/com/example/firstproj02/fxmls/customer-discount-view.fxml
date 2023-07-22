@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.firstproj02.view.CustomerDiscountController">
+   <children>
+      <HBox prefHeight="600.0" prefWidth="600.0">
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ListView fx:id="discountsListView" editable="true" prefHeight="160.0" prefWidth="220.0" stylesheets="@../styles/styles.css">
+                     <styleClass>
+                        <String fx:value="invoice-list-view" />
+                        <String fx:value="list-cell" />
+                        <String fx:value="list-cell" />
+                     </styleClass>
+                     <padding>
+                        <Insets left="40.0" right="40.0" top="100.0" />
+                     </padding>
+                  </ListView>
+               </children>
+            </AnchorPane>
+            <VBox>
+               <children>
+                  <Label prefHeight="50.0" prefWidth="236.0" text="Discount Info   " textFill="PINK" underline="true">
+                     <font>
+                        <Font name="Gabriola" size="35.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <VBox fx:id="generalInfoVBox" prefHeight="217.0" prefWidth="258.0">
+                     <children>
+                        <HBox prefHeight="50.0" prefWidth="250.0">
+                           <children>
+                              <Label prefHeight="23.0" prefWidth="90.0" styleClass="edit-lbl" stylesheets="@../styles/styles.css" text="Percentage :">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="percentageTextField" prefHeight="30.0" prefWidth="130.0" styleClass="edit-tf" stylesheets="@../styles/styles.css" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="50.0" prefWidth="250.0">
+                           <children>
+                              <Label prefHeight="23.0" prefWidth="90.0" styleClass="edit-lbl" stylesheets="@../styles/styles.css" text="Exp Date :">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="expTextField" prefHeight="30.0" prefWidth="130.0" styleClass="edit-tf" stylesheets="@../styles/styles.css" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="50.0" prefWidth="250.0">
+                           <children>
+                              <Label prefHeight="23.0" prefWidth="90.0" styleClass="edit-lbl" stylesheets="@../styles/styles.css" text="Capacity :">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="capacityTextField" prefHeight="30.0" prefWidth="130.0" styleClass="edit-tf" stylesheets="@../styles/styles.css" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="50.0" prefWidth="250.0">
+                           <children>
+                              <Label prefHeight="23.0" prefWidth="90.0" styleClass="edit-lbl" stylesheets="@../styles/styles.css" text="Type :">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <ChoiceBox fx:id="discountTypeChoiceBox" prefHeight="25.0" prefWidth="130.0" stylesheets="@../styles/styles.css" />
+                           </children>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="buttonVbox" prefHeight="213.0" prefWidth="258.0">
+                     <children>
+                        <Pane prefHeight="40.0" prefWidth="258.0">
+                           <children>
+                              <Button fx:id="confirmAddButton" layoutY="-1.0" mnemonicParsing="false" onAction="#confirmAddButton" prefHeight="30.0" prefWidth="150.0" styleClass="light-btn" stylesheets="@../styles/styles.css" text="Confirm Add">
+                                 <font>
+                                    <Font name="Gabriola" size="15.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="confirmEditButton" layoutY="-1.0" mnemonicParsing="false" onAction="#confirmEditButton" prefHeight="30.0" prefWidth="150.0" styleClass="light-btn" stylesheets="@../styles/styles.css" text="Confirm Edit" visible="false">
+                                 <font>
+                                    <Font name="Gabriola" size="15.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="confirmDeleteButton" layoutY="-1.0" mnemonicParsing="false" onAction="#confirmDeleteButton" prefHeight="30.0" prefWidth="150.0" styleClass="light-btn" stylesheets="@../styles/styles.css" text="Confirm Delete" visible="false">
+                                 <font>
+                                    <Font name="Gabriola" size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </Pane>
+                        <Button fx:id="addButton" mnemonicParsing="false" onAction="#addButton" prefHeight="30.0" prefWidth="150.0" styleClass="light-btn" stylesheets="@../styles/styles.css" text="Add" visible="false">
+                           <font>
+                              <Font name="Gabriola" size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="editButton" mnemonicParsing="false" onAction="#editButton" prefHeight="30.0" prefWidth="150.0" styleClass="light-btn" stylesheets="@../styles/styles.css" text="Edit">
+                           <font>
+                              <Font name="Gabriola" size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="removeButton" mnemonicParsing="false" onAction="#removeButton" prefHeight="30.0" prefWidth="150.0" styleClass="light-btn" stylesheets="@../styles/styles.css" text="Remove">
+                           <font>
+                              <Font name="Gabriola" size="15.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets top="80.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

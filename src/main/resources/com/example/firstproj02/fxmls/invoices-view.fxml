@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.firstproj02.view.InvoicesController">
+   <children>
+      <VBox prefHeight="600.0" prefWidth="222.0">
+         <children>
+            <Label prefHeight="31.0" prefWidth="161.0" styleClass="profile-lbl" stylesheets="@../styles/styles.css" text="Product List   " underline="true">
+               <VBox.margin>
+                  <Insets left="50.0" top="50.0" />
+               </VBox.margin>
+               <font>
+                  <Font />
+               </font>
+            </Label>
+            <ListView fx:id="invoicesListView" editable="true" prefHeight="449.0" prefWidth="189.0" stylesheets="@../styles/styles.css">
+               <VBox.margin>
+                  <Insets bottom="40.0" left="40.0" top="30.0" />
+               </VBox.margin>
+               <styleClass>
+                  <String fx:value="invoice-list-view" />
+                  <String fx:value="list-cell" />
+                  <String fx:value="list-cell" />
+               </styleClass>
+            </ListView>
+         </children>
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+      </VBox>
+      <VBox prefHeight="600.0" prefWidth="309.0" styleClass="slider" stylesheets="@../styles/styles.css">
+         <children>
+            <ScrollPane prefHeight="357.0" prefWidth="275.0" style="-fx-background-color: #000000;">
+               <content>
+                  <Label fx:id="invoiceInfoLabel" alignment="TOP_LEFT" prefHeight="350.0" prefWidth="279.0" style="-fx-background-color: #000000;" styleClass="info-lab" stylesheets="@../styles/styles.css" text="Invoice Information Here ...">
+                     <padding>
+                        <Insets bottom="30.0" left="20.0" top="20.0" />
+                     </padding>
+                  </Label>
+               </content>
+               <VBox.margin>
+                  <Insets right="35.0" top="80.0" />
+               </VBox.margin>
+            </ScrollPane>
+            <TextField fx:id="productIDTextField" prefHeight="0.0" prefWidth="273.0" promptText="Product ID" styleClass="ID-text-fiels" stylesheets="@../styles/styles.css">
+               <VBox.margin>
+                  <Insets bottom="30.0" right="37.0" top="30.0" />
+               </VBox.margin>
+            </TextField>
+            <HBox prefHeight="14.0" prefWidth="292.0">
+               <children>
+                  <Button fx:id="applyScore" mnemonicParsing="false" onAction="#applyScore" prefHeight="26.0" prefWidth="115.0" styleClass="light-btn" stylesheets="@../styles/styles.css" text="submit">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Gabriola" size="15.0" />
+                     </font>
+                  </Button>
+                  <Slider fx:id="scoreSlider" majorTickUnit="1.0" max="5.0" prefHeight="33.0" prefWidth="175.0" showTickLabels="true" stylesheets="@../styles/styles.css" value="2.5">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Slider>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="40.0" right="50.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <HBox.margin>
+            <Insets left="40.0" />
+         </HBox.margin>
+      </VBox>
+   </children>
+</HBox>

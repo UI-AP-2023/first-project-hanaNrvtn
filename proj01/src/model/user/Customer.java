@@ -1,22 +1,21 @@
 package model.user;
 
+import model.product.DiscountCode;
 import model.product.Product;
 
 import java.util.ArrayList;
 
 public class Customer extends User {
     private final ArrayList<Product> Cart;
-    private ArrayList<Invoice> invoices;
+    private final ArrayList<Invoice> invoices;
+    private final ArrayList<DiscountCode> discountCodes;
     private double credit;
 
     public Customer(String userName, String email, String phoneNumber, String password) {
         super(userName, email, phoneNumber, password);
         Cart = new ArrayList<>();
         invoices = new ArrayList<>();
-    }
-
-    public void setInvoices(ArrayList<Invoice> invoices) {
-        this.invoices = invoices;
+        discountCodes=new ArrayList<>();
     }
 
     public ArrayList<Product> getCart() {
@@ -25,6 +24,10 @@ public class Customer extends User {
 
     public ArrayList<Invoice> getInvoices() {
         return invoices;
+    }
+
+    public ArrayList<DiscountCode> getDiscountCodes() {
+        return discountCodes;
     }
 
     public void setCredit(double credit) {

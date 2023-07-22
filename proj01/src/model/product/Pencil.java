@@ -1,7 +1,10 @@
 package model.product;
 
-public class Pencil extends Stationary {
+public class Pencil extends Stationary implements Discountable{
     private PencilType type;
+    private double discountPercentage;
+    private int discountCapacity;
+
 
     public Pencil(String type, String manufacturingCountry, String name, int price, int numberOfProduct) {
         super(manufacturingCountry, name, price, numberOfProduct);
@@ -14,6 +17,34 @@ public class Pencil extends Stationary {
 
     public void setType(PencilType type) {
         this.type = type;
+    }
+
+    public double getDiscountPercentage() {
+        return discountPercentage;
+    }
+
+    public void setDiscountPercentage(double discountPercentage) {
+        this.discountPercentage = discountPercentage;
+    }
+
+    public int getDiscountCapacity() {
+        return discountCapacity;
+    }
+
+    public void setDiscountCapacity(int discountCapacity) {
+        this.discountCapacity = discountCapacity;
+    }
+
+    @Override
+    public void applyDiscount(double percentage, int capacity){
+        this.discountPercentage=percentage;
+        this.discountCapacity=capacity;
+    }
+
+    @Override
+    public void rescindDiscount(){
+        this.discountPercentage=0;
+        this.discountCapacity=0;
     }
 
     @Override

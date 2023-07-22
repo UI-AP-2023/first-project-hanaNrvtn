@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.firstproj02.view.RequestsController">
+   <children>
+      <VBox prefHeight="600.0" prefWidth="322.0">
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+         <children>
+            <Label prefHeight="82.0" prefWidth="274.0" text="Requests    " textFill="PINK" underline="true">
+               <font>
+                  <Font name="Gabriola" size="30.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="60.0" top="60.0" />
+               </VBox.margin>
+            </Label>
+            <ListView fx:id="requestsListView" editable="true" prefHeight="0.0" prefWidth="247.0" stylesheets="@../styles/styles.css">
+               <styleClass>
+                  <String fx:value="invoice-list-view" />
+                  <String fx:value="list-cell" />
+                  <String fx:value="list-cell" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets bottom="50.0" left="50.0" right="50.0" top="10.0" />
+               </VBox.margin>
+            </ListView>
+         </children>
+      </VBox>
+      <VBox prefHeight="600.0" prefWidth="309.0" styleClass="slider" stylesheets="@../styles/styles.css">
+         <children>
+            <Label fx:id="requestDetailsLabel" alignment="TOP_LEFT" prefHeight="337.0" prefWidth="243.0" style="-fx-background-color: transparent; -fx-border-color: #ffc0cb;" text="Request Details ...." textFill="PINK">
+               <font>
+                  <Font name="Gabriola" size="20.0" />
+               </font>
+               <padding>
+                  <Insets left="10.0" top="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="30.0" />
+               </VBox.margin>
+            </Label>
+            <Button fx:id="acceptButton" mnemonicParsing="false" onAction="#acceptButton" prefHeight="29.0" prefWidth="245.0" styleClass="light-btn" stylesheets="@../styles/styles.css" text="Accept">
+               <font>
+                  <Font name="Gabriola" size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="rejectButton" mnemonicParsing="false" onAction="#rejectButton" prefHeight="29.0" prefWidth="245.0" styleClass="light-btn" stylesheets="@../styles/styles.css" text="Reject">
+               <font>
+                  <Font name="Gabriola" size="15.0" />
+               </font>
+            </Button>
+         </children>
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+         <padding>
+            <Insets left="10.0" top="100.0" />
+         </padding>
+      </VBox>
+   </children>
+</HBox>

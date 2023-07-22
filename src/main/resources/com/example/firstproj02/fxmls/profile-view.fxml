@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.firstproj02.view.ProfileController">
+    <children>
+        <Label fx:id="titleLabel" alignment="CENTER" prefHeight="150.0" prefWidth="356.0" text="Profile Details      " textFill="PINK" underline="true">
+            <font>
+                <Font name="Gabriola" size="40.0" />
+            </font>
+            <padding>
+                <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+            </padding>
+            <VBox.margin>
+                <Insets top="50.0" />
+            </VBox.margin>
+        </Label>
+        <HBox prefHeight="180.0" prefWidth="600.0" style="-fx-background-color: #000000;">
+            <children>
+                <VBox prefHeight="180.0" prefWidth="300.0">
+                    <children>
+                          <Label fx:id="firstNameLabel" prefHeight="60.0" prefWidth="300.0" styleClass="profile-lbl" stylesheets="@../styles/styles.css" />
+                          <Label fx:id="emailLabel" prefHeight="60.0" prefWidth="300.0" styleClass="profile-lbl" stylesheets="@../styles/styles.css" />
+                          <Label fx:id="userNameLabel" prefHeight="60.0" prefWidth="300.0" styleClass="profile-lbl" stylesheets="@../styles/styles.css" />
+                    </children>
+               <padding>
+                  <Insets left="35.0" />
+               </padding>
+                </VBox>
+                <VBox prefHeight="180.0" prefWidth="300.0">
+                    <children>
+                          <Label fx:id="lastNameLabel" prefHeight="0.0" prefWidth="300.0" styleClass="profile-lbl" stylesheets="@../styles/styles.css" />
+                          <Label fx:id="phoneNumberLabel" styleClass="profile-lbl" stylesheets="@../styles/styles.css" />
+                          <Label fx:id="passwordLabel" styleClass="profile-lbl" stylesheets="@../styles/styles.css" />
+                    </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+                </VBox>
+            </children>
+            <VBox.margin>
+                <Insets top="50.0" />
+            </VBox.margin>
+        </HBox>
+    </children>
+</VBox>

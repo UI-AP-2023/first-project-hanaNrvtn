@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.firstproj02.view.ProductPageController">
+   <children>
+      <VBox prefHeight="600.0" prefWidth="322.0">
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+         <children>
+            <ScrollPane prefHeight="550.0" prefWidth="250.0" style="-fx-background-color: #000000;" styleClass="scroll-bar" stylesheets="@../styles/styles.css">
+               <VBox.margin>
+                  <Insets left="30.0" right="20.0" top="25.0" />
+               </VBox.margin>
+               <content>
+                  <Label fx:id="productInfoLabel" alignment="TOP_LEFT" prefHeight="550.0" prefWidth="284.0" style="-fx-background-color: #000000; -fx-font-size: 20; -fx-font-family: Gabriola;" stylesheets="@../styles/styles.css" textFill="PINK">
+                     <padding>
+                        <Insets left="20.0" top="20.0" />
+                     </padding>
+                     <font>
+                        <Font name="Gabriola" size="15.0" />
+                     </font>
+                  </Label>
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+      <VBox prefHeight="600.0" prefWidth="309.0" styleClass="slider" stylesheets="@../styles/styles.css">
+         <children>
+            <HBox prefHeight="34.0" prefWidth="254.0">
+               <children>
+                  <Label prefHeight="26.0" prefWidth="110.0" text="Number of product :" textFill="PINK">
+                     <font>
+                        <Font name="Gabriola" size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="numberTextField" prefHeight="32.0" prefWidth="113.0" styleClass="ID-text-fiels" stylesheets="@../styles/styles.css">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="20.0" right="40.0" top="30.0" />
+               </VBox.margin>
+            </HBox>
+            <Button fx:id="addToCartButton" mnemonicParsing="false" onAction="#addToCartButton" prefHeight="29.0" prefWidth="245.0" styleClass="light-btn" stylesheets="@../styles/styles.css" text="Add To Shopping Cart">
+               <font>
+                  <Font name="Gabriola" size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="50.0" />
+               </VBox.margin>
+            </Button>
+            <TextField fx:id="commentTextField" alignment="TOP_LEFT" prefHeight="197.0" prefWidth="220.0" promptText="Commnt Here ..." styleClass="ID-text-fiels" stylesheets="@../styles/styles.css">
+               <VBox.margin>
+                  <Insets bottom="20.0" right="40.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Gabriola" size="20.0" />
+               </font>
+            </TextField>
+            <HBox prefHeight="14.0" prefWidth="292.0">
+               <VBox.margin>
+                  <Insets bottom="15.0" right="50.0" />
+               </VBox.margin>
+               <children>
+                  <Button fx:id="leaveCommentButton" mnemonicParsing="false" onAction="#leaveCommentButton" prefHeight="29.0" prefWidth="245.0" styleClass="light-btn" stylesheets="@../styles/styles.css" text="Send">
+                     <font>
+                        <Font name="Gabriola" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <Button fx:id="homeButton" mnemonicParsing="false" onAction="#homeButton" prefHeight="30.0" prefWidth="234.0" styleClass="light-btn" stylesheets="@../styles/styles.css" text="Home">
+               <font>
+                  <Font name="Gabriola" size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Button>
+         </children>
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+         <padding>
+            <Insets left="10.0" top="100.0" />
+         </padding>
+      </VBox>
+   </children>
+</HBox>

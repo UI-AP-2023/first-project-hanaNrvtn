@@ -2,13 +2,18 @@ package controller;
 
 import model.product.*;
 import model.user.*;
+
+import javax.sound.sampled.FloatControl;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class AdminController {
     private static final AdminController instance = new AdminController();
-    private final CustomerController customerController = CustomerController.getInstance();
+    private final CustomerController customerController=CustomerController.getInstance();
+    //private final ProductController productController=ProductController.getInstance();
     private final Admin admin;
+    private DiscountCode sampleDiscountCode;
 
     private AdminController() {
         admin = Admin.getInstance("admin", "admin@gmail.com", "09137899023", "admin");
@@ -20,6 +25,18 @@ public class AdminController {
 
     public Admin getAdmin() {
         return admin;
+    }
+
+    public DiscountCode getSampleDiscountCode() {
+        return sampleDiscountCode;
+    }
+
+    public void setSampleDiscountCode(DiscountCode sampleDiscountCode) {
+        this.sampleDiscountCode = sampleDiscountCode;
+    }
+
+    public CustomerController getCustomerController() {
+        return customerController;
     }
 
     public boolean login(String userName, String password) {
@@ -156,6 +173,7 @@ public class AdminController {
         if (request instanceof RegistrationRequest registrationRequest) {
             customerController.getCustomers().add(registrationRequest.getCustomer());
             admin.getRequests().remove(request);
+            if(sampleDiscountCode!=null) offerWelcomingDiscount(sampleDiscountCode.getPercentage(), sampleDiscountCode.getExpiration(), sampleDiscountCode.getCapacity(), ((RegistrationRequest) request).getCustomer());
             return true; // accepted successfully
         }
         return false;  // request not found
@@ -191,5 +209,88 @@ public class AdminController {
 
     public boolean rejectIncreaseCreditRequest(Request request) {
         return admin.getRequests().remove(request); //request not found or rejected successfully
+    }
+
+    private boolean checkDiscountCode(Customer customer, DiscountCode discountCode){
+        boolean isFound=false;
+        for(DiscountCode a: customer.getDiscountCodes()){
+            if(a.getCode().equals(discountCode.getCode())){
+                isFound=true; break;
+            }
+        }
+        return isFound;
+    }
+
+    private int calculateTotalAmountInTwoLastMonths(Customer customer){
+        int totalAmountInTwoLastMonths=0;
+        for(Invoice a: customer.getInvoices()){
+            if(a.getDate().isBefore(LocalDate.now().minusMonths(2))){
+                totalAmountInTwoLastMonths+=a.getTotalAmount();
+            }
+        }
+        return totalAmountInTwoLastMonths;
+    }
+
+    public void offerLoyaltyDiscount(double percentage, LocalDate expiration, int capacity){
+        for(Customer a: customerController.getCustomers()){
+            if(calculateTotalAmountInTwoLastMonths(a)<50){
+                DiscountCode newDiscountCode=new DiscountCode(percentage, expiration, capacity, DiscountType.LOYALTY);
+                while (checkDiscountCode(a, newDiscountCode))
+                    newDiscountCode=new DiscountCode(percentage, expiration, capacity, DiscountType.LOYALTY);
+                a.getDiscountCodes().add(newDiscountCode);
+            }
+        }
+    }
+
+    public void offerEncouragingDiscount(double percentage, LocalDate expiration, int capacity){
+        for(Customer a: customerController.getCustomers()){
+            if(calculateTotalAmountInTwoLastMonths(a)>500){
+                DiscountCode newDiscountCode=new DiscountCode(percentage, expiration, capacity, DiscountType.ENCOURAGING);
+                while (checkDiscountCode(a, newDiscountCode))
+                    newDiscountCode=new DiscountCode(percentage, expiration, capacity, DiscountType.ENCOURAGING);
+                a.getDiscountCodes().add(newDiscountCode);
+            }
+        }
+    }
+
+    public void offerWelcomingDiscount(double percentage, LocalDate expiration, int capacity, Customer customer){
+        customer.getDiscountCodes().add(new DiscountCode(percentage, expiration, capacity, DiscountType.WELCOMING));
+    }
+
+    public void removeWelcomingDiscount(){
+        sampleDiscountCode=null;
+    }
+
+    public void editWelcomingDiscount(double percentage, LocalDate expiration, int capacity){
+        sampleDiscountCode.setPercentage(percentage);
+        sampleDiscountCode.setExpiration(expiration);
+        sampleDiscountCode.setCapacity(capacity);
+    }
+
+    private Product findProduct2(String ID){
+        for(Product a: admin.getProducts())
+            if(a.getID().equals(ID))
+                return a;
+        return null;
+    }
+
+    public void applyDiscountOnProduct(double percentage, int capacity, String ID) throws NullPointerException{   // new exception class
+        Product product=findProduct2(ID);
+        if(product instanceof DigitalEquipment)
+            ((DigitalEquipment) product).applyDiscount(percentage, capacity);
+        else if(product instanceof Pen)
+            ((Pen) product).applyDiscount(percentage, capacity);
+        else if(product instanceof Pencil)
+            ((Pencil) product).applyDiscount(percentage, capacity);
+    }
+
+    public void rescindDiscountOnProduct(String ID) throws NullPointerException{
+        Product product=findProduct2(ID);
+        if(product instanceof DigitalEquipment)
+            ((DigitalEquipment) product).rescindDiscount();
+        else if(product instanceof Pen)
+            ((Pen) product).rescindDiscount();
+        else if(product instanceof Pencil)
+            ((Pencil) product).rescindDiscount();
     }
 }

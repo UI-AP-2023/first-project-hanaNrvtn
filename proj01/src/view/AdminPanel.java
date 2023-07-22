@@ -1,9 +1,13 @@
 package view;
 
 import controller.AdminController;
+import controller.CustomerController;
+import model.product.DiscountCode;
+import model.product.DiscountType;
 import model.product.Product;
 import model.user.*;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class AdminPanel {
@@ -40,6 +44,21 @@ public class AdminPanel {
                 case "ManageRequest":
                     manageRequest(splitCommand[1]);
                     break;
+                case "OfferDiscount":
+                    offerDiscount(splitCommand[1]);
+                    break;
+                case "EditWelcomingDiscount":
+                    editWelcomingDiscount(splitCommand[1]);
+                    break;
+                case "RemoveWelcomingDiscount":
+                    removeWelcomingDiscount();
+                    break;
+                case "ApplyDiscount":
+                    applyDiscount(splitCommand[1]);
+                    break;
+                case "RescindDiscount":
+                    adminController.rescindDiscountOnProduct(splitCommand[1]);
+                    break;
                 case "ShowAllUsers":
                     printAllUsers();
                     break;
@@ -57,6 +76,36 @@ public class AdminPanel {
                     System.out.println("wrong command");
             }
         }
+    }
+
+    private void applyDiscount(String remainCommand) {
+        String[] strings = remainCommand.split(" ");
+        try {
+            adminController.applyDiscountOnProduct(Double.parseDouble(strings[0]), Integer.parseInt(strings[1]), strings[2]);
+        }catch (NullPointerException nullPointerException){
+            System.out.println("product not found");
+        }
+    }
+
+    private void offerDiscount(String remainCommand){
+        String[] strings = remainCommand.split(" ");
+        switch (strings[0]) {
+            case "welcoming" -> adminController.setSampleDiscountCode(new DiscountCode(Double.parseDouble(strings[1]), LocalDate.parse(strings[2]), Integer.parseInt(strings[3]), DiscountType.WELCOMING));
+            case "Encouraging" -> adminController.offerEncouragingDiscount(Double.parseDouble(strings[1]), LocalDate.parse(strings[2]), Integer.parseInt(strings[3]));
+            case "Loyalty" -> adminController.offerLoyaltyDiscount(Double.parseDouble(strings[1]), LocalDate.parse(strings[2]), Integer.parseInt(strings[3]));
+        }
+        System.out.println("offered successfully");
+    }
+
+    private void removeWelcomingDiscount(){
+        adminController.removeWelcomingDiscount();
+        System.out.println("removed successfully");
+    }
+
+    private void editWelcomingDiscount(String remainCommand){
+        String[] strings = remainCommand.split(" ");
+        adminController.editWelcomingDiscount(Double.parseDouble(strings[0]), LocalDate.parse(strings[1]), Integer.parseInt(strings[2]));
+        System.out.println("edited successfully");
     }
 
     private void addProduct(String remainCommand) {
@@ -173,8 +222,13 @@ public class AdminPanel {
                         Remove ID
                         Edit:
                         Edit ID editingAttribute newValue
-                        ShowAllRequest
+                        ShowAllRequests
                         ManageRequest Accept/Reject RequestType(Registration/CommentCheck/CreditIncrease) userName
+                        OfferDiscount DiscountType(Welcoming, Encouraging, Loyalty) Percentage Expiration Capacity
+                        EditWelcomingDiscount Percentage Expiration Capacity
+                        RemoveWelcomingDiscount
+                        ApplyDiscount Percentage Capacity ProductID
+                        RescindDiscount ProductID
                         ShowAllUsers
                         Help
                         Back
