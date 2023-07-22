@@ -39,18 +39,6 @@ abstract public class DigitalEquipment extends Product implements Discountable {
     }
 
     @Override
-    public int compareTo(Product product){
-        DigitalEquipment digitalEquipment=(DigitalEquipment) product;
-        if((digitalEquipment instanceof DataStorageEquipment) && !(this instanceof DataStorageEquipment))
-            return 1;
-        else if(!(digitalEquipment instanceof DataStorageEquipment) && (this instanceof DataStorageEquipment))
-            return -1;
-        else if (digitalEquipment instanceof DataStorageEquipment)
-            return this.compareTo(digitalEquipment);
-        else return 0;
-    }
-
-    @Override
     public void applyDiscount(double percentage, int capacity){
         this.discountPercentage=percentage;
         this.setPrice(this.getPrice()-(this.getPrice()*this.discountPercentage*0.01));
@@ -66,11 +54,6 @@ abstract public class DigitalEquipment extends Product implements Discountable {
 
     public String toString1() {
         return "weight: " + weight + "\nlength: " + dimension.split(":")[0] + "\nwidth: " + dimension.split(":")[1] + "\nheight: " + dimension.split(":")[2] + super.toString1();
-    }
-
-    @Override
-    public String toString() {
-        return "Name: " + this.getName();
     }
 }
 

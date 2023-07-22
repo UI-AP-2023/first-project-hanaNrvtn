@@ -1,5 +1,7 @@
 package com.example.firstproj02.model.products;
 
+import com.example.firstproj02.model.processes.Comment;
+
 public class FlashMemory extends DataStorageEquipment {
     private double USBVersion;
 
@@ -17,11 +19,9 @@ public class FlashMemory extends DataStorageEquipment {
     }
 
     public String toString1() {
-        return "USB version: " + USBVersion + super.toString1();
-    }
-
-    @Override
-    public String toString() {
-        return "Name: " + this.getName();
+        StringBuilder comments=new StringBuilder();
+        for(Comment a: getComments())
+            comments.append("\n").append(a.getUser().getUserName()).append("\n").append(a.getText()).append("\n=-=-=-=-=-=-=-=-=-=-=-=");
+        return super.getName() + "\nUSB version:  " + this.getUSBVersion() + "\nweight:  " + super.getWeight() + "\ndimension:  " + super.getDimension() + "\nprice:  " + super.getPrice() + "$\nstatus:  " + super.getAvailable() + "\nscore:  " + String.format("%.2f", super.getScore()) + "\n=-=-=-=-=-=-=-=-=-=-=-=\n comments: " + comments;
     }
 }

@@ -1,5 +1,7 @@
 package com.example.firstproj02.model.products;
 
+import com.example.firstproj02.model.processes.Comment;
+
 public class EdibleProduct extends Product {
     private String productionDate;  //
     private String expirationDate;  //
@@ -27,11 +29,9 @@ public class EdibleProduct extends Product {
     }
 
     public String toString1() {
-        return "production date: " + productionDate + "\nexpiration date: " + expirationDate + super.toString1();
-    }
-
-    @Override
-    public String toString() {
-        return "Name: " + this.getName();
+        StringBuilder comments=new StringBuilder();
+        for(Comment a: getComments())
+            comments.append("\n").append(a.getUser().getUserName()).append("\n").append(a.getText()).append("\n=-=-=-=-=-=-=-=-=-=-=-=");
+        return super.getName() + "\nprd date:  " + this.productionDate + "\nexp date:  " + this.expirationDate + "\nprice:  " + super.getPrice() + "$\nstatus:  " + super.getAvailable() + "\nscore:  " + String.format("%.2f", super.getScore()) + "\n=-=-=-=-=-=-=-=-=-=-=-=\n comments: " + comments;
     }
 }

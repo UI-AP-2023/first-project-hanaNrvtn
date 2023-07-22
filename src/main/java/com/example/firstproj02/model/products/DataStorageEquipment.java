@@ -16,21 +16,7 @@ abstract public class DataStorageEquipment extends DigitalEquipment {
         this.capacity = capacity;
     }
 
-    @Override
-    public int compareTo(Product product){
-        DataStorageEquipment dataStorageEquipment=(DataStorageEquipment) product;
-        if((dataStorageEquipment instanceof SSD) && !(this instanceof SSD)) return 1;
-        else if(!(dataStorageEquipment instanceof SSD) && (this instanceof SSD)) return -1;
-        else if(dataStorageEquipment instanceof SSD) return ((SSD)dataStorageEquipment).compareTo((SSD) this);
-        else return this.compareTo(dataStorageEquipment);
-    }
-
     public String toString1() {
         return "capacity: " + capacity + super.toString1();
-    }
-
-    @Override
-    public String toString() {
-        return "Name: " + this.getName();
     }
 }
