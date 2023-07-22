@@ -1,6 +1,6 @@
 package com.example.firstproj02.model.exceptions;
 
-public class InvalidCreditCardNumberException extends InvalidCreditCardInformationException{
+public class InvalidCreditCardNumberException extends InvalidCreditCardInformationException {
     public InvalidCreditCardNumberException() {
         super(" - Invalid credit card format exception");
     }

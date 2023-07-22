@@ -1,6 +1,6 @@
 package com.example.firstproj02.model.exceptions;
 
-public class InvalidCardPasswordException extends InvalidCreditCardInformationException{
+public class InvalidCardPasswordException extends InvalidCreditCardInformationException {
     public InvalidCardPasswordException() {
         super(" - Invalid card password format exception");
     }
