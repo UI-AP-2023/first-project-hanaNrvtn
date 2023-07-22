@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="productsAnchorPane" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.firstproj02.view.ProductsController">
+   <children>
+      <VBox layoutX="300.0" layoutY="12.0" prefHeight="600.0" prefWidth="250.0">
+         <children>
+            <Label prefHeight="50.0" prefWidth="250.0" text="General Info           " textFill="PINK" underline="true">
+               <font>
+                  <Font name="Gabriola" size="20.0" />
+               </font>
+            </Label>
+            <VBox fx:id="generalInfoVBox" prefHeight="150.0" prefWidth="250.0">
+               <children>
+                  <HBox prefHeight="50.0" prefWidth="250.0">
+                     <children>
+                        <Label prefHeight="23.0" prefWidth="65.0" styleClass="edit-lbl" stylesheets="@../styles/styles.css" text="Name : ">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="nameTextField" prefHeight="30.0" prefWidth="130.0" styleClass="edit-tf" stylesheets="@../styles/styles.css" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="50.0" prefWidth="250.0">
+                     <children>
+                        <Label prefHeight="23.0" prefWidth="65.0" styleClass="edit-lbl" stylesheets="@../styles/styles.css" text="Price : ">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="priceTextField" prefHeight="30.0" prefWidth="130.0" styleClass="edit-tf" stylesheets="@../styles/styles.css" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="50.0" prefWidth="250.0">
+                     <children>
+                        <Label prefHeight="23.0" prefWidth="65.0" styleClass="edit-lbl" stylesheets="@../styles/styles.css" text="Supply : ">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="SupplyTextField" prefHeight="30.0" prefWidth="130.0" styleClass="edit-tf" stylesheets="@../styles/styles.css" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <Label prefHeight="50.0" prefWidth="250.0" text="Category Info           " textFill="PINK" underline="true">
+               <font>
+                  <Font name="Gabriola" size="20.0" />
+               </font>
+            </Label>
+            <Pane fx:id="categoryInfoPane" prefHeight="138.0" prefWidth="250.0">
+               <children>
+                  <VBox fx:id="digitalInfoVBox" prefHeight="150.0" prefWidth="250.0">
+                     <children>
+                        <HBox prefHeight="50.0" prefWidth="250.0">
+                           <children>
+                              <Label prefHeight="23.0" prefWidth="65.0" styleClass="edit-lbl" stylesheets="@../styles/styles.css" text="Capacity :">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="capacityTextField" prefHeight="30.0" prefWidth="130.0" styleClass="edit-tf" stylesheets="@../styles/styles.css" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="50.0" prefWidth="250.0">
+                           <children>
+                              <Label prefHeight="23.0" prefWidth="65.0" styleClass="edit-lbl" stylesheets="@../styles/styles.css" text="Weight :">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="weightTextField" prefHeight="30.0" prefWidth="130.0" styleClass="edit-tf" stylesheets="@../styles/styles.css" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="50.0" prefWidth="250.0">
+                           <children>
+                              <Label prefHeight="23.0" prefWidth="65.0" styleClass="edit-lbl" stylesheets="@../styles/styles.css" text="Dimen :">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="dimensionTextField" prefHeight="30.0" prefWidth="130.0" styleClass="edit-tf" stylesheets="@../styles/styles.css" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="edibleInfoVBox" prefHeight="150.0" prefWidth="250.0" visible="false">
+                     <children>
+                        <HBox prefHeight="50.0" prefWidth="250.0">
+                           <children>
+                              <Label prefHeight="23.0" prefWidth="65.0" styleClass="edit-lbl" stylesheets="@../styles/styles.css" text="Prod Date :">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="prodDateTextField" prefHeight="30.0" prefWidth="130.0" styleClass="edit-tf" stylesheets="@../styles/styles.css" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="50.0" prefWidth="250.0">
+                           <children>
+                              <Label prefHeight="23.0" prefWidth="65.0" styleClass="edit-lbl" stylesheets="@../styles/styles.css" text="Expr Date: ">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="expDateTextField" prefHeight="30.0" prefWidth="130.0" styleClass="edit-tf" stylesheets="@../styles/styles.css" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="StationaryAndVehivleInfoVBox" prefHeight="150.0" prefWidth="250.0" visible="false">
+                     <children>
+                        <HBox prefHeight="50.0" prefWidth="250.0">
+                           <children>
+                              <Label prefHeight="23.0" prefWidth="65.0" styleClass="edit-lbl" stylesheets="@../styles/styles.css" text="Country :">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="cmanufacturingCountryTextField" prefHeight="30.0" prefWidth="130.0" styleClass="edit-tf" stylesheets="@../styles/styles.css" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+            <Label prefHeight="50.0" prefWidth="250.0" text="Specific Info           " textFill="PINK" underline="true">
+               <font>
+                  <Font name="Gabriola" size="20.0" />
+               </font>
+            </Label>
+            <Pane fx:id="SpecificInfoPane" prefHeight="150.0" prefWidth="250.0">
+               <children>
+                  <VBox fx:id="flashMemoryInfoVBox" prefHeight="150.0" prefWidth="250.0" visible="false">
+                     <children>
+                        <HBox prefHeight="50.0" prefWidth="250.0">
+                           <children>
+                              <Label prefHeight="23.0" prefWidth="89.0" styleClass="edit-lbl" stylesheets="@../styles/styles.css" text="Capacity :">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="flashMemoryCapacityTextField" prefHeight="30.0" prefWidth="130.0" styleClass="edit-tf" stylesheets="@../styles/styles.css" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="50.0" prefWidth="250.0">
+                           <children>
+                              <Label prefHeight="23.0" prefWidth="89.0" styleClass="edit-lbl" stylesheets="@../styles/styles.css" text="USB Version :">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="USBVersionTextField" prefHeight="30.0" prefWidth="130.0" styleClass="edit-tf" stylesheets="@../styles/styles.css" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="SSDInfoVBox" prefHeight="150.0" prefWidth="250.0" visible="false">
+                     <children>
+                        <HBox prefHeight="50.0" prefWidth="250.0">
+                           <children>
+                              <Label prefHeight="23.0" prefWidth="89.0" styleClass="edit-lbl" stylesheets="@../styles/styles.css" text="Capacity :">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="SSDCapacityTextField" prefHeight="30.0" prefWidth="130.0" styleClass="edit-tf" stylesheets="@../styles/styles.css" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="50.0" prefWidth="300.0">
+                           <children>
+                              <Label prefHeight="23.0" prefWidth="89.0" styleClass="edit-lbl" stylesheets="@../styles/styles.css" text="Read Speed :">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="readSpeedTextField" prefHeight="30.0" prefWidth="130.0" styleClass="edit-tf" stylesheets="@../styles/styles.css" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="50.0" prefWidth="300.0">
+                           <children>
+                              <Label prefHeight="23.0" prefWidth="89.0" styleClass="edit-lbl" stylesheets="@../styles/styles.css" text="Write Speed :">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="writeSpeedTextField1" prefHeight="30.0" prefWidth="130.0" styleClass="edit-tf" stylesheets="@../styles/styles.css" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="PCInfoVBox" prefHeight="150.0" prefWidth="250.0" visible="false">
+                     <children>
+                        <HBox fx:id="PCVBox" prefHeight="50.0" prefWidth="250.0">
+                           <children>
+                              <Label prefHeight="23.0" prefWidth="89.0" styleClass="edit-lbl" stylesheets="@../styles/styles.css" text="RAM Capacity :">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="RAMCapacityTextField" prefHeight="30.0" prefWidth="130.0" styleClass="edit-tf" stylesheets="@../styles/styles.css" />
+                           </children>
+                        </HBox>
+                        <HBox fx:id="PCVBox1" prefHeight="50.0" prefWidth="250.0">
+                           <children>
+                              <Label prefHeight="23.0" prefWidth="89.0" styleClass="edit-lbl" stylesheets="@../styles/styles.css" text="CPU  Model :">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="CPUModelTextFiled" prefHeight="30.0" prefWidth="130.0" styleClass="edit-tf" stylesheets="@../styles/styles.css" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="bikeInfoVBox" prefHeight="150.0" prefWidth="250.0" visible="false">
+                     <children>
+                        <HBox prefHeight="50.0" prefWidth="250.0">
+                           <children>
+                              <Label prefHeight="23.0" prefWidth="89.0" styleClass="edit-lbl" stylesheets="@../styles/styles.css" text="Bik Type :">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="bikeTypeTextField" prefHeight="30.0" prefWidth="130.0" styleClass="edit-tf" stylesheets="@../styles/styles.css" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="carInfoVBox" prefHeight="150.0" prefWidth="250.0" visible="false">
+                     <children>
+                        <HBox prefHeight="50.0" prefWidth="250.0">
+                           <children>
+                              <Label prefHeight="23.0" prefWidth="89.0" styleClass="edit-lbl" stylesheets="@../styles/styles.css" text="Motor Capacity :">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="motorCapacityTextField" prefHeight="30.0" prefWidth="130.0" styleClass="edit-tf" stylesheets="@../styles/styles.css" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="50.0" prefWidth="250.0">
+                           <children>
+                              <Label prefHeight="23.0" prefWidth="89.0" styleClass="edit-lbl" stylesheets="@../styles/styles.css" text="Automatic :">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="automaticTextFiled" prefHeight="30.0" prefWidth="130.0" styleClass="edit-tf" stylesheets="@../styles/styles.css" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="noteBookInfoVBox" prefHeight="150.0" prefWidth="250.0" visible="false">
+                     <children>
+                        <HBox prefHeight="50.0" prefWidth="250.0">
+                           <children>
+                              <Label prefHeight="23.0" prefWidth="89.0" styleClass="edit-lbl" stylesheets="@../styles/styles.css" text="Sheets :">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="sheetsTextFiled" prefHeight="30.0" prefWidth="130.0" styleClass="edit-tf" stylesheets="@../styles/styles.css" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="50.0" prefWidth="250.0">
+                           <children>
+                              <Label prefHeight="23.0" prefWidth="89.0" styleClass="edit-lbl" stylesheets="@../styles/styles.css" text="Paper Type :">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="paperTypeTextField" prefHeight="30.0" prefWidth="130.0" styleClass="edit-tf" stylesheets="@../styles/styles.css" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="penInfoVBox" prefHeight="150.0" prefWidth="250.0" visible="false">
+                     <children>
+                        <HBox prefHeight="50.0" prefWidth="250.0">
+                           <children>
+                              <Label prefHeight="23.0" prefWidth="89.0" styleClass="edit-lbl" stylesheets="@../styles/styles.css" text="Pen Color :">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="pecColorTextField" prefHeight="30.0" prefWidth="130.0" styleClass="edit-tf" stylesheets="@../styles/styles.css" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="pencilInfoVBox" prefHeight="150.0" prefWidth="250.0" visible="false">
+                     <children>
+                        <HBox prefHeight="50.0" prefWidth="250.0">
+                           <children>
+                              <Label prefHeight="23.0" prefWidth="89.0" styleClass="edit-lbl" stylesheets="@../styles/styles.css" text="Pencil Type :">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="pencilTypeTextFiled" prefHeight="30.0" prefWidth="130.0" styleClass="edit-tf" stylesheets="@../styles/styles.css" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+         </children>
+      </VBox>
+      <Accordion layoutX="51.0" layoutY="183.0" prefHeight="222.0" prefWidth="154.0" style="-fx-background-color: #000000;">
+        <panes>
+          <TitledPane stylesheets="@../styles/styles.css" text="Digital">
+               <font>
+                  <Font name="Gabriola" size="15.0" />
+               </font>
+               <content>
+                  <VBox onMouseClicked="#SSDRadioButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #000000;">
+                     <children>
+                        <RadioButton fx:id="flashMemoryRadioButton" mnemonicParsing="false" onMouseClicked="#flashMemoryRadioButton" text="Flash Memory" textFill="PINK">
+                           <font>
+                              <Font name="Gabriola" size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="product" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="SSDRadioButton" mnemonicParsing="false" onMouseClicked="#SSDRadioButton" text="SSD" textFill="PINK" toggleGroup="$product">
+                           <font>
+                              <Font name="Gabriola" size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="PCRadioButton" mnemonicParsing="false" onMouseClicked="#PCRadioButton" text="PC" textFill="PINK" toggleGroup="$product">
+                           <font>
+                              <Font name="Gabriola" size="15.0" />
+                           </font>
+                        </RadioButton>
+                     </children>
+                  </VBox>
+               </content>
+          </TitledPane>
+            <TitledPane stylesheets="@../styles/styles.css" text="Vehicle">
+               <font>
+                  <Font name="Gabriola" size="15.0" />
+               </font>
+               <content>
+                  <VBox prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #000000;">
+                     <children>
+                        <RadioButton fx:id="carRadioButton" mnemonicParsing="false" onMouseClicked="#carRadioButton" text="Car" textFill="PINK" toggleGroup="$product">
+                           <font>
+                              <Font name="Gabriola" size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="bikeRadioButton" mnemonicParsing="false" onMouseClicked="#bikeRadioButton" text="Bike" textFill="PINK" toggleGroup="$product">
+                           <font>
+                              <Font name="Gabriola" size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                     </children>
+                  </VBox>
+               </content>
+            </TitledPane>
+            <TitledPane stylesheets="@../styles/styles.css" text="Stationary">
+               <font>
+                  <Font name="Gabriola" size="15.0" />
+               </font>
+               <content>
+                  <VBox prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #000000;">
+                     <children>
+                        <RadioButton fx:id="noteBookRadioButton" mnemonicParsing="false" onMouseClicked="#noteBookRadioButton" text="Note Book" textFill="PINK" toggleGroup="$product">
+                           <font>
+                              <Font name="Gabriola" size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="pencilRadioButton" mnemonicParsing="false" onMouseClicked="#pencilRadioButton" text="Pencil" textFill="PINK" toggleGroup="$product">
+                           <font>
+                              <Font name="Gabriola" size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="penRadioButton" mnemonicParsing="false" onMouseClicked="#penRadioButton" text="Pen" textFill="PINK" toggleGroup="$product">
+                           <font>
+                              <Font name="Gabriola" size="15.0" />
+                           </font>
+                        </RadioButton>
+                     </children>
+                  </VBox>
+               </content>
+            </TitledPane>
+            <TitledPane stylesheets="@../styles/styles.css" text="Food">
+               <font>
+                  <Font name="Gabriola" size="15.0" />
+               </font>
+               <content>
+                  <VBox prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #000000;" />
+               </content>
+            </TitledPane>
+        </panes>
+      </Accordion>
+      <Button fx:id="confirmButton" layoutX="51.0" layoutY="432.0" mnemonicParsing="false" onAction="#confirmAddButton" prefHeight="30.0" prefWidth="154.0" styleClass="light-btn" stylesheets="@../styles/styles.css" text="Add Product">
+         <font>
+            <Font name="Gabriola" size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="51.0" layoutY="140.0" prefHeight="18.0" prefWidth="154.0" style="-fx-text-fill: #ffc0cb;" text="Category      " underline="true">
+         <font>
+            <Font name="Gabriola" size="25.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
