@@ -1,4 +1,4 @@
-package com.example.firstproj02;
+package com.example.firstproj02.view;
 
 import com.example.firstproj02.model.accounts.Customer;
 import javafx.application.Application;
@@ -9,8 +9,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class CouponsApplication extends Application {
-
+public class ProfileApplication extends Application {
+    //FXMLLoader fxmlLoader;
     Customer customer;
     Parent parent;
     Pane pane;
@@ -21,18 +21,23 @@ public class CouponsApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("coupons-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/firstproj02/fxmls/profile-view.fxml"));
         parent=fxmlLoader.load();
         pane.getChildren().clear();
         pane.getChildren().add(parent);
-        CouponsController couponsController=fxmlLoader.getController();
-        couponsController.customer=customer;
-        couponsController.show();
-        primaryStage.setTitle("Coupons");
+        ProfileController profileController=fxmlLoader.getController();
+        profileController.customer=customer;
+        profileController.show();
+        primaryStage.setTitle("Profile Details");
     }
 
-    CouponsApplication(Customer customer, Parent parent, Pane pane){
+    ProfileApplication(Customer customer, Parent parent, Pane pane){
         this.customer=customer;
+        this.parent=parent;
+        this.pane=pane;
+    }
+
+    ProfileApplication(Parent parent, Pane pane){
         this.parent=parent;
         this.pane=pane;
     }

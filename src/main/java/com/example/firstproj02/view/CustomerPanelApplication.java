@@ -1,4 +1,4 @@
-package com.example.firstproj02;
+package com.example.firstproj02.view;
 
 import com.example.firstproj02.model.accounts.Customer;
 import javafx.application.Application;
@@ -17,7 +17,7 @@ public class CustomerPanelApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("customerPanel.fxml"));
+        fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("/com/example/firstproj02/fxmls/customer-panel-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         CustomerPanelController customerPanelController=fxmlLoader.getController();
         customerPanelController.customer=customer;

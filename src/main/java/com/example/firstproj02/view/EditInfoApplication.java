@@ -1,4 +1,4 @@
-package com.example.firstproj02;
+package com.example.firstproj02.view;
 
 import com.example.firstproj02.model.accounts.Customer;
 import javafx.application.Application;
@@ -21,17 +21,22 @@ public class EditInfoApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("edit-info-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/firstproj02/fxmls/edit-info-view.fxml"));
         parent=fxmlLoader.load();
         pane.getChildren().clear();
         pane.getChildren().add(parent);
         EditInfoController editInfoController=fxmlLoader.getController();
-        editInfoController.setCustomer(customer);
+        editInfoController.customer=customer;
         primaryStage.setTitle("Edit Information");
     }
 
     EditInfoApplication(Customer customer, Parent parent, Pane pane){
         this.customer=customer;
+        this.parent=parent;
+        this.pane=pane;
+    }
+
+    EditInfoApplication(Parent parent, Pane pane){
         this.parent=parent;
         this.pane=pane;
     }

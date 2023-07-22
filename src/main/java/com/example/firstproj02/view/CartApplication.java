@@ -1,17 +1,15 @@
-package com.example.firstproj02;
+package com.example.firstproj02.view;
 
 import com.example.firstproj02.model.accounts.Customer;
 import com.example.firstproj02.model.products.Product;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class CartApplication extends Application {
 
@@ -26,7 +24,7 @@ public class CartApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(CartApplication.class.getResource("cart-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(CartApplication.class.getResource("/com/example/firstproj02/fxmls/cart-view.fxml"));
         parent = fxmlLoader.load();
         pane.getChildren().clear();
         pane.getChildren().add(parent);

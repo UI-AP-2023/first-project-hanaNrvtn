@@ -1,4 +1,4 @@
-package com.example.firstproj02;
+package com.example.firstproj02.view;
 
 import com.example.firstproj02.model.accounts.Customer;
 import com.example.firstproj02.model.processes.Invoice;
@@ -23,7 +23,7 @@ public class FinalizeCartApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(FinalizeCartApplication.class.getResource("finalize-cart-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(FinalizeCartApplication.class.getResource("/com/example/firstproj02/fxmls/finalize-cart-view.fxml"));
         parent=fxmlLoader.load();
         pane.getChildren().clear();
         pane.getChildren().add(parent);
