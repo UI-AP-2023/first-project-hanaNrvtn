@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.firstproj02.CartController">
+<HBox prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.firstproj02.view.CartController">
    <children>
       <VBox prefHeight="600.0" prefWidth="222.0">
          <children>
-            <Label prefHeight="48.0" prefWidth="174.0" styleClass="profile-lbl" stylesheets="@styles.css" text="Product List    " underline="true">
+            <Label prefHeight="31.0" prefWidth="161.0" styleClass="profile-lbl" stylesheets="@../styles/styles.css" text="Product List   " underline="true">
                <VBox.margin>
                   <Insets left="50.0" top="50.0" />
                </VBox.margin>
@@ -22,7 +22,7 @@
                   <Font />
                </font>
             </Label>
-            <ListView fx:id="cartListView" editable="true" prefHeight="449.0" prefWidth="189.0" stylesheets="@styles.css">
+            <ListView fx:id="cartListView" editable="true" prefHeight="449.0" prefWidth="189.0" stylesheets="@../styles/styles.css">
                <VBox.margin>
                   <Insets bottom="40.0" left="40.0" top="30.0" />
                </VBox.margin>
@@ -33,15 +33,12 @@
                </styleClass>
             </ListView>
          </children>
-         <HBox.margin>
-            <Insets />
-         </HBox.margin>
       </VBox>
-      <VBox prefHeight="600.0" prefWidth="309.0" styleClass="slider" stylesheets="@styles.css">
+      <VBox prefHeight="600.0" prefWidth="309.0" styleClass="slider" stylesheets="@../styles/styles.css">
          <children>
             <ScrollPane prefHeight="390.0" prefWidth="295.0" style="-fx-border-color: #ffc0cb; -fx-background-color: #000000;">
                <content>
-                  <Label fx:id="cartProductsLabel" alignment="TOP_LEFT" prefHeight="387.0" prefWidth="270.0" style="-fx-border-color: #ffc0cb; -fx-background-color: #000000;" styleClass="info-lab" stylesheets="@styles.css" text="Product Information Here ...">
+                  <Label fx:id="cartProductsLabel" alignment="TOP_LEFT" prefHeight="387.0" prefWidth="270.0" style="-fx-border-color: #ffc0cb; -fx-background-color: #000000;" styleClass="info-lab" stylesheets="@../styles/styles.css" text="Product Information Here ...">
                      <padding>
                         <Insets bottom="30.0" left="20.0" top="10.0" />
                      </padding>
@@ -51,7 +48,7 @@
                   <Insets bottom="30.0" right="30.0" top="70.0" />
                </VBox.margin>
             </ScrollPane>
-            <Button fx:id="removeProductButton" mnemonicParsing="false" onAction="#removeProductButton" prefHeight="30.0" prefWidth="270.0" styleClass="login-signup-btn" stylesheets="@styles.css" text="Remove Current Product">
+            <Button fx:id="removeProductButton" mnemonicParsing="false" onAction="#removeProductButton" prefHeight="30.0" prefWidth="270.0" styleClass="light-btn" stylesheets="@../styles/styles.css" text="Remove Current Product">
                <font>
                   <Font name="Gabriola" size="15.0" />
                </font>
@@ -59,7 +56,7 @@
                   <Insets bottom="10.0" right="30.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="finalizeCartButton" mnemonicParsing="false" onAction="#finalizeCartButton" prefHeight="30.0" prefWidth="270.0" styleClass="login-signup-btn" stylesheets="@styles.css" text="Finalize Shopping Cart">
+            <Button fx:id="finalizeCartButton" mnemonicParsing="false" onAction="#finalizeCartButton" prefHeight="30.0" prefWidth="270.0" styleClass="light-btn" stylesheets="@../styles/styles.css" text="Finalize Shopping Cart">
                <font>
                   <Font name="Gabriola" size="15.0" />
                </font>

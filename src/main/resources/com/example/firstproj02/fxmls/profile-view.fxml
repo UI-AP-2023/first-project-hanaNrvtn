@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.firstproj02.ProfileController">
+<VBox prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.firstproj02.view.ProfileController">
     <children>
         <Label fx:id="titleLabel" alignment="CENTER" prefHeight="150.0" prefWidth="356.0" text="Profile Details      " textFill="PINK" underline="true">
             <font>
@@ -23,9 +23,9 @@
             <children>
                 <VBox prefHeight="180.0" prefWidth="300.0">
                     <children>
-                          <Label fx:id="firstNameLabel" prefHeight="60.0" prefWidth="300.0" styleClass="profile-lbl" stylesheets="@styles.css" />
-                          <Label fx:id="emailLabel" prefHeight="60.0" prefWidth="300.0" styleClass="profile-lbl" stylesheets="@styles.css" />
-                          <Label fx:id="userNameLabel" prefHeight="60.0" prefWidth="300.0" styleClass="profile-lbl" stylesheets="@styles.css" />
+                          <Label fx:id="firstNameLabel" prefHeight="60.0" prefWidth="300.0" styleClass="profile-lbl" stylesheets="@../styles/styles.css" />
+                          <Label fx:id="emailLabel" prefHeight="60.0" prefWidth="300.0" styleClass="profile-lbl" stylesheets="@../styles/styles.css" />
+                          <Label fx:id="userNameLabel" prefHeight="60.0" prefWidth="300.0" styleClass="profile-lbl" stylesheets="@../styles/styles.css" />
                     </children>
                <padding>
                   <Insets left="35.0" />
@@ -33,9 +33,9 @@
                 </VBox>
                 <VBox prefHeight="180.0" prefWidth="300.0">
                     <children>
-                          <Label fx:id="lastNameLabel" prefHeight="0.0" prefWidth="300.0" styleClass="profile-lbl" stylesheets="@styles.css" />
-                          <Label fx:id="phoneNumberLabel" styleClass="profile-lbl" stylesheets="@styles.css" />
-                          <Label fx:id="passwordLabel" styleClass="profile-lbl" stylesheets="@styles.css" />
+                          <Label fx:id="lastNameLabel" prefHeight="0.0" prefWidth="300.0" styleClass="profile-lbl" stylesheets="@../styles/styles.css" />
+                          <Label fx:id="phoneNumberLabel" styleClass="profile-lbl" stylesheets="@../styles/styles.css" />
+                          <Label fx:id="passwordLabel" styleClass="profile-lbl" stylesheets="@../styles/styles.css" />
                     </children>
                <HBox.margin>
                   <Insets />

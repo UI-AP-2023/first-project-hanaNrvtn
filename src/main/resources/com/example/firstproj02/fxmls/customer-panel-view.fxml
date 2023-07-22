@@ -9,26 +9,29 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.firstproj02.CustomerPanelController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.firstproj02.view.CustomerPanelController">
    <children>
       <VBox layoutY="43.0" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #ffc0cb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="612.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="147.0" fitWidth="143.0" pickOnBounds="true" preserveRatio="true">
                <VBox.margin>
-                  <Insets bottom="50.0" left="40.0" top="15.0" />
+                  <Insets bottom="30.0" left="100.0" top="30.0" />
                </VBox.margin>
+               <image>
+                  <Image url="@../images/profile-page-icons/profile-img.png" />
+               </image>
             </ImageView>
-            <HBox prefHeight="50.0" prefWidth="300.0" styleClass="profile-vbox" stylesheets="@styles.css">
+            <HBox prefHeight="50.0" prefWidth="300.0" styleClass="profile-vbox" stylesheets="@../styles/styles.css">
                <children>
                   <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/icons8-person-64.png" />
+                        <Image url="@../images/profile-page-icons/profile.png" />
                      </image>
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Button fx:id="profileButton" mnemonicParsing="false" onAction="#profileButton" prefHeight="30.0" prefWidth="200.0" styleClass="customer-panel-btn" stylesheets="@styles.css" text="Profile">
+                  <Button fx:id="profileButton" mnemonicParsing="false" onAction="#profileButton" prefHeight="30.0" prefWidth="200.0" styleClass="dark-btn" stylesheets="@../styles/styles.css" text="Profile">
                      <HBox.margin>
                         <Insets left="15.0" />
                      </HBox.margin>
@@ -44,10 +47,10 @@
                         <Insets left="25.0" />
                      </HBox.margin>
                      <image>
-                        <Image url="@images/icons8-edit-24.png" />
+                        <Image url="@../images/profile-page-icons/edit.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="editInfoButton" mnemonicParsing="false" onAction="#editInfoButton" prefHeight="30.0" prefWidth="200.0" styleClass="customer-panel-btn" stylesheets="@styles.css" text="Edit">
+                  <Button fx:id="editInfoButton" mnemonicParsing="false" onAction="#editInfoButton" prefHeight="30.0" prefWidth="200.0" styleClass="dark-btn" stylesheets="@../styles/styles.css" text="Edit">
                      <font>
                         <Font name="Gabriola" size="15.0" />
                      </font>
@@ -61,13 +64,13 @@
                <children>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/icons8-cart-30.png" />
+                        <Image url="@../images/profile-page-icons/cart.png" />
                      </image>
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Button fx:id="cartButton" mnemonicParsing="false" onAction="#cartButton" prefHeight="30.0" prefWidth="200.0" styleClass="customer-panel-btn" stylesheets="@styles.css" text="Shopping cart">
+                  <Button fx:id="cartButton" mnemonicParsing="false" onAction="#cartButton" prefHeight="30.0" prefWidth="200.0" styleClass="dark-btn" stylesheets="@../styles/styles.css" text="Shopping cart">
                      <font>
                         <Font name="Gabriola" size="15.0" />
                      </font>
@@ -84,10 +87,10 @@
                         <Insets left="20.0" />
                      </HBox.margin>
                      <image>
-                        <Image url="@images/icons8-card-payment-48.png" />
+                        <Image url="@../images/profile-page-icons/payment.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="paymentButton" mnemonicParsing="false" onAction="#paymentButton" prefHeight="30.0" prefWidth="200.0" styleClass="customer-panel-btn" stylesheets="@styles.css" text="Payment">
+                  <Button fx:id="paymentButton" mnemonicParsing="false" onAction="#paymentButton" prefHeight="30.0" prefWidth="200.0" styleClass="dark-btn" stylesheets="@../styles/styles.css" text="Payment">
                      <HBox.margin>
                         <Insets left="15.0" />
                      </HBox.margin>
@@ -103,10 +106,10 @@
                         <Insets left="20.0" />
                      </HBox.margin>
                      <image>
-                        <Image url="@images/icons8-payment-24.png" />
+                        <Image url="@../images/profile-page-icons/invoice.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="invoicesButton" mnemonicParsing="false" onAction="#invoicesButton" prefHeight="30.0" prefWidth="200.0" styleClass="customer-panel-btn" stylesheets="@styles.css" text="Invoices">
+                  <Button fx:id="invoicesButton" mnemonicParsing="false" onAction="#invoicesButton" prefHeight="30.0" prefWidth="200.0" styleClass="dark-btn" stylesheets="@../styles/styles.css" text="Invoices">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
@@ -123,10 +126,10 @@
                         <Insets left="20.0" />
                      </HBox.margin>
                      <image>
-                        <Image url="@images/icons8-discount-30.png" />
+                        <Image url="@../images/profile-page-icons/discount.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="couponsButton" mnemonicParsing="false" onAction="#couponsButton" prefHeight="30.0" prefWidth="200.0" styleClass="customer-panel-btn" stylesheets="@styles.css" text="Coupons">
+                  <Button fx:id="couponsButton" mnemonicParsing="false" onAction="#couponsButton" prefHeight="30.0" prefWidth="200.0" styleClass="dark-btn" stylesheets="@../styles/styles.css" text="Coupons">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
@@ -143,10 +146,10 @@
                         <Insets left="20.0" />
                      </HBox.margin>
                      <image>
-                        <Image url="@images/icons8-discount-30.png" />
+                        <Image url="@../images/profile-page-icons/home.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButton" prefHeight="30.0" prefWidth="200.0" styleClass="customer-panel-btn" stylesheets="@styles.css" text="Back To Home">
+                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButton" prefHeight="30.0" prefWidth="200.0" styleClass="dark-btn" stylesheets="@../styles/styles.css" text="Back To Home">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
@@ -163,10 +166,10 @@
                         <Insets left="20.0" />
                      </HBox.margin>
                      <image>
-                        <Image url="@images/icons8-payment-24.png" />
+                        <Image url="@../images/profile-page-icons/logout.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="logOutButton" mnemonicParsing="false" onAction="#logOutButton" prefHeight="30.0" prefWidth="200.0" styleClass="customer-panel-btn" stylesheets="@styles.css" text="Log Out">
+                  <Button fx:id="logOutButton" mnemonicParsing="false" onAction="#logOutButton" prefHeight="30.0" prefWidth="200.0" styleClass="dark-btn" stylesheets="@../styles/styles.css" text="Log Out">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
