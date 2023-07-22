@@ -28,10 +28,10 @@ public class Invoice {
     }
 
     private String IDMaker() {
-        Random random=new Random();
-        return date.toString().split("-")[0] + (char)random.nextInt(65, 91) +
+        Random random = new Random();
+        return date.toString().split("-")[0] + (char) random.nextInt(65, 91) +
                 date.toString().split("-")[1] +
-                (char)random.nextInt(97, 123) +
+                (char) random.nextInt(97, 123) +
                 date.toString().split("-")[2];
     }
 
@@ -51,9 +51,9 @@ public class Invoice {
     }
      */
 
-    public double updateFinalAmount(){
-        finalAmount=totalAmount;
-        appliedDiscountCodes.forEach(n->finalAmount-=(finalAmount*n.getPercentage()*0.01));
+    public double updateFinalAmount() {
+        finalAmount = totalAmount;
+        appliedDiscountCodes.forEach(n -> finalAmount -= (finalAmount * n.getPercentage() * 0.01));
         return finalAmount;
     }
 
@@ -91,15 +91,15 @@ public class Invoice {
         return appliedDiscountCodes;
     }
 
-    public String toString1(){
+    public String toString1() {
         StringBuilder boughtProduct = new StringBuilder();
-        for (Product a : this.boughtProducts)
-            boughtProduct.append("\nname: ").append(a.getName()).append("\nID: ").append(a.getID());
-        return "\nID: " + ID + "\ndate: " + date + "\ntotal amount: " + totalAmount + boughtProduct + "\nfinal amount: " + finalAmount + "\nproducts: " + boughtProduct;
+        for (int i = 0; i < this.boughtProducts.size(); ++i)
+            boughtProduct.append("   ").append(i + 1).append(".  ").append(this.boughtProducts.get(i).getName()).append(" || ").append(this.boughtProducts.get(i).getID()).append("\n");
+        return "ID:  " + ID + "\ndate:  " + date + "\ntotal amount:  " + totalAmount + "\nfinal amount:  " + finalAmount + "\nproducts:\n" + boughtProduct;
     }
 
     @Override
     public String toString() {
-        return "ID: " +this.ID + "    Date: " + this.date;
+        return "ID: " + this.ID + "    Date: " + this.date;
     }
 }

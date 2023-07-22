@@ -13,9 +13,9 @@ public class IncreaseCreditRequest extends Request {
         super(RequestType.CREDIT_INCREASE_REQUEST);
         this.customer = customer;
         this.additionalCredit = additionalCredit;
-        this.creditCardNumber=creditCardNumber;
-        this.CVV2=CVV2;
-        this.password=password;
+        this.creditCardNumber = creditCardNumber;
+        this.CVV2 = CVV2;
+        this.password = password;
     }
 
     public double getAdditionalCredit() {
@@ -54,8 +54,12 @@ public class IncreaseCreditRequest extends Request {
         this.password = password;
     }
 
+    public String toString1() {
+        return super.toString() + "\nuser name:   " + customer.getUserName() + "\nadditional credit:   " + additionalCredit;
+    }
+
     @Override
     public String toString() {
-        return "user name: " + customer.getUserName() + "additional credit: " + additionalCredit + super.toString();
+        return "CRD  ||  " + customer.getUserName();
     }
 }

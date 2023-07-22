@@ -13,8 +13,13 @@ abstract public class Request {
 
     @Override
     public String toString() {
-        return "request type: " + requestType.toString();
+        return requestType.toString();
     }
+
+    public String toString1() {
+        return requestType.toString();
+    }
+
 }
 
 

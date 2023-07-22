@@ -14,8 +14,12 @@ public class RegistrationRequest extends Request {
         return customer;
     }
 
+    public String toString1() {
+        return super.toString() + "\nuser name:   " + customer.getUserName();
+    }
+
     @Override
     public String toString() {
-        return "user name: " + customer.getUserName() + super.toString();
+        return "REG  ||  " + customer.getUserName();
     }
 }

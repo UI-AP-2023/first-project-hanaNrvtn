@@ -69,6 +69,6 @@ public class DiscountCode {
 
     @Override
     public String toString() {
-        return "code: " + this.code + "||" + this.percentage + "%";
+        return "code: " + this.code + "  ||  " + this.percentage + "%";
     }
 }

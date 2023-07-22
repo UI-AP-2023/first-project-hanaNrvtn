@@ -16,8 +16,12 @@ public class CommentCheckRequest extends Request {
         this.comment = comment;
     }
 
+    public String toString1() {
+        return super.toString() + "\n# username:   " + comment.getUser().getUserName() + "\n# comment text:\n" + comment.getText();
+    }
+
     @Override
     public String toString() {
-        return comment.toString() + super.toString();
+        return "COM  ||  " + comment.getUser().getUserName();
     }
 }
